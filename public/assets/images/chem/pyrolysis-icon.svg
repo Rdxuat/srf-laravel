@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="98.994" height="98.995" viewBox="0 0 98.994 98.995">
+  <g id="Group_157808" data-name="Group 157808" transform="translate(-11197.503 -4817.254)">
+    <rect id="Rectangle_625" data-name="Rectangle 625" width="70" height="70" transform="translate(11247 4817.254) rotate(45)" fill="#2a72b8"/>
+    <g id="Group_413" data-name="Group 413" transform="translate(10842 52.752)">
+      <path id="thermometer-svgrepo-com" d="M24.127,25.65V24.259h4.649V25.65Zm0-4.459h4.649v1.486H24.127Zm0-2.975h4.649V19.7H24.127Zm0-3.069h4.649v1.486l-4.649-.094Zm0-3.163h4.649v1.581H24.127Zm0-2.973h4.649V10.5H24.127Zm2.692,26.11a8.921,8.921,0,0,1-17.843,0,8.833,8.833,0,0,1,4.552-7.83V7.428a4.541,4.541,0,0,1,4.555-4.459,4.46,4.46,0,0,1,4.461,4.459V27.516a8.907,8.907,0,0,1,4.276,7.605Zm-5.761-6.705V7.428a2.973,2.973,0,1,0-5.947,0v20.81a7.45,7.45,0,1,0,5.947.178ZM17.9,41.069a5.943,5.943,0,0,1-1.3-11.743V15.147h2.975V29.442A5.932,5.932,0,0,1,17.9,41.069Z" transform="translate(386.124 4791.031)" fill="#fff"/>
+      <path id="Icon_material-add" data-name="Icon material-add" d="M19.294,14.24H14.24v5.055H12.555V14.24H7.5V12.555h5.055V7.5H14.24v5.055h5.055Z" transform="translate(375.806 4795.242)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

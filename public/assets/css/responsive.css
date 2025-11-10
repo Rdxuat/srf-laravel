@@ -1,0 +1,105 @@
+@media (max-width:991px) {
+    .ham-icon
+    {
+        display: none;
+    }
+    .ham-icon1
+    {
+        display: block;
+    }
+    .my-sidenav {
+        display: block;
+        position: fixed;
+        top: 0px;
+        right: 0;
+        overflow-x: hidden;
+        z-index: 999;
+        height: 100vh;
+        width: 100%;
+        max-width: 0;
+        background: transparent linear-gradient(90deg, #0095D9 0%, #50BC80 100%) 0% 0% no-repeat padding-box;
+        transition: .5s;
+        -webkit-transition: .5s;
+    }
+    .my-sidenav>ul {
+        padding: 40px 20px 0px;
+    }
+    .chartingnewsec .row .col-md-6:nth-child(2),
+    .my-sidenav ul {
+        padding-left: 15px
+    }
+    .my-sidenav>ul>li>ul {
+        margin-top: 0;
+        display: none
+    }
+    .my-sidenav ul.submenu li ul.submenu {
+        display: none;
+        position: static;
+        width: 100%
+    }
+    .my-sidenav ul {
+        list-style-type: none
+    }
+    .my-sidenav ul li {
+        border-top: 1px solid #fff;
+        padding: 15px 0
+    }
+    .my-sidenav>ul>li>ul>li {
+        border-bottom: 1px solid #fff;
+        padding: 10px 0
+    }
+    .my-sidenav ul.submenu li ul.submenu li:last-child,
+    .my-sidenav>ul>li>ul>li:last-child {
+        border-bottom: 0
+    }
+    .my-sidenav ul.submenu li ul.submenu li {
+        border-bottom: 1px solid #fff;
+        padding: 10px
+    }
+    .cross-btn1 {
+        text-align: right;
+        padding: 16px 14px 0 0;
+        color: #fff;
+        font-size: 35px;
+        cursor: pointer
+    }
+    .my-sidenav .submenu-indicator-minus .submenu-indicator {
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg)
+    }
+    .my-sidenav .submenu-indicator {
+        font-size: 30px;
+        position: absolute;
+        line-height: 25px;
+        right: 15px
+    }
+    .my-sidenav>ul>li>a {
+        color: #fff;
+        font-size: 16px;
+        display: block
+    }
+    .my-sidenav>ul>li>ul>li>a {
+        color: #fff;
+        font-size: 14px;
+        display: block;
+    }
+    .my-sidenav>ul>li>ul>li>a img {
+        padding-right: 10px;
+        float: right
+    }
+    .logoannualtxt a:last-child,p.headceo
+    {
+        display: none;
+    }
+    header
+    {
+        top: 0;
+    }
+
+}
+@media (max-width:767px) {
+    
+}

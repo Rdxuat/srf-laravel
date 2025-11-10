@@ -1,13 +1,15 @@
 <?php
 
+use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LogController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
 });
+Route::get('/investor-relations', [InvestorController::class, 'index'])->name('investorRelations');
 
 Route::get('/aos', function () {
     return auth()->check()
