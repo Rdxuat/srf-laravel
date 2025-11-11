@@ -6,11 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>SRF Digital Annual Report 2024–25 | SRF Limited – Sustainability, Performance & Governance</title>
-  <meta name="description" content="">
-  <meta property="og:title" content="" />
-  <meta property="og:description" content="" />
-  <meta property="og:image" content="images/" />
+  <title>{{ $data['meta_title'] ?? 'Srf' }}</title>
+  <meta property="og:title" content="{{ $data['meta_title'] ?? 'Srf' }}" />
+  @if ($data['meta_desc'])
+    <meta name="description" content="{{ $data['meta_desc'] ?? 'Srf' }}">
+    <meta property="og:description" content="{{ $data['meta_desc'] ?? 'Srf' }}" />
+  @endif
+  @if ($data['meta_image'])
+    <meta property="og:image" content="{{ $data['meta_image']}}" />
+  @endif
+
 
   {{-- CSS --}}
   <link rel="stylesheet" href="https://use.typekit.net/czb8wkt.css">
@@ -32,6 +37,9 @@
   </div>
 
   {{-- JS --}}
+  <script type="text/javascript">
+    var base_url = "{{url("")}}";
+  </script>
   <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
   <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>

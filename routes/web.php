@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InvestorAjaxController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -9,7 +10,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.home');
 });
-Route::get('/investor-relations', [InvestorController::class, 'index'])->name('investorRelations');
+Route::prefix('investor-relations')->group(function () {
+    Route::get('/financial-results', [InvestorController::class, 'financialResultIndex'])->name('financial-result');
+    Route::get('/annual-reports', [InvestorController::class, 'annualReportIndex'])->name('annual-report');
+    Route::get('/annual-reports-subsidiaries', [InvestorController::class, 'annualReportSubsIndex'])->name('annual-report-subs');
+    Route::get('/investor-presentation', [InvestorController::class, 'investorPresentationIndex'])->name('investor-presentation');
+    Route::get('/annual-return', [InvestorController::class, 'annualReturnIndex'])->name('annual-return');
+    Route::get('/annual-general-meeting', [InvestorController::class, 'agmTranscriptIndex'])->name('annual-general');
+    Route::get('/earnings-call', [InvestorController::class, 'earningCallIndex'])->name('earning-call');
+
+    Route::get('/get-investor-data', [InvestorController::class, 'getInvestorData'])->name('get-investor-data');
+});
+
+Route::get('/investor-relations/stock-information', [InvestorController::class, 'stockInformationIndex'])->name('stock-information');
+Route::get('/investor-relations/shareholder-information', [InvestorController::class, 'shareholderInformationIndex'])->name('shareholder-information');
+Route::get('/investor-relations/corporate-governance', [InvestorController::class, 'corporateGovernanceIndex'])->name('corporate-governance');
 
 Route::get('/aos', function () {
     return auth()->check()
@@ -34,4 +49,3 @@ Route::middleware('auth')->prefix('aos')->group(function () {
     Route::get('/logs/download', [LogController::class, 'download'])->name('logs.download');
     Route::delete('/logs/delete', [LogController::class, 'delete'])->name('logs.delete');
 });
-

@@ -7,29 +7,28 @@
                     <div class="inTabs wow fadeInUp">
                         <ul class="nav nav-tabs" id="in-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="in-tab-1" data-bs-toggle="tab"
-                                    data-bs-target="#in-tab-a" type="button" role="tab" aria-controls="in-tab-a"
-                                    aria-selected="true">
+                                <a class="nav-link active" id="in-tab-1" data-bs-toggle="tab" data-bs-target="#in-tab-a"
+                                    type="button" role="tab" aria-controls="in-tab-a" aria-selected="true">
                                     Financial Reports & Results
-                                </button>
+                                </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="in-tab-2" data-bs-toggle="tab" data-bs-target="#in-tab-b"
+                                <a class="nav-link" id="in-tab-2" data-bs-toggle="tab" data-bs-target="#in-tab-b"
                                     type="button" role="tab" aria-controls="in-tab-b" aria-selected="false">
                                     Stock Information
-                                </button>
+                                </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="in-tab-3" data-bs-toggle="tab" data-bs-target="#in-tab-c"
+                                <a class="nav-link" id="in-tab-3" data-bs-toggle="tab" data-bs-target="#in-tab-c"
                                     type="button" role="tab" aria-controls="in-tab-c" aria-selected="false">
                                     Shareholder Information
-                                </button>
+                                </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="in-tab-4" data-bs-toggle="tab" data-bs-target="#in-tab-d"
+                                <a class="nav-link" id="in-tab-4" data-bs-toggle="tab" data-bs-target="#in-tab-d"
                                     type="button" role="tab" aria-controls="in-tab-d" aria-selected="false">
                                     Corporate Governance
-                                </button>
+                                </a>
                             </li>
 
                         </ul>
