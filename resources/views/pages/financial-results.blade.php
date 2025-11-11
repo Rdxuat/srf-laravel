@@ -172,20 +172,15 @@
                         loadResults();
                     },
                     error: function () {
-                        // On error, hide quarter and try loading results for year-only
                         $('#quarterBox').hide();
                         loadResults();
                     }
                 });
             }
-
-            // === Quarter Change (manual by user) ===
             $('#selQuarter').on('change', function () {
                 selectedQuarter = $(this).val();
                 loadResults();
             });
-
-            // === Load Results ===
             function loadResults() {
                 const year = $('#selYear').val();
                 const quarter = $('#selQuarter').val();
@@ -207,36 +202,36 @@
 
                             if (activeCategory === 'annual') {
                                 html += `
-                                            <div class="row mb-3" id="${id}">
-                                                <div class="col-md-4">
-                                                    <a href="/uploads/annual/${item.pdf}" target="_blank">
-                                                        <div class="earning">
-                                                            <div class="leftData">
-                                                                <p>${item.txt}</p>
-                                                                <div class="pdfIcon">
-                                                                    <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
+                                                <div class="row mb-3" id="${id}">
+                                                    <div class="col-md-4">
+                                                        <a href="/uploads/annual/${item.pdf}" target="_blank">
+                                                            <div class="earning">
+                                                                <div class="leftData">
+                                                                    <p>${item.txt}</p>
+                                                                    <div class="pdfIcon">
+                                                                        <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>`;
+                                                        </a>
+                                                    </div>
+                                                </div>`;
                             } else {
                                 html += `
-                                            <div class="row mb-3" id="${id}">
-                                                <div class="col-md-4">
-                                                    <a href="/uploads/${activeCategory}/${item.file}" target="_blank">
-                                                        <div class="earning">
-                                                            <div class="leftData">
-                                                                <p>${item.title}</p>
-                                                                <div class="pdfIcon">
-                                                                    <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
+                                                <div class="row mb-3" id="${id}">
+                                                    <div class="col-md-4">
+                                                        <a href="/uploads/${activeCategory}/${item.file}" target="_blank">
+                                                            <div class="earning">
+                                                                <div class="leftData">
+                                                                    <p>${item.title}</p>
+                                                                    <div class="pdfIcon">
+                                                                        <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>`;
+                                                        </a>
+                                                    </div>
+                                                </div>`;
                             }
                         });
                         $('#resultContainer').html(html);

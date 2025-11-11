@@ -74,7 +74,7 @@ class InvestorController extends Controller
         $category = $request->get('category', 'financial');
         $year = $request->get('year');
         $quarter = $request->get('quarter');
-        $load = $request->get('load'); // "years" or "quarters"
+        $load = $request->get('load'); 
 
         $modelMap = [
             'financial' => \App\Models\FinResult::class,
