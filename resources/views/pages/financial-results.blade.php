@@ -79,25 +79,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="row" id="financial-2024-q1">
-                                        <div class="col-md-4">
-                                            <a href="">
-                                                <div class="earning">
-                                                    <div class="leftData">
-                                                        <p>Financial Result</p>
-                                                        <div class="pdfIcon">
-                                                            <img src="{{asset('assets/images/invest/pdf-icon.svg')}}"
-                                                                class="img-responsive" alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row" id="annual">
-                                    </div> --}}
                                     <div id="resultContainer" class="mt-4">
-                                        <div class="text-center">Loading data...</div>
                                     </div>
                                 </div>
                             </div>
@@ -119,29 +101,17 @@
             const quarterCategories = ['financial', 'earning', 'investor'];
             let activeCategory = "{{ $data['active_tab'] }}";
             let selectedYear = null, selectedQuarter = null;
-
-            // === Init on load ===
             loadYears(true);
-
-            // === Category Change (redirect & refresh) ===
             $('#selCategory').on('change', function () {
                 const newCategory = $(this).val();
                 const url = $(this).find(':selected').data('url');
-
-                // Update active category
                 activeCategory = newCategory;
-
-                // If you want a full page reload (you use routes), do that
                 if (url) {
                     window.location.href = url;
                     return;
                 }
-
-                // Otherwise reload via AJAX
                 loadYears(true);
             });
-
-            // === Load Years ===
             function loadYears(autoSelect = false) {
                 $.ajax({
                     url: "{{ route('get-investor-data') }}",
@@ -151,21 +121,17 @@
                         let yearOptions = '';
                         years.forEach(y => yearOptions += `<option value="${y}">${y}-${parseInt(y) + 1}</option>`);
                         $('#selYear').html(yearOptions);
-
-                        // Show/hide quarter filter
                         if (quarterCategories.includes(activeCategory)) {
                             $('#quarterBox').show();
                         } else {
                             $('#quarterBox').hide();
                         }
-
-                        // Auto-select latest year (first item) and load corresponding data
                         if (autoSelect && years.length > 0) {
                             selectedYear = years[0];
                             $('#selYear').val(selectedYear);
 
                             if (quarterCategories.includes(activeCategory)) {
-                                loadQuarters(true); // will auto-select quarter and load results
+                                loadQuarters(true);
                             } else {
                                 loadResults();
                             }
@@ -173,23 +139,16 @@
                     }
                 });
             }
-
-            // === Year Change ===
             $('#selYear').on('change', function () {
                 selectedYear = $(this).val();
                 if (!selectedYear) return;
 
                 if (quarterCategories.includes(activeCategory)) {
-                    // Load quarters for the new year and auto-select latest quarter + results
                     loadQuarters(false);
                 } else {
                     loadResults();
                 }
             });
-
-            // === Load Quarters ===
-            // autoSelect: when true -> treat this as initial auto-load (select latest quarter)
-            // when false -> user changed year; we still auto-select latest quarter and load results
             function loadQuarters(autoSelect = false) {
                 $.ajax({
                     url: "{{ route('get-investor-data') }}",
@@ -198,26 +157,18 @@
                         const quarters = response.quarters || [];
 
                         if (quarters.length === 0) {
-                            // No quarters for this year -> hide box and load year-only results
                             $('#quarterBox').hide();
                             selectedQuarter = null;
                             $('#selQuarter').html('');
                             loadResults();
                             return;
                         }
-
-                        // Populate quarter select (only real quarters, no placeholders)
                         $('#quarterBox').show();
                         let qOptions = '';
                         quarters.forEach(q => qOptions += `<option value="${q}">${q.toUpperCase()}</option>`);
                         $('#selQuarter').html(qOptions);
-
-                        // ALWAYS auto-select the latest quarter (first item) when quarters are loaded
-                        // This covers both initial autoSelect and user changing year.
                         selectedQuarter = quarters[0];
                         $('#selQuarter').val(selectedQuarter);
-
-                        // Load results for selectedYear + selectedQuarter
                         loadResults();
                     },
                     error: function () {
@@ -256,36 +207,36 @@
 
                             if (activeCategory === 'annual') {
                                 html += `
-                                <div class="row mb-3" id="${id}">
-                                    <div class="col-md-4">
-                                        <a href="/uploads/annual/${item.pdf}" target="_blank">
-                                            <div class="earning">
-                                                <div class="leftData">
-                                                    <p>${item.txt}</p>
-                                                    <div class="pdfIcon">
-                                                        <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
-                                                    </div>
+                                            <div class="row mb-3" id="${id}">
+                                                <div class="col-md-4">
+                                                    <a href="/uploads/annual/${item.pdf}" target="_blank">
+                                                        <div class="earning">
+                                                            <div class="leftData">
+                                                                <p>${item.txt}</p>
+                                                                <div class="pdfIcon">
+                                                                    <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>`;
+                                            </div>`;
                             } else {
                                 html += `
-                                <div class="row mb-3" id="${id}">
-                                    <div class="col-md-4">
-                                        <a href="/uploads/${activeCategory}/${item.file}" target="_blank">
-                                            <div class="earning">
-                                                <div class="leftData">
-                                                    <p>${item.title}</p>
-                                                    <div class="pdfIcon">
-                                                        <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
-                                                    </div>
+                                            <div class="row mb-3" id="${id}">
+                                                <div class="col-md-4">
+                                                    <a href="/uploads/${activeCategory}/${item.file}" target="_blank">
+                                                        <div class="earning">
+                                                            <div class="leftData">
+                                                                <p>${item.title}</p>
+                                                                <div class="pdfIcon">
+                                                                    <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>`;
+                                            </div>`;
                             }
                         });
                         $('#resultContainer').html(html);
