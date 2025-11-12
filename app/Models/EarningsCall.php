@@ -4,22 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AnnualReport extends Model
+class EarningsCall extends Model
 {
-    protected $table = 'annual_report';
+    protected $table = 'earnings_call';
 
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'year',
+        'quarter',
         'title',
-        'img',
-        'web_link',
-        'pdf',
+        'file',
         'status',
     ];
 
-    protected $casts = [
-        'status' => 'boolean',
-    ];
 }

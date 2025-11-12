@@ -4,22 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AnnualReport extends Model
+class CopGovReport extends Model
 {
-    protected $table = 'annual_report';
+    protected $table = 'cop_gov_report';
 
     protected $primaryKey = 'id';
 
+    public $timestamps = true; // Uses `created_at` and `updated_at`
+
     protected $fillable = [
         'year',
+        'quarter',
         'title',
-        'img',
-        'web_link',
-        'pdf',
+        'file',
         'status',
-    ];
-
-    protected $casts = [
-        'status' => 'boolean',
     ];
 }

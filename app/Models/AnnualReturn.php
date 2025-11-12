@@ -4,18 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AnnualReport extends Model
+class AnnualReturn extends Model
 {
-    protected $table = 'annual_report';
+    protected $table = 'annual_return';
 
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'year',
         'title',
-        'img',
-        'web_link',
-        'pdf',
+        'file',
+        'added_at',
         'status',
     ];
 

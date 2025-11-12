@@ -12,12 +12,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('stock-information') }}" class="nav-link">
+                                <a href="{{ route('stock-quote') }}" class="nav-link">
                                     Stock Information
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('shareholder-information') }}" class="nav-link">
+                                <a href="{{ route('credit-ratings') }}" class="nav-link">
                                     Shareholder Information
                                 </a>
                             </li>
@@ -44,7 +44,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group select-box">
-                                                <select id="selCategory" class="form-control select-pill">
+                                                <select id="selCategory" class="form-control select-pill selCategory">
                                                     <option value="financial" data-url="{{ route('financial-result') }}" {{ $data['active_tab'] == 'financial' ? 'selected' : '' }}>Financial
                                                         Results
                                                     </option>
@@ -96,152 +96,10 @@
 @endsection
 @push('scripts')
     <script>
-        $(document).ready(function () {
-            // === Configuration ===
-            const quarterCategories = ['financial', 'earning', 'investor'];
-            let activeCategory = "{{ $data['active_tab'] }}";
-            let selectedYear = null, selectedQuarter = null;
-            loadYears(true);
-            $('#selCategory').on('change', function () {
-                const newCategory = $(this).val();
-                const url = $(this).find(':selected').data('url');
-                activeCategory = newCategory;
-                if (url) {
-                    window.location.href = url;
-                    return;
-                }
-                loadYears(true);
-            });
-            function loadYears(autoSelect = false) {
-                $.ajax({
-                    url: "{{ route('get-investor-data') }}",
-                    data: { category: activeCategory, load: 'years' },
-                    success: function (response) {
-                        const years = response.years || [];
-                        let yearOptions = '';
-                        years.forEach(y => yearOptions += `<option value="${y}">${y}-${parseInt(y) + 1}</option>`);
-                        $('#selYear').html(yearOptions);
-                        if (quarterCategories.includes(activeCategory)) {
-                            $('#quarterBox').show();
-                        } else {
-                            $('#quarterBox').hide();
-                        }
-                        if (autoSelect && years.length > 0) {
-                            selectedYear = years[0];
-                            $('#selYear').val(selectedYear);
-
-                            if (quarterCategories.includes(activeCategory)) {
-                                loadQuarters(true);
-                            } else {
-                                loadResults();
-                            }
-                        }
-                    }
-                });
-            }
-            $('#selYear').on('change', function () {
-                selectedYear = $(this).val();
-                if (!selectedYear) return;
-
-                if (quarterCategories.includes(activeCategory)) {
-                    loadQuarters(false);
-                } else {
-                    loadResults();
-                }
-            });
-            function loadQuarters(autoSelect = false) {
-                $.ajax({
-                    url: "{{ route('get-investor-data') }}",
-                    data: { category: activeCategory, year: selectedYear, load: 'quarters' },
-                    success: function (response) {
-                        const quarters = response.quarters || [];
-
-                        if (quarters.length === 0) {
-                            $('#quarterBox').hide();
-                            selectedQuarter = null;
-                            $('#selQuarter').html('');
-                            loadResults();
-                            return;
-                        }
-                        $('#quarterBox').show();
-                        let qOptions = '';
-                        quarters.forEach(q => qOptions += `<option value="${q}">${q.toUpperCase()}</option>`);
-                        $('#selQuarter').html(qOptions);
-                        selectedQuarter = quarters[0];
-                        $('#selQuarter').val(selectedQuarter);
-                        loadResults();
-                    },
-                    error: function () {
-                        $('#quarterBox').hide();
-                        loadResults();
-                    }
-                });
-            }
-            $('#selQuarter').on('change', function () {
-                selectedQuarter = $(this).val();
-                loadResults();
-            });
-            function loadResults() {
-                const year = $('#selYear').val();
-                const quarter = $('#selQuarter').val();
-
-                $('#resultContainer').html('<div class="text-center">Loading data...</div>');
-
-                $.ajax({
-                    url: "{{ route('get-investor-data') }}",
-                    data: { category: activeCategory, year, quarter },
-                    success: function (data) {
-                        if (!data || !data.length) {
-                            $('#resultContainer').html('<p>No data found for this selection.</p>');
-                            return;
-                        }
-
-                        let html = '';
-                        data.forEach(item => {
-                            const id = `${activeCategory}-${item.year}${item.quarter ? '-' + item.quarter : ''}`;
-
-                            if (activeCategory === 'annual') {
-                                html += `
-                                                <div class="row mb-3" id="${id}">
-                                                    <div class="col-md-4">
-                                                        <a href="/uploads/annual/${item.pdf}" target="_blank">
-                                                            <div class="earning">
-                                                                <div class="leftData">
-                                                                    <p>${item.txt}</p>
-                                                                    <div class="pdfIcon">
-                                                                        <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>`;
-                            } else {
-                                html += `
-                                                <div class="row mb-3" id="${id}">
-                                                    <div class="col-md-4">
-                                                        <a href="/uploads/${activeCategory}/${item.file}" target="_blank">
-                                                            <div class="earning">
-                                                                <div class="leftData">
-                                                                    <p>${item.title}</p>
-                                                                    <div class="pdfIcon">
-                                                                        <img src="{{ asset('assets/images/invest/pdf-icon.svg') }}" class="img-responsive" alt="">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>`;
-                            }
-                        });
-                        $('#resultContainer').html(html);
-                    },
-                    error: function () {
-                        $('#resultContainer').html('<p>Error loading data. Please try again.</p>');
-                    }
-                });
-            }
-        });
+        window.investorConfig = {
+            activeTab: "{{ $data['active_tab'] ?? 'financial' }}",
+            getInvestorDataUrl: "{{ route('get-investor-data') }}"
+        };
     </script>
-
+    <script src="{{ asset('assets/js/investor.js') }}" type="text/javascript"></script>
 @endpush
