@@ -314,7 +314,7 @@ class InvestorController extends Controller
     
     public function otherDisclosuereIndex()
     {
-        $data['active_tab'] = 'corporate';
+        $data['active_tab'] = 'other';
         $data['meta_title'] = "SRF - Investor Relations | Corporate Governance Report";
         $data['meta_desc'] = "";
         $data['meta_image'] = "";
@@ -378,7 +378,7 @@ class InvestorController extends Controller
             $query->where('quarter', $quarter);
         }
 
-        $data = $query->orderBy('year', 'desc')->get();
+        $data = $query->orderBy('id', 'desc')->get();
         return response()->json($data);
     }
 

@@ -169,22 +169,52 @@ $(document).ready(function () {
                 let html = '<div class="row mb-3">';
 
                 data.forEach(item => {
-                    const id = `${activeCategory}-${item.id}`;
-                    const filePath = `${base_url}/storage/uploads/${activeCategory}/${item.file}`;
+                    const id = `${activeCategory}-${item.year}${item.quarter ? '-' + item.quarter : ''}`;
+                    let htmlSegment = '';
 
-                    html += `
-                    <div class="col-md-4 mb-4" id="${id}">
-                        <a href="${filePath}" target="_blank">
-                            <div class="earning">
-                                <div class="leftData">
-                                    <p>${item.title}</p>
-                                    <div class="pdfIcon">
-                                        <img src="${base_url}/assets/images/invest/pdf-icon.svg" class="img-responsive" alt="">
+                    if (activeCategory === 'annual') {
+                        const pdfLink = item.pdf
+                            ? `<a href="${base_url}/storage/uploads/annual/${item.pdf}" target="_blank">Download PDF</a>`
+                            : '';
+                        const imgTag = item.img
+                            ? `<img src="${base_url}/storage/uploads/annual/${item.img}" alt="${item.title}" class="img-fluid">`
+                            : '';
+                        const webLink = item.web_link
+                            ? `<a href="${item.web_link}" target="_blank">Visit Website</a>`
+                            : '';
+
+                        htmlSegment = `
+                            <div class="col-md-4 mb-4" id="${id}">
+                                <div class="annual-report-card">
+                                    ${imgTag}
+                                    <h5>${item.title}</h5>
+                                    <div class="links">
+                                        ${pdfLink}
+                                        ${webLink}
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                    </div>`;
+                        `;
+                    } else {
+                        const filePath = `${base_url}/storage/uploads/${activeCategory}/${item.file}`;
+
+                        htmlSegment = `
+                            <div class="col-md-4 mb-4" id="${id}">
+                                <a href="${filePath}" target="_blank">
+                                    <div class="earning">
+                                        <div class="leftData">
+                                            <p>${item.title}</p>
+                                            <div class="pdfIcon">
+                                                <img src="${base_url}/assets/images/invest/pdf-icon.svg" class="img-responsive" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                    }
+
+                    html += htmlSegment;
                 });
 
                 html += '</div>';
