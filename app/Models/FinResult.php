@@ -13,9 +13,12 @@ class FinResult extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'user_id',
         'year',
         'quarter',
+        'file_type',
         'title',
+        'link_type',
         'file',
         'status',
     ];

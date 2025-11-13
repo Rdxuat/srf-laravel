@@ -9841,6 +9841,9 @@ padding-top: 50px;
   text-align: left;
   padding: 12px 10px;
 }
+.earning-call-table .table td a{
+  color: #4D4D4F;
+}
 .earning-call-table .table thead {
   background: #f9f9f9;
 }
@@ -9853,6 +9856,6 @@ padding-top: 50px;
   width: 25px;
   height: 25px;
 }
-#resultContainer a{
+.investorsAll a{
   color: #4D4D4F;
 }

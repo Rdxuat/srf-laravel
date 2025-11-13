@@ -10,7 +10,10 @@ class AnnualReportSub extends Model
 
     protected $primaryKey = 'id';
 
+    public $timestamps = true;
+
     protected $fillable = [
+        'user_id',
         'year',
         'title',
         'file',

@@ -4,20 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AgmTranscript extends Model
+class KycForm extends Model
 {
-    protected $table = 'agm_transcript';
+    protected $table = 'kyc_forms';
 
     protected $primaryKey = 'id';
 
-    public $timestamps = true;
+    public $timestamps = true; // manages created_at and updated_at automatically
 
     protected $fillable = [
-        'user_id',
-        'year',
+        'title',
         'file',
-        'link',
         'status',
     ];
-
 }

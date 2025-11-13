@@ -2,7 +2,7 @@ $(document).ready(function () {
     // --- Configuration ---
     const quarterCategories = ['financial', 'investor', 'annual-general','earning'];
     const staticCategories = ['credit-ratings', 'dematerialisation', 'overview', 'bod','dividend-shares'];
-    const noYearCategories = ['policy'];
+    const noYearCategories = ['policy','kyc-forms'];
 
     const activeCategoryDefault = window.investorConfig.activeTab;
     const getInvestorDataUrl = window.investorConfig.getInvestorDataUrl;
@@ -201,7 +201,7 @@ $(document).ready(function () {
                 }
 
                 htmlSegment = `
-            <div class="col-md-4" id="${id}">
+            <div class="col-md-4 investorsAll" id="${id}">
                 <a href="${filePath}" target="_blank">
                     <div class="earning">
                         <div class="leftData">

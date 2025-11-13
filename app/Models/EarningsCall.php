@@ -10,6 +10,8 @@ class EarningsCall extends Model
 
     protected $primaryKey = 'id';
 
+    public $timestamps = true;
+
     protected $fillable = [
         'user_id',
         'category',

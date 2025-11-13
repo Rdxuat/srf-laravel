@@ -4,20 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AgmTranscript extends Model
+class Notice extends Model
 {
-    protected $table = 'agm_transcript';
+    protected $table = 'notices';
 
     protected $primaryKey = 'id';
 
-    public $timestamps = true;
+    public $timestamps = true; 
 
     protected $fillable = [
         'user_id',
-        'year',
+        'title',
         'file',
-        'link',
         'status',
     ];
-
 }

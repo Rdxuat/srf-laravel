@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\CopGovReport;
+use App\Models\DisclosureThirty;
+use App\Models\KycForm;
+use App\Models\Notice;
 use App\Models\Policy;
 use Illuminate\Http\Request;
 use App\Models\FinResult;
@@ -343,6 +346,9 @@ class InvestorController extends Controller
             'earning' => EarningsCall::class,
             'policy' => Policy::class,
             'corporate' => CopGovReport::class,
+            'regulation30' => DisclosureThirty::class,
+            'kyc-forms' => KycForm::class,
+            'notices' => Notice::class,
         ];
 
         if (!isset($modelMap[$category])) {
@@ -350,7 +356,7 @@ class InvestorController extends Controller
         }
 
         $model = $modelMap[$category];
-        $noYearCategories = ['policy', 'corporate', 'other'];
+        $noYearCategories = ['policy', 'corporate', 'other','kyc-forms'];
         $quarterCategories = ['financial', 'investor', 'annual-general','earning'];
         $query = $model::where('status', 1);
         if (!in_array($category, $noYearCategories)) {

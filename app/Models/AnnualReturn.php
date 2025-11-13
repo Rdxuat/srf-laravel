@@ -10,6 +10,8 @@ class AnnualReturn extends Model
 
     protected $primaryKey = 'id';
 
+    public $timestamps = true;
+
     protected $fillable = [
         'year',
         'title',

@@ -13,6 +13,7 @@ class Policy extends Model
     public $timestamps = true; // manages created_at and updated_at automatically
 
     protected $fillable = [
+        'user_id',
         'title',
         'file',
         'status',

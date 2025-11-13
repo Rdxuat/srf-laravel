@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AgmTranscript extends Model
+class DisclosureThirty extends Model
 {
-    protected $table = 'agm_transcript';
+    protected $table = 'disclosures_under_regu_30';
 
     protected $primaryKey = 'id';
 
@@ -15,9 +15,12 @@ class AgmTranscript extends Model
     protected $fillable = [
         'user_id',
         'year',
+        'title',
         'file',
-        'link',
         'status',
     ];
 
+    protected $casts = [
+        'status' => 'boolean',
+    ];
 }
