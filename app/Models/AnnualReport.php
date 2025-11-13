@@ -13,9 +13,9 @@ class AnnualReport extends Model
     protected $fillable = [
         'year',
         'title',
-        'img',
+        'image',
         'web_link',
-        'pdf',
+        'file',
         'status',
     ];
 

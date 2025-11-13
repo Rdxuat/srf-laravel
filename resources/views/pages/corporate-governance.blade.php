@@ -134,193 +134,43 @@
                                             </div>
                                             <div class="childSec">
                                                 <div class="new">
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod1">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img1.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Ashish Bharat Ram <span>Chairman &amp;
-                                                                            Managing
-                                                                            Director</span></h4>
-                                                                </div>
-                                                                <div class="dot-wrapper">
-                                                                    <span class="dot blue"></span>
-                                                                    <span class="dot yellow"></span>
-                                                                </div>
+                                                    @if(isset($data['directors']) && count($data['directors']) > 0)
+                                                        @foreach ($data['directors'] as $director)
+                                                                <div class="col-md-4">
+                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#bod{{ $director->id }}">
+                                                                    <div class="bod-box">
+                                                                        <div class="light-bluebg">
+                                                                            <div class="bod-img"><img class="img-responsive" src="{{ asset('storage/uploads/bod/' . $director->image) }}" alt="{{ $director->name }}"></div>
+                                                                        </div>
+                                                                        <div class="bod-text">
+                                                                            <h4>{{ $director->name }} <span>{{ $director->designation }}</span></h4>
+                                                                        </div>
+                                                                        @php
+        $dotColors = [
+            1 => 'blue',
+            2 => 'green',
+            3 => 'yellow',
+            4 => 'Ltblue',
+            5 => 'Litblue',
+        ];
+        $committees = $director->committe
+            ? array_map('trim', explode(',', $director->committe))
+            : [];
+                                                                        @endphp
+                                                                        @if(!empty($committees))
+                                                                            <div class="dot-wrapper">
+                                                                                @foreach($committees as $c)
+                                                                                    @if(isset($dotColors[$c]))
+                                                                                        <span class="dot {{ $dotColors[$c] }}"></span>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod2">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img2.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Kartik Bharat Ram<span>Joint Managing
-                                                                            Director</span></h4>
-
-                                                                </div>
-                                                                <div class="dot-wrapper">
-                                                                    <span class="dot yellow"></span>
-                                                                    <span class="dot blue"></span>
-                                                                    <span class="dot green"></span>
-
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="new">
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod1">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img3.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Vellayan Subbiah<span>Non-Executive,
-                                                                            Non-Independent Director</span></h4>
-                                                                </div>
-
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod2">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img4.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Vineet Agarwal<span>Independent
-                                                                            Director</span></h4>
-
-                                                                </div>
-                                                                <div class="dot-wrapper">
-                                                                    <span class="dot Ltblue"></span>
-
-                                                                </div>
-
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod5">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img5.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Ira Gupta<span>Independent Director</span>
-                                                                    </h4>
-
-                                                                </div>
-                                                                <div class="dot-wrapper">
-                                                                    <span class="dot Ltblue"></span>
-                                                                    <span class="dot green"></span>
-
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="new">
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod1">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img6.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Bharti Gupta Ramola<span>Independent
-                                                                            Director</span></h4>
-                                                                </div>
-                                                                <div class="dot-wrapper">
-                                                                    <span class="dot Litblue"></span>
-                                                                    <span class="dot blue"></span>
-
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod2">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img7.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Puneet Yadu Dalmia<span>Independent
-                                                                            Director</span></h4>
-
-                                                                </div>
-                                                                <div class="dot-wrapper">
-                                                                    <span class="dot Ltblue"></span>
-
-                                                                </div>
-
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod5">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img8.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Yash Gupta<span>Independent Director</span>
-                                                                    </h4>
-
-                                                                </div>
-                                                                <div class="dot-wrapper">
-                                                                    <span class="dot Litblue"></span>
-                                                                    <span class="dot green"></span>
-
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="new">
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod1">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img9.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Raj Kumar Jain<span>Independent
-                                                                            Director</span></h4>
-                                                                </div>
-                                                                <div class="dot-wrapper">
-                                                                    <span class="dot yellow"></span>
-                                                                    <span class="dot Litblue"></span>
-
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bod2">
-                                                            <div class="bod-box">
-                                                                <div class="light-bluebg">
-                                                                    <div class="bod-img"><img class="img-responsive" src="{{asset('assets/images/bod/bod-img10.webp')}}"></div>
-                                                                </div>
-                                                                <div class="bod-text">
-                                                                    <h4>Pramod Gopaldas Gujarathi<span>Independent
-                                                                            Director</span></h4>
-
-                                                                </div>
-
-
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                                 <div class="committee-box">
                                                     <div class="committee-title">Committees</div>
@@ -364,4 +214,62 @@
         };
     </script>
     <script src="{{ asset('assets/js/investor.js') }}" type="text/javascript"></script>
+    <script>
+    document.addEventListener('show.bs.modal', (event) => {
+        document.documentElement.classList.add('modal-open');
+        document.body.classList.add('modal-open');
+    });
+    document.addEventListener('hidden.bs.modal', (event) => {
+        if (document.querySelectorAll('.modal.show').length === 0) {
+            document.documentElement.classList.remove('modal-open');
+            document.body.classList.remove('modal-open');
+        }
+    });
+    </script>
+@endpush
+@push('modals')
+    @if(isset($data['directors']) && count($data['directors']) > 0)
+        @foreach ($data['directors'] as $director)
+            <div class="modal fade" id="bod{{ $director->id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                <img src="{{ asset('assets/images/bod/close-arrow.svg') }}" alt="Close"> Close
+                            </button>
+                        </div>
+                        <div class="modal-body bodpop-text">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <div class="scl-icons">
+                                            <a href="#"><img src="{{ asset('assets/images/bod/linkedin.svg') }}"></a>
+                                            <a href="#"><img src="{{ asset('assets/images/bod/tw.svg') }}"></a>
+                                            <a href="#"><img src="{{ asset('assets/images/bod/shares.svg') }}"></a>
+                                            <a href="#"><img src="{{ asset('assets/images/bod/link.svg') }}"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="pop-img">
+                                            <img class="img-responsive" src="{{ asset('storage/uploads/bod/' . $director->modal_image) }}" alt="{{ $director->name }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>{{ $director->name }}</h4>
+                                        <h6>{{ $director->designation }}</h6>
+                                        @if(!empty($director->intro))
+                                            <h5>{{ $director->intro }}</h5>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-12">
+                                        {!! $director->description !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    @endif
 @endpush

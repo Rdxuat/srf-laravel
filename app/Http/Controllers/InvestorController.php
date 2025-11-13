@@ -11,6 +11,7 @@ use App\Models\AnnualReportSub;
 use App\Models\AnnualReturn;
 use App\Models\AgmTranscript;
 use App\Models\EarningsCall;
+use App\Models\BoardOfDirectors;
 
 
 class InvestorController extends Controller
@@ -291,6 +292,9 @@ class InvestorController extends Controller
         $data['meta_title'] = "SRF - Investor Relations | Board of Directors and Committees";
         $data['meta_desc'] = "";
         $data['meta_image'] = "";
+        $data['directors'] = BoardOfDirectors::where('status', 1)
+            ->orderBy('id', 'desc')
+            ->get();
         return view('pages.corporate-governance', compact('data'));
     }
    
@@ -329,8 +333,6 @@ class InvestorController extends Controller
         $category = $request->get('category', 'financial');
         $year = $request->get('year');
         $quarter = $request->get('quarter');
-        $load = $request->get('load');
-
         $modelMap = [
             'financial' => FinResult::class,
             'annual' => AnnualReport::class,
@@ -338,9 +340,8 @@ class InvestorController extends Controller
             'annual-subs' => AnnualReportSub::class,
             'annual-return' => AnnualReturn::class,
             'annual-general' => AgmTranscript::class,
-            'earning' => EarningsCall::class,
-            'policy' => Policy::class, 
-            'corporate' => CopGovReport::class, 
+            'policy' => Policy::class,
+            'corporate' => CopGovReport::class,
         ];
 
         if (!isset($modelMap[$category])) {
@@ -348,37 +349,20 @@ class InvestorController extends Controller
         }
 
         $model = $modelMap[$category];
-        $noYearCategories = ['policy'];
-        if (in_array($category, $noYearCategories)) {
-            $data = $model::where('status', 1)->orderBy('id', 'desc')->get();
-            return response()->json($data);
-        }
-        if ($load === 'years') {
-            $years = $model::where('status', 1)
-                ->select('year')
-                ->distinct()
-                ->orderBy('year', 'desc')
-                ->pluck('year');
-            return response()->json(['years' => $years]);
-        }
-
-        if ($load === 'quarters' && $year) {
-            $quarters = $model::where('status', 1)
-                ->where('year', $year)
-                ->select('quarter')
-                ->distinct()
-                ->pluck('quarter');
-            return response()->json(['quarters' => $quarters]);
-        }
-
+        $noYearCategories = ['policy', 'corporate', 'other'];
+        $quarterCategories = ['financial', 'investor', 'annual-general'];
         $query = $model::where('status', 1);
-        if ($year)
-            $query->where('year', $year);
-        if ($quarter && in_array($category, ['financial', 'investor', 'earning','corporate'])) {
-            $query->where('quarter', $quarter);
+        if (!in_array($category, $noYearCategories)) {
+            if ($year) {
+                $query->where('year', $year);
+            }
+            if ($quarter && in_array($category, $quarterCategories)) {
+                $query->where('quarter', $quarter);
+            }
         }
 
         $data = $query->orderBy('id', 'desc')->get();
+
         return response()->json($data);
     }
 

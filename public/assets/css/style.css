@@ -9601,3 +9601,228 @@ padding-top: 50px;
 .beyondbustoptxt{
   padding-bottom: 0;
 }
+.tranferForm {
+  padding: 50px 32px;
+}
+
+.tranferForm {
+  background: no-repeat padding-box #fff;
+  box-shadow: 0 3px 6px #00000029;
+}
+
+.tranferForm h4 {
+  font-size: 18px;
+  line-height: 21px;
+  color: #221f1f;
+  margin-bottom: 24px;
+}
+
+.tranferForm form {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.tranferForm form {
+  position: relative;
+}
+
+.tranferForm form>div {
+  width: 33.33%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.tranferForm .form-group label {
+  font-size: 12px;
+  line-height: 14px;
+  color: #221f1f;
+}
+
+.tranferForm .form-group .form-control {
+  border-radius: 0;
+  box-shadow: none;
+  border: 1px solid #221f1f;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+}
+
+.transBtns button {
+  border: none;
+}
+
+.transBtns a,
+.transBtns button {
+  background: transparent linear-gradient(180deg, #056380 0%, #06B0E3 50%, #40D4DC 100%) 0% 0% no-repeat padding-box;
+  color: #fff;
+  padding: 9px 25px;
+  margin-top: 21px;
+  font-size: 14px;
+  line-height: 16px;
+  display: inline-block;
+}
+
+.submitResults {
+  background: no-repeat padding-box #fff;
+}
+
+.submitResults h3 {
+  font-size: 18px;
+  line-height: 22px;
+  color: #221f1f;
+  margin-bottom: 18px;
+}
+
+.resultsThree {
+  display: flex;
+  gap: 30px;
+}
+
+.resultsThree>div:first-child,
+.resultsThree>div:nth-child(2) {
+  width: 30%;
+}
+
+.resultsThree p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 0;
+}
+
+.resultsThree p span {
+  display: block;
+}
+
+.resultsThree>div:nth-child(3),
+.whoWeAre .haldDiv>div:first-child {
+  width: 40%;
+}
+
+.orangResult {
+  padding: 27px 30px;
+  text-align: center;
+}
+
+.orangResult{
+  background: transparent linear-gradient(180deg, #056380 0%, #06B0E3 50%, #40D4DC 100%) 0% 0% no-repeat padding-box;
+}
+.orangResult p {
+  color: #fff;
+}
+
+.topOrg {
+  display: flex;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.topOrg,
+.trvnbtn a {
+  border-bottom: 1px solid #fff;
+}
+
+.topOrg,
+.unThreeBtn ul {
+  justify-content: space-between;
+}
+
+.folioNo {
+  display: flex;
+  gap: 30px;
+  margin-top: 35px;
+  padding-top: 35px;
+  border-top: 2px solid #e6e6e6;
+}
+
+.folioNo,
+.topOrg,
+.unThreeBtn ul {
+  justify-content: space-between;
+}
+
+.folioNo>div:first-child,
+.folioNo>div:nth-child(2),
+.resultsThree>div:first-child,
+.resultsThree>div:nth-child(2) {
+  width: 30%;
+}
+
+.folioNo p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 0;
+}
+
+.folioNo p,
+.solutionsind .story-data p a {
+  color: #221f1f;
+}
+
+.folioNo>div:nth-child(3),
+.resultsThree>div:nth-child(3),
+.whoWeAre .haldDiv>div:first-child {
+  width: 40%;
+}
+.annual-web {
+  margin: 5px;
+  padding-bottom: 30px;
+  margin-top: 30px;
+  transition:
+    ease all .5s;
+  -webkit-box-shadow: 0 0 8px 0 rgb(0 0 0 / 23%);
+  -moz-box-shadow: 0 0 8px 0 rgb(0 0 0 / .23);
+  box-shadow: 0 0 8px 0 rgb(0 0 0 / 23%);
+  border: 1px solid #a29e9e;
+  max-width: 350px;
+  width: 100%;
+}
+
+.web-pdf a:hover {
+  background: #4bc3e8;
+  color: #fff;
+  transition: all ease .3s;
+  text-decoration: none;
+}
+
+.annual-web img {
+  width: 100%;
+  height: auto;
+}
+
+.annual-web h6 {
+  font-weight: 700;
+  font-size: 15px;
+  padding: 15px;
+  background: #fff;
+  text-transform: uppercase;
+}
+
+.web-pdf {
+  display: flex;
+  padding: 0 5px;
+}
+
+.web-pdf a {
+  color: #4bc3e8;
+  border: 1px solid;
+  display: inline-block;
+  width: 50%;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 10px;
+}
