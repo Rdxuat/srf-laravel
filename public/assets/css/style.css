@@ -9826,3 +9826,33 @@ padding-top: 50px;
   text-decoration: none;
   margin: 0 10px;
 }
+/* Earning call */
+.earning-call-table .table{
+  width: 100%;
+  border-collapse: collapse;
+}
+.earning-call-table .table th {
+  text-align: left;
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+.earning-call-table .table td {
+  text-align: left;
+  padding: 12px 10px;
+}
+.earning-call-table .table thead {
+  background: #f9f9f9;
+}
+.earning-call-table .table a.earn-link {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.earning-call-table .table a img {
+  width: 25px;
+  height: 25px;
+}
+#resultContainer a{
+  color: #4D4D4F;
+}

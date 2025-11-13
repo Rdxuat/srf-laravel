@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // --- Configuration ---
-    const quarterCategories = ['financial', 'investor','annual-general'];
+    const quarterCategories = ['financial', 'investor', 'annual-general','earning'];
     const staticCategories = ['credit-ratings', 'dematerialisation', 'overview', 'bod','dividend-shares'];
     const noYearCategories = ['policy'];
 
@@ -151,7 +151,16 @@ $(document).ready(function () {
     // Render results (same as before)
     function renderResults(data) {
         if (!data || !data.length) {
+            if (activeCategory === 'earning') {
+                renderEarningsTable([]);
+                return;
+            }
             $('#resultContainer').html('<p>No data found for this selection.</p>');
+            return;
+        }
+
+        if (activeCategory === 'earning') {
+            renderEarningsTable(data);
             return;
         }
 
@@ -209,6 +218,75 @@ $(document).ready(function () {
             html += htmlSegment;
         });
         html += '</div>';
+        $('#resultContainer').html(html);
+    }
+    function renderEarningsTable(data) {
+        const columns = [
+            'Notification',
+            'Presentation',
+            'Transcript (Audio)',
+            'Transcript (PDF)'
+        ];
+
+        // category → db record mapping
+        const byCategory = {};
+        data.forEach(item => {
+            if (item.category) byCategory[item.category] = item;
+        });
+
+        let html = `
+        <div class="table-responsive earning-call-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Notification</th>
+                        <th>Presentation</th>
+                        <th>Transcript (Audio)</th>
+                        <th>Transcript (PDF)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+    `;
+        columns.forEach(col => {
+            const item = byCategory[col];
+
+            // ICON SELECTOR
+            let iconFile = 'pdf-icon.svg'; // default
+            if (col === 'Transcript (Audio)') {
+                iconFile = 'audio-recording-icon.svg';
+            }
+
+            const iconUrl = `${base_url}/assets/images/invest/${iconFile}`;
+
+            if (item && item.file) {
+                const href = `${base_url}/storage/uploads/${item.file}`;
+                const text = item.title || col;
+
+                html += `
+                <td>
+                    <a href="${href}" target="_blank" class="earn-link">
+                        <span class="text">${text}</span>
+                        <img src="${iconUrl}" class="type-icon" alt="">
+                    </a>
+                </td>
+            `;
+            } else {
+                html += `
+                <td>
+                    <span class="empty-cell">-</span>
+                </td>
+            `;
+            }
+        });
+
+        html += `
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        `;
+
         $('#resultContainer').html(html);
     }
 });

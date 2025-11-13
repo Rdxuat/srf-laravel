@@ -340,6 +340,7 @@ class InvestorController extends Controller
             'annual-subs' => AnnualReportSub::class,
             'annual-return' => AnnualReturn::class,
             'annual-general' => AgmTranscript::class,
+            'earning' => EarningsCall::class,
             'policy' => Policy::class,
             'corporate' => CopGovReport::class,
         ];
@@ -350,7 +351,7 @@ class InvestorController extends Controller
 
         $model = $modelMap[$category];
         $noYearCategories = ['policy', 'corporate', 'other'];
-        $quarterCategories = ['financial', 'investor', 'annual-general'];
+        $quarterCategories = ['financial', 'investor', 'annual-general','earning'];
         $query = $model::where('status', 1);
         if (!in_array($category, $noYearCategories)) {
             if ($year) {
