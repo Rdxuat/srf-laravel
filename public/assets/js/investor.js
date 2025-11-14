@@ -122,17 +122,40 @@ $(document).ready(function () {
                 $('#selYear').html(yearOptions).val(selectedYear);
 
                 // 🔹 Extract quarters for that year
-                const quarters = [...new Set(allData.filter(d => d.year == selectedYear).map(d => d.quarter))].filter(Boolean).reverse();
+                // const quarters = [...new Set(allData.filter(d => d.year == selectedYear).map(d => d.quarter))].filter(Boolean).reverse();
+                // if (quarters.length) {
+                //     selectedQuarter = selectedQuarter || quarters[0];
+                //     const quarterOptions = quarters.map(q => `<option value="${q}">${q.toUpperCase()}</option>`).join('');
+                //     $('#selQuarter').html(quarterOptions).val(selectedQuarter);
+                //     $('#quarterBox').show();
+                // } else {
+                //     $('#quarterBox').hide();
+                //     selectedQuarter = null;
+                // }
+                let quarters = [...new Set(
+                    allData.filter(d => d.year == selectedYear).map(d => d.quarter)
+                )]
+                    .filter(Boolean)
+                    .sort()        
+                    .reverse();   
+
                 if (quarters.length) {
-                    selectedQuarter = selectedQuarter || quarters[0];
-                    const quarterOptions = quarters.map(q => `<option value="${q}">${q.toUpperCase()}</option>`).join('');
-                    $('#selQuarter').html(quarterOptions).val(selectedQuarter);
+                    selectedQuarter = quarters[0]; 
+
+                    const quarterOptions = quarters
+                        .map(q => `<option value="${q}">${q.toUpperCase()}</option>`)
+                        .join('');
+
+                    // ⬇️ THIS IS IMPORTANT
+                    $('#selQuarter').html(quarterOptions);
+                    $('#selQuarter').val(selectedQuarter);
+                    $('#selQuarter').trigger('change'); // refresh results
+
                     $('#quarterBox').show();
                 } else {
                     $('#quarterBox').hide();
                     selectedQuarter = null;
                 }
-
                 // 🔹 Filter visible data for selected year + quarter
                 const filtered = allData.filter(d => {
                     if (selectedYear && d.year != selectedYear) return false;
@@ -173,10 +196,10 @@ $(document).ready(function () {
             // 🧾 Annual report layout
             if (activeCategory === 'annual') {
                 const pdfLink = item.file
-                    ? `<a href="${base_url}/storage/uploads/${item.file}" target="_blank">Download PDF</a>`
+                    ? `<a href="${base_url}/storage/files/${item.file}" target="_blank">Download PDF</a>`
                     : '';
                 const imgTag = item.image
-                    ? `<img src="${base_url}/storage/uploads/${item.image}" alt="${item.title}" class="img-fluid">`
+                    ? `<img src="${base_url}/storage/files/${item.image}" alt="${item.title}" class="img-fluid">`
                     : '';
                 const webLink = item.web_link
                     ? `<a href="${item.web_link}" target="_blank">Visit Website</a>`
@@ -191,7 +214,7 @@ $(document).ready(function () {
                     </div>
                 </div>`;
             } else {
-                const filePath = `${base_url}/storage/uploads/${item.file}`;
+                const filePath = `${base_url}/storage/files/${item.file}`;
 
                 // 🖼 Choose icon based on category
                 let iconPath = `${base_url}/assets/images/invest/pdf-icon.svg`; // default icon
@@ -260,7 +283,7 @@ $(document).ready(function () {
             const iconUrl = `${base_url}/assets/images/invest/${iconFile}`;
 
             if (item && item.file) {
-                const href = `${base_url}/storage/uploads/${item.file}`;
+                const href = `${base_url}/storage/files/${item.file}`;
                 const text = item.title || col;
 
                 html += `
