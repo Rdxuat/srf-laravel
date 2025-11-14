@@ -1,8 +1,8 @@
 $(document).ready(function () {
     // --- Configuration ---
     const quarterCategories = ['financial', 'investor', 'annual-general','earning'];
-    const staticCategories = ['credit-ratings', 'dematerialisation', 'overview', 'bod','dividend-shares'];
-    const noYearCategories = ['policy', 'kyc-forms', 'other','tds-instructions'];
+    const staticCategories = ['credit-ratings', 'overview', 'bod','dividend-shares'];
+    const noYearCategories = ['policy', 'kyc-forms', 'other', 'tds-instructions','dematerialisation'];
 
     const activeCategoryDefault = window.investorConfig.activeTab;
     const getInvestorDataUrl = window.investorConfig.getInvestorDataUrl;

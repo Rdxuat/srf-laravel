@@ -142,11 +142,6 @@
 
                                         </div>
                                     </div>
-                                    <div class="row investor-content" id="dematerialisation" style="display: none">
-                                        <div class="col-md-12">
-                                            <h2>tds-instructions</h2>
-                                        </div>
-                                    </div>
                                     <div id="resultContainer" class="mt-4">
                                     </div>
                                 </div>

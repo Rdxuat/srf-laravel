@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\CopGovReport;
+use App\Models\DematerialisationOfShares;
 use App\Models\DisclosureThirty;
 use App\Models\InvestorMeet;
 use App\Models\KycForm;
@@ -378,6 +379,7 @@ class InvestorController extends Controller
             'stock-filings' => StockExchangeFilings::class,
             'tds-instructions' => TdsInstruction::class,
             'investor-meet' => InvestorMeet::class,
+            'dematerialisation' => DematerialisationOfShares::class,
         ];
 
         if (!isset($modelMap[$category])) {
@@ -385,7 +387,7 @@ class InvestorController extends Controller
         }
 
         $model = $modelMap[$category];
-        $noYearCategories = ['policy', 'other','kyc-forms','tds-instructions'];
+        $noYearCategories = ['policy', 'other','kyc-forms','tds-instructions','dematerialisation'];
         $quarterCategories = ['financial', 'investor', 'annual-general','earning'];
         $query = $model::where('status', 1);
         if (!in_array($category, $noYearCategories)) {
