@@ -173,12 +173,20 @@ $(document).ready(function () {
                 renderEarningsTable([]);
                 return;
             }
+            if (activeCategory === 'investor-meet') {
+                renderInvestorMeetTable([]);
+                return;
+            }
             $('#resultContainer').html('<p>No data found for this selection.</p>');
             return;
         }
 
-        if (activeCategory === 'earning' || activeCategory === 'investor-meet') {
+        if (activeCategory === 'earning') {
             renderEarningsTable(data);
+            return;
+        }
+        if (activeCategory === 'investor-meet') {
+            renderInvestorMeetTable(data);
             return;
         }
 
@@ -305,4 +313,77 @@ $(document).ready(function () {
 
         $('#resultContainer').html(html);
     }
+
+    function renderInvestorMeetTable(data) {
+        const columns = [
+            'Notification',
+            'Presentation',
+            'Transcript (Audio)',
+            'Transcript (PDF)'
+        ];
+
+        // group items by category (but allow multiple entries per category)
+        const byCategory = {};
+        data.forEach(item => {
+            if (!byCategory[item.category]) {
+                byCategory[item.category] = [];
+            }
+            byCategory[item.category].push(item);
+        });
+
+        let html = `
+        <div class="table-responsive earning-call-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Notification</th>
+                        <th>Presentation</th>
+                        <th>Transcript (Audio)</th>
+                        <th>Transcript (PDF)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+    `;
+
+        columns.forEach(col => {
+            const items = byCategory[col] || [];
+
+            let iconFile = 'pdf-icon.svg';
+            if (col === 'Transcript (Audio)') {
+                iconFile = 'audio-recording-icon.svg';
+            }
+            const iconUrl = `${base_url}/assets/images/invest/${iconFile}`;
+
+            // If no items → show "-"
+            if (items.length === 0) {
+                html += `<td><span class="empty-cell">-</span></td>`;
+            } else {
+                // show ALL files under this category
+                html += `<td>`;
+                items.forEach(item => {
+                    const fileUrl = `${base_url}/storage/files/${item.file}`;
+                    html += `
+                    <div class="earn-link-row">
+                        <a href="${fileUrl}" target="_blank" class="earn-link">
+                            <span class="text">${item.title}</span>
+                            <img src="${iconUrl}" class="type-icon" alt="">
+                        </a>
+                    </div>
+                `;
+                });
+                html += `</td>`;
+            }
+        });
+
+        html += `
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `;
+
+        $('#resultContainer').html(html);
+    }
+
 });
