@@ -174,7 +174,7 @@ $(document).ready(function () {
     // Render results (same as before)
     function renderResults(data) {
         if (!data || !data.length) {
-            if (activeCategory === 'earning') {
+            if (activeCategory === 'earning' || activeCategory === 'investor-meet') {
                 renderEarningsTable([]);
                 return;
             }
@@ -182,7 +182,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (activeCategory === 'earning') {
+        if (activeCategory === 'earning' || activeCategory === 'investor-meet') {
             renderEarningsTable(data);
             return;
         }

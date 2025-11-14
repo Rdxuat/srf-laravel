@@ -4,18 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Policy extends Model
+class InvestorMeet extends Model
 {
-    protected $table = 'policies';
+    protected $table = 'investor_meet';
 
     protected $primaryKey = 'id';
 
-    public $timestamps = true; // manages created_at and updated_at automatically
+    public $timestamps = true;
 
     protected $fillable = [
         'user_id',
+        'category',
+        'year',
+        'quarter',
         'title',
         'file',
         'status',
     ];
+
 }

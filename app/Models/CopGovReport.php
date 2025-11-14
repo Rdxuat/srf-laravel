@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class CopGovReport extends Model
 {
-    protected $table = 'cop_gov_report';
+    protected $table = 'corporate_governance_report';
 
     protected $primaryKey = 'id';
 
     public $timestamps = true; // Uses `created_at` and `updated_at`
 
     protected $fillable = [
+        'user_id',
         'year',
-        'quarter',
         'title',
         'file',
         'status',

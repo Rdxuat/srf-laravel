@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\CopGovReport;
 use App\Models\DisclosureThirty;
+use App\Models\InvestorMeet;
 use App\Models\KycForm;
 use App\Models\Notice;
 use App\Models\OtherDisclosure;
@@ -176,6 +177,14 @@ class InvestorController extends Controller
         $data['meta_image'] = "";
         return view('pages.shareholder-information', compact('data'));
     }
+    public function investorMeetIndex()
+    {
+        $data['active_tab'] = 'investor-meet';
+        $data['meta_title'] = "SRF - Investor Relations | Investor Meet";
+        $data['meta_desc'] = "";
+        $data['meta_image'] = "";
+        return view('pages.shareholder-information', compact('data'));
+    }
 
     public function kycFormsIndex()
     {
@@ -262,6 +271,15 @@ class InvestorController extends Controller
     {
         $data['active_tab'] = 'survey-forms';
         $data['meta_title'] = "SRF - Investor Relations | Shareholder Survey Forms";
+        $data['meta_desc'] = "";
+        $data['meta_image'] = "";
+        return view('pages.shareholder-information', compact('data'));
+    }
+   
+    public function shareTransferSystemIndex()
+    {
+        $data['active_tab'] = 'share-transfer-system';
+        $data['meta_title'] = "SRF - Investor Relations | Share Transfer System";
         $data['meta_desc'] = "";
         $data['meta_image'] = "";
         return view('pages.shareholder-information', compact('data'));
@@ -359,6 +377,7 @@ class InvestorController extends Controller
             'shareholding' => ShareholdingPattern::class,
             'stock-filings' => StockExchangeFilings::class,
             'tds-instructions' => TdsInstruction::class,
+            'investor-meet' => InvestorMeet::class,
         ];
 
         if (!isset($modelMap[$category])) {
@@ -366,7 +385,7 @@ class InvestorController extends Controller
         }
 
         $model = $modelMap[$category];
-        $noYearCategories = ['policy', 'corporate', 'other','kyc-forms','tds-instructions'];
+        $noYearCategories = ['policy', 'other','kyc-forms','tds-instructions'];
         $quarterCategories = ['financial', 'investor', 'annual-general','earning'];
         $query = $model::where('status', 1);
         if (!in_array($category, $noYearCategories)) {

@@ -30,6 +30,7 @@ Route::prefix('investor-relations')->group(function () {
     Route::get('/dematerialisation-of-shares', [InvestorController::class, 'dematerialisationIndex'])->name('dematerialisation');
     Route::get('/disclosure-under-regulation-30', [InvestorController::class, 'regulation30Index'])->name('regulation30');
     Route::get('/disclosure-under-regulation-46', [InvestorController::class, 'regulation46Index'])->name('regulation46');
+    Route::get('/investor-meet', [InvestorController::class, 'investorMeetIndex'])->name('investor-meet');
     Route::get('/kyc-forms', [InvestorController::class, 'kycFormsIndex'])->name('kyc-forms');
     Route::get('/nomination-facility', [InvestorController::class, 'nominationIndex'])->name('nomination');
     Route::get('/notices', [InvestorController::class, 'noticesIndex'])->name('notices');
@@ -40,6 +41,7 @@ Route::prefix('investor-relations')->group(function () {
     Route::get('/shareholding-pattern', [InvestorController::class, 'shareholdingIndex'])->name('shareholding');
     Route::get('/shareholder-services', [InvestorController::class, 'shareholderServicesIndex'])->name('shareholder-services');
     Route::get('/shareholding-survey-forms', [InvestorController::class, 'surveyFormsIndex'])->name('survey-forms');
+    Route::get('/share-transfer-system', [InvestorController::class, 'shareTransferSystemIndex'])->name('share-transfer-system');
     Route::get('/stock-exchange-filings', [InvestorController::class, 'stockFilingsIndex'])->name('stock-filings');
     Route::get('/tds-instructions-on-dividend-distribution', [InvestorController::class, 'tdsInstructionsIndex'])->name('tds-instructions');
 

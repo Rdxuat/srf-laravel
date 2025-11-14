@@ -49,6 +49,7 @@
                                                     <option value="dematerialisation" data-url="{{ route('dematerialisation') }}" {{ $data['active_tab'] == 'dematerialisation' ? 'selected' : '' }}>Dematerialisation of Shares</option>
                                                     <option value="regulation30" data-url="{{ route('regulation30') }}" {{ $data['active_tab'] == 'regulation30' ? 'selected' : '' }}>Disclosures under Regulation 30(5) of SEBI LODR</option>
                                                     <option value="regulation46" data-url="{{ route('regulation46') }}" {{ $data['active_tab'] == 'regulation46' ? 'selected' : '' }}>Disclosures Under Regulations 46 of the LODR</option>
+                                                    <option value="investor-meet" data-url="{{ route('investor-meet') }}" {{ $data['active_tab'] == 'investor-meet' ? 'selected' : '' }}>Investor Meet</option>
                                                     <option value="kyc-forms" data-url="{{ route('kyc-forms') }}" {{ $data['active_tab'] == 'kyc-forms' ? 'selected' : '' }}>KYC Forms (FAQ)</option>
                                                     <option value="nomination" data-url="{{ route('nomination') }}" {{ $data['active_tab'] == 'nomination' ? 'selected' : '' }}>Nomination Facility</option>
                                                     <option value="notices" data-url="{{ route('notices') }}" {{ $data['active_tab'] == 'notices' ? 'selected' : '' }}>
@@ -62,6 +63,7 @@
                                                     <option value="shareholding" data-url="{{ route('shareholding') }}" {{ $data['active_tab'] == 'shareholding' ? 'selected' : '' }}>Shareholding Pattern</option>
                                                     <option value="shareholder-services" data-url="{{ route('shareholder-services') }}" {{ $data['active_tab'] == 'shareholder-services' ? 'selected' : '' }}>Shareholder Services</option>
                                                     <option value="survey-forms" data-url="{{ route('survey-forms') }}" {{ $data['active_tab'] == 'survey-forms' ? 'selected' : '' }}>Shareholder Survey Forms</option>
+                                                    <option value="share-transfer-system" data-url="{{ route('share-transfer-system') }}" {{ $data['active_tab'] == 'share-transfer-system' ? 'selected' : '' }}>Share Transfer System</option>
                                                     <option value="stock-filings" data-url="{{ route('stock-filings') }}" {{ $data['active_tab'] == 'stock-filings' ? 'selected' : '' }}>Stock Exchange Filings</option>
                                                     <option value="tds-instructions" data-url="{{ route('tds-instructions') }}" {{ $data['active_tab'] == 'tds-instructions' ? 'selected' : '' }}>TDS Instructions on Dividend Distribution</option>
                                                 </select>
