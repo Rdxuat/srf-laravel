@@ -5,7 +5,12 @@ use App\Models\CopGovReport;
 use App\Models\DisclosureThirty;
 use App\Models\KycForm;
 use App\Models\Notice;
+use App\Models\OtherDisclosure;
 use App\Models\Policy;
+use App\Models\SecretarialCompilanceReport;
+use App\Models\ShareholdingPattern;
+use App\Models\StockExchangeFilings;
+use App\Models\TdsInstruction;
 use Illuminate\Http\Request;
 use App\Models\FinResult;
 use App\Models\AnnualReport;
@@ -349,6 +354,11 @@ class InvestorController extends Controller
             'regulation30' => DisclosureThirty::class,
             'kyc-forms' => KycForm::class,
             'notices' => Notice::class,
+            'other' => OtherDisclosure::class,
+            'compliance-report' => SecretarialCompilanceReport::class,
+            'shareholding' => ShareholdingPattern::class,
+            'stock-filings' => StockExchangeFilings::class,
+            'tds-instructions' => TdsInstruction::class,
         ];
 
         if (!isset($modelMap[$category])) {
@@ -356,7 +366,7 @@ class InvestorController extends Controller
         }
 
         $model = $modelMap[$category];
-        $noYearCategories = ['policy', 'corporate', 'other','kyc-forms'];
+        $noYearCategories = ['policy', 'corporate', 'other','kyc-forms','tds-instructions'];
         $quarterCategories = ['financial', 'investor', 'annual-general','earning'];
         $query = $model::where('status', 1);
         if (!in_array($category, $noYearCategories)) {

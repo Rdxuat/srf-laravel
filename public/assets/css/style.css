@@ -6174,7 +6174,7 @@ section.awards-wrap.locOur {
   -webkit-appearance: none;
   -moz-appearance: none;
   
-  background-image: url(../images/noun-arrow.svg); /* your arrow */
+  background-image: url("/assets/images/noun-arrow.svg"); /* your arrow */
   background-repeat: no-repeat;
  background-position: right 15px center;  /* move arrow inside */
   background-size: 16px;                   /* adjust arrow size */
@@ -9601,6 +9601,11 @@ padding-top: 50px;
 .beyondbustoptxt{
   padding-bottom: 0;
 }
+
+/* My css */
+.select-pill {
+  background-image: url("/assets/images/noun-arrow.svg");
+}
 .tranferForm {
   padding: 50px 32px;
 }
@@ -9647,7 +9652,7 @@ padding-top: 50px;
   border: 1px solid #221f1f;
 }
 
-.form-control {
+.tranferForm .form-group .form-control {
   display: block;
   width: 100%;
   height: 34px;
@@ -9835,7 +9840,7 @@ padding-top: 50px;
   text-align: left;
   padding: 12px 10px;
   margin-bottom: 20px;
-  font-weight: 400;
+  font-weight: 600;
 }
 .earning-call-table .table td {
   text-align: left;

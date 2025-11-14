@@ -4,16 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class KycForm extends Model
+class ShareholdingPattern extends Model
 {
-    protected $table = 'kyc_forms';
+    protected $table = 'shareholding_pattern';
 
     protected $primaryKey = 'id';
 
-    public $timestamps = true; // manages created_at and updated_at automatically
+    public $timestamps = true; 
 
     protected $fillable = [
         'user_id',
+        'year',
         'title',
         'file',
         'status',

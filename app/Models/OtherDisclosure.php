@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class KycForm extends Model
+class OtherDisclosure extends Model
 {
-    protected $table = 'kyc_forms';
+    protected $table = 'other_disclousers';
 
     protected $primaryKey = 'id';
 
-    public $timestamps = true; // manages created_at and updated_at automatically
+    public $timestamps = true; 
 
     protected $fillable = [
         'user_id',
