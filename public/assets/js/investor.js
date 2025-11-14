@@ -145,18 +145,15 @@ $(document).ready(function () {
                     const quarterOptions = quarters
                         .map(q => `<option value="${q}">${q.toUpperCase()}</option>`)
                         .join('');
-
-                    // ⬇️ THIS IS IMPORTANT
                     $('#selQuarter').html(quarterOptions);
                     $('#selQuarter').val(selectedQuarter);
-                    $('#selQuarter').trigger('change'); // refresh results
+                    $('#selQuarter').trigger('change'); 
 
                     $('#quarterBox').show();
                 } else {
                     $('#quarterBox').hide();
                     selectedQuarter = null;
                 }
-                // 🔹 Filter visible data for selected year + quarter
                 const filtered = allData.filter(d => {
                     if (selectedYear && d.year != selectedYear) return false;
                     if (quarterCategories.includes(activeCategory) && selectedQuarter && d.quarter != selectedQuarter) return false;
@@ -170,8 +167,6 @@ $(document).ready(function () {
             }
         });
     }
-
-    // Render results (same as before)
     function renderResults(data) {
         if (!data || !data.length) {
             if (activeCategory === 'earning' || activeCategory === 'investor-meet') {
@@ -192,8 +187,6 @@ $(document).ready(function () {
         data.forEach(item => {
             const id = `${activeCategory}-${item.id}`;
             let htmlSegment = '';
-
-            // 🧾 Annual report layout
             if (activeCategory === 'annual') {
                 const pdfLink = item.file
                     ? `<a href="${base_url}/storage/files/${item.file}" target="_blank">Download PDF</a>`
@@ -224,18 +217,18 @@ $(document).ready(function () {
                 }
 
                 htmlSegment = `
-            <div class="col-md-4 investorsAll" id="${id}">
-                <a href="${filePath}" target="_blank">
-                    <div class="earning">
-                        <div class="leftData">
-                            <p>${item.title}</p>
-                            <div class="pdfIcon">
-                                <img src="${iconPath}" class="img-responsive" alt="">
+                <div class="col-md-4 investorsAll" id="${id}">
+                    <a href="${filePath}" target="_blank">
+                        <div class="earning">
+                            <div class="leftData">
+                                <p>${item.title}</p>
+                                <div class="pdfIcon">
+                                    <img src="${iconPath}" class="img-responsive" alt="">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>`;
+                    </a>
+                </div>`;
             }
 
             html += htmlSegment;
