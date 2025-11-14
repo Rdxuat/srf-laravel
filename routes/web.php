@@ -5,11 +5,16 @@ use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LogController;
+use App\Http\Controllers\InvestorUploadController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.home');
 });
+
+Route::get('/investors/upload', [InvestorUploadController::class, 'index']);
+Route::post('/investors/upload', [InvestorUploadController::class, 'upload'])->name('investors.upload');
+
 Route::prefix('investor-relations')->group(function () {
     Route::get('/financial-results', [InvestorController::class, 'financialResultIndex'])->name('financial-result');
     Route::get('/annual-reports', [InvestorController::class, 'annualReportIndex'])->name('annual-report');
