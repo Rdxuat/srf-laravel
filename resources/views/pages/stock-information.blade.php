@@ -160,91 +160,103 @@
     </script>
     <script>
         $('#submitUnclaimedForm').click(function() {
-            
-            let year = $('#year').val();
-            let folio = $('#dpid_or_folio').val();
-            $("#yearError").hide();
-            $("#dpidError").hide();
+    
+    let year = $('#year').val();
+    let folio = $('#dpid_or_folio').val();
 
-            let hasError = false;
+    $("#yearError").hide();
+    $("#dpidError").hide();
 
-            if (!year) {
-                $("#yearError").css("display", "block");
-                hasError = true;
+    let hasError = false;
+
+    if (!year) {
+        $("#yearError").css("display", "block");
+        hasError = true;
+    }
+
+    if (!folio) {
+        $("#dpidError").css("display", "block");
+        hasError = true;
+    }
+
+    if (hasError) return; // stop form
+
+    $.ajax({
+        url: "{{ route('search.unclaimed') }}",
+        type: "POST",
+        data: {
+            year: year,
+            dpid_or_folio: folio,
+            _token: "{{ csrf_token() }}"
+        },
+        success: function(response) {
+            if (!response.status) {
+                $("#unclaimedDividend").html('<p style="color:red">No records found.</p>');
+                return;
             }
 
-            if (!folio) {
-                $("#dpidError").css("display", "block");
-                hasError = true;
-            }
-
-            if (hasError) return; // stop form
-
-            $.ajax({
-                url: "{{ route('search.unclaimed') }}",
-                type: "POST",
-                data: {
-                    year: year,
-                    dpid_or_folio: folio,
-                    _token: "{{ csrf_token() }}"
-                },
-                success: function(response) {
-                    if (!response.status) {
-                        $("#unclaimedDividend").html('<p style="color:red">No records found.</p>');
-                        return;
-                    }
-
-                    let d = response.data;
-
-                    let html = `
-                        <h3>${d.financial_year}</h3>
-                        <div class="resultsThree">
-                            <div>
-                                <p>Name:<span> ${d.investor_first_name} ${d.investor_middle_name ?? ''} ${d.investor_last_name} </span></p>
-                                <p>Father/Husband Name: <span>${d.husband_first_name} ${d.husband_middle_name ?? ''} ${d.husband_last_name}</span></p>
-                                <p>Address: <span>${d.address}</span></p>
-                            </div>
-                            <div>
-                                <p>District:<span> ${d.district}</span></p>
-                                <p>State: <span> ${d.state}</span></p>
-                                <p>Country: <span> ${d.country}</span></p>
-                                <p>Pin Code: <span> ${d.pin_code}</span></p>
-                            </div>
-                            <div class="orangResult">
-                                <div class="topOrg">
-                                    <div>
-                                        <p>Investment Type: <span>${d.investment_type}</span></p>
-                                    </div>
-                                    <div>
-                                        <p>Amount Transferred: <span>${d.ammount_transferred}</span></p>
-                                    </div>
-                                </div>
-                                <div class="botOrg">
-                                    <p>Proposed Date of transfer to IEPF: <span>${d.proposed_date}</span></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="folioNo">
-                            <div>
-                                <p>DPid-Clid / Folio: <span>${d.dp_id_client_id ?? d.folio_number}</span></p>
-                                <p>PAN No:<span>${d.pan}</span></p>
-                                <p>Aadhar:<span>${d.aadhar_number}</span></p>
-                            </div>
-                            <div>
-                                <p>Nominee:<span>${d.nominee_name}</span></p>
-                                <p>Joint Holder:<span>${d.joint_holder_name}</span></p>
-                            </div>
-                            <div>
-                                <p>Remarks:<span>${d.remarks}</span></p>
-                            </div>
-                        </div>
-                    `;
-
-                    $("#unclaimedDividend").html(html);
-                }
+            let d = response.data;
+            Object.keys(d).forEach(key => {
+                if (d[key] === null) d[key] = "";
             });
-        });
+
+            let investorName = [d.investor_first_name, d.investor_middle_name, d.investor_last_name]
+                .filter(n => n && n.trim() !== "")
+                .join(" ");
+
+            let husbandName = [d.husband_first_name, d.husband_middle_name, d.husband_last_name]
+                .filter(n => n && n.trim() !== "")
+                .join(" ");
+
+            let html = `
+                <h3>${d.financial_year}</h3>
+                <div class="resultsThree">
+                    <div>
+                        <p>Name:<span> ${investorName}</span></p>
+                        <p>Father/Husband Name: <span>${husbandName}</span></p>
+                        <p>Address: <span>${d.address}</span></p>
+                    </div>
+                    <div>
+                        <p>District: <span> ${d.district}</span></p>
+                        <p>State: <span>${d.state}</span></p>
+                        <p>Country: <span>${d.country}</span></p>
+                        <p>Pin Code: <span>${d.pin_code}</span></p>
+                    </div>
+                    <div class="orangResult">
+                        <div class="topOrg">
+                            <div>
+                                <p>Investment Type: <span>${d.investment_type}</span></p>
+                            </div>
+                            <div>
+                                <p>Amount Transferred: <span>${d.ammount_transferred}</span></p>
+                            </div>
+                        </div>
+                        <div class="botOrg">
+                            <p>Proposed Date of transfer to IEPF: <span>${d.proposed_date}</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="folioNo">
+                    <div>
+                        <p>DPid-Clid / Folio: <span>${d.dp_id_client_id || d.folio_number}</span></p>
+                        <p>PAN No: <span>${d.pan}</span></p>
+                        <p>Aadhar: <span>${d.aadhar_number}</span></p>
+                    </div>
+                    <div>
+                        <p>Nominee: <span>${d.nominee_name}</span></p>
+                        <p>Joint Holder: <span>${d.joint_holder_name}</span></p>
+                    </div>
+                    <div>
+                        <p>Remarks: <span>${d.remarks}</span></p>
+                    </div>
+                </div>
+            `;
+
+            $("#unclaimedDividend").html(html);
+        }
+    });
+});
     </script>
 
     <script src="{{ asset('assets/js/investor.js') }}" type="text/javascript"></script>
