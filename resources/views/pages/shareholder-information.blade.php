@@ -1313,7 +1313,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="row investor-content" id="survey-forms">
+                                    <div class="row investor-content" id="survey-forms" style="display:none">
                                         <div class="container shareform">
                                             <form>
 
