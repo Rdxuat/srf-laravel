@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Investor extends Model
+class DividendAndShare extends Model
 {
     use HasFactory;
 
-    protected $table = 'dividend_and_shares_unclaimed_dividend'; // your table name
+    protected $table = 'dividend_and_shares_unclaimed_dividend'; 
 
     protected $fillable = [
         'investor_first_name',
@@ -39,5 +39,5 @@ class Investor extends Model
         'financial_year'
     ];
 
-    public $timestamps = true; // You removed created_at and updated_at
+    public $timestamps = true; 
 }

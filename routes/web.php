@@ -14,6 +14,8 @@ Route::get('/', function () {
 
 Route::get('/investors/upload', [InvestorUploadController::class, 'index']);
 Route::post('/investors/upload', [InvestorUploadController::class, 'upload'])->name('investors.upload');
+Route::post('/search-unclaimed-dividend', [App\Http\Controllers\InvestorUploadController::class, 'search'])->name('search.unclaimed');
+
 
 Route::prefix('investor-relations')->group(function () {
     Route::get('/financial-results', [InvestorController::class, 'financialResultIndex'])->name('financial-result');
@@ -28,7 +30,7 @@ Route::prefix('investor-relations')->group(function () {
     Route::get('/stock-chart', [InvestorController::class, 'stockChartIndex'])->name('stock-chart');
     Route::get('/historical-price', [InvestorController::class, 'historicalPriceIndex'])->name('historical-price');
     Route::get('/investment-calculator', [InvestorController::class, 'investmentCalculatorIndex'])->name('investment-calculator');
-    Route::get('/dividend-shares', [InvestorController::class, 'dividendSharesIndex'])->name('dividend-shares');
+    Route::get('/dividend-and-shares', [InvestorController::class, 'dividendSharesIndex'])->name('dividend-shares');
     Route::get('/listing', [InvestorController::class, 'listingIndex'])->name('listing');
 
     Route::get('/credit-ratings', [InvestorController::class, 'creditRatingsIndex'])->name('credit-ratings');

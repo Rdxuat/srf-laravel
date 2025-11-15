@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\InvestorImport;
+use App\Models\DividendAndShare;
 
 class InvestorUploadController extends Controller
 {
@@ -25,4 +26,32 @@ class InvestorUploadController extends Controller
 
         return back()->with('success', 'Excel imported successfully!');
     }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'year' => 'required',
+            'dpid_or_folio' => 'required'
+        ]);
+
+        $year = $request->year;
+        $folio = $request->dpid_or_folio;
+
+        $data = DividendAndShare::where('financial_year', $year)
+                ->where(function ($q) use ($folio) {
+                    $q->where('folio_number', $folio)
+                    ->orWhere('dp_id_client_id', $folio);
+                })
+                ->first();
+
+        if (!$data) {
+            return response()->json(['status' => false, 'message' => 'Record not found']);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $data
+        ]);
+    }
+
 }

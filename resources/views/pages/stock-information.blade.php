@@ -72,35 +72,17 @@
                                             <div class="tranferForm">
                                                 <h4>Unclaimed and Unpaid Dividends:</h4>
                                                 <form id="unclaimedForm" method="post">
-                                                    <input type="hidden" name="_token" value="OjiGe9Fn1huW58zFBlsMHsU7NGFXBzTEQsHqXVl8" autocomplete="off">
                                                     <div class="form-group">
                                                         <label>Select Year :</label>
-                                                        <select class="form-control" name="year" id="year" required="">
-                                                            <option value="2023-24 Final Div">
-                                                                2023-24 Final Div
-                                                            </option>
-                                                            <option value="2023-24 Interim &amp; Special">
-                                                                2023-24 Interim &amp; Special
-                                                            </option>
-                                                            <option value="2022-23 Final">
-                                                                2022-23 Final
-                                                            </option>
-                                                            <option value="2021-22 Final">
-                                                                2021-22 Final
-                                                            </option>
-                                                            <option value="2021-22 Interim">
-                                                                2021-22 Interim
-                                                            </option>
-                                                            <option value="2020-21 Final">
-                                                                2020-21 Final
-                                                            </option>
-                                                            <option value="2019-20 Interim">
-                                                                2019-20 Interim
-                                                            </option>
-                                                            <option value="2018-19 Interim">
-                                                                2018-19 Interim
-                                                            </option>
+                                                        <select class="form-control" name="year" id="year" required>
+                                                            <option value="">Select Year</option>
+                                                            @if(isset($data['years']) && count($data['years']) > 0)
+                                                                @foreach($data['years'] as $year)
+                                                                    <option value="{{ $year }}">{{ $year }}</option>
+                                                                @endforeach
+                                                            @endif
                                                         </select>
+
                                                         <span id="yearError" style="color:red; display:none; position:absolute;bottom:-34px">Above Field is
                                                             Required</span>
                                                     </div>
@@ -119,49 +101,38 @@
                                                     </div>
                                                 </form>
                                                 <div class="submitResults" id="unclaimedDividend">
-                                                    <h3>FY 2018-19 Interim</h3>
-                                                    <div class="resultsThree">
-                                                        <div>
-                                                            <p>Name:<span>BIMLA DEVI </span></p>
-                                                            <p>Father/Husband Name: <span>SH K Rao</span></p>
-                                                            <p>Address: <span>lorem50</span></p>
-                                                        </div>
-                                                        <div>
-                                                            <p>District:<span> Gurugram</span></p>
-                                                            <p>State: <span> Haryana</span></p>
-                                                            <p>Country: <span> India</span></p>
-                                                            <p>Pin Code: <span> 122222</span></p>
-                                                        </div>
-                                                        <div class="orangResult">
-                                                            <div class="topOrg">
-                                                                <div>
-                                                                    <p>Investment Type: <span>No of underlying Shares</span></p>
-                                                                </div>
-                                                                <div>
-                                                                    <p>Amount Transfered: <span>300</span></p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="botOrg">
-                                                                <p>Proposed Date of transfer to IEPF: <span>5 Sep 2025</span></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="folioNo">
-                                                        <div>
-                                                            <p> DPid-Clid / Folio: <span>TES0000128</span></p>
-                                                            <p>Warrant No:<span>2200021 </span></p>
-                                                            <p>Pan No:<span> </span></p>
-                                                        </div>
-                                                        <div>
-                                                            <p>Bank Account Number:<span>9884898989899898 </span></p>
-                                                            <p>Bank Name:<span>ORIENTAL BANK OF COMMERCE </span></p>
-                                                            <p>Bank Address:<span>REWARI , , , </span></p>
-                                                        </div>
-                                                        <div>
-                                                            <p>Due date of transfer to IEPF: <span>17 Mar 2026</span></p>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row phirZ" id="listing" style="display:none">
+                                        <div class="col-md-12">
+                                            <div class="listing-table invest-bg">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name and Address of Stock Exchange</th>
+                                                            <th>Stock Code</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>BSE Limited Phiroze Jeejeebhoy Towers, Dalal Street,
+                                                                Mumbai-400 001.</td>
+                                                            <td><a href="https://www.bseindia.com/stock-share-price/srf-ltd/srf/503806/"
+                                                                    target="blank">503806</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>National Stock Exchange of India Ltd. 'Exchange
+                                                                Plaza',
+                                                                Bandra-Kurla Complex, Bandra (E), Mumbai-400 051
+                                                            </td>
+                                                            <td><a href="https://www.nseindia.com/get-quotes/equity?symbol=SRF"
+                                                                    target="blank">NIFTY - SRF</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -187,5 +158,94 @@
             getInvestorDataUrl: "{{ route('get-investor-data') }}"
         };
     </script>
+    <script>
+        $('#submitUnclaimedForm').click(function() {
+            
+            let year = $('#year').val();
+            let folio = $('#dpid_or_folio').val();
+            $("#yearError").hide();
+            $("#dpidError").hide();
+
+            let hasError = false;
+
+            if (!year) {
+                $("#yearError").css("display", "block");
+                hasError = true;
+            }
+
+            if (!folio) {
+                $("#dpidError").css("display", "block");
+                hasError = true;
+            }
+
+            if (hasError) return; // stop form
+
+            $.ajax({
+                url: "{{ route('search.unclaimed') }}",
+                type: "POST",
+                data: {
+                    year: year,
+                    dpid_or_folio: folio,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    if (!response.status) {
+                        $("#unclaimedDividend").html('<p style="color:red">No records found.</p>');
+                        return;
+                    }
+
+                    let d = response.data;
+
+                    let html = `
+                        <h3>${d.financial_year}</h3>
+                        <div class="resultsThree">
+                            <div>
+                                <p>Name:<span> ${d.investor_first_name} ${d.investor_middle_name ?? ''} ${d.investor_last_name} </span></p>
+                                <p>Father/Husband Name: <span>${d.husband_first_name} ${d.husband_middle_name ?? ''} ${d.husband_last_name}</span></p>
+                                <p>Address: <span>${d.address}</span></p>
+                            </div>
+                            <div>
+                                <p>District:<span> ${d.district}</span></p>
+                                <p>State: <span> ${d.state}</span></p>
+                                <p>Country: <span> ${d.country}</span></p>
+                                <p>Pin Code: <span> ${d.pin_code}</span></p>
+                            </div>
+                            <div class="orangResult">
+                                <div class="topOrg">
+                                    <div>
+                                        <p>Investment Type: <span>${d.investment_type}</span></p>
+                                    </div>
+                                    <div>
+                                        <p>Amount Transferred: <span>${d.ammount_transferred}</span></p>
+                                    </div>
+                                </div>
+                                <div class="botOrg">
+                                    <p>Proposed Date of transfer to IEPF: <span>${d.proposed_date}</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="folioNo">
+                            <div>
+                                <p>DPid-Clid / Folio: <span>${d.dp_id_client_id ?? d.folio_number}</span></p>
+                                <p>PAN No:<span>${d.pan}</span></p>
+                                <p>Aadhar:<span>${d.aadhar_number}</span></p>
+                            </div>
+                            <div>
+                                <p>Nominee:<span>${d.nominee_name}</span></p>
+                                <p>Joint Holder:<span>${d.joint_holder_name}</span></p>
+                            </div>
+                            <div>
+                                <p>Remarks:<span>${d.remarks}</span></p>
+                            </div>
+                        </div>
+                    `;
+
+                    $("#unclaimedDividend").html(html);
+                }
+            });
+        });
+    </script>
+
     <script src="{{ asset('assets/js/investor.js') }}" type="text/javascript"></script>
 @endpush

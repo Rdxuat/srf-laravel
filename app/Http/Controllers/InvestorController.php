@@ -22,6 +22,7 @@ use App\Models\AnnualReturn;
 use App\Models\AgmTranscript;
 use App\Models\EarningsCall;
 use App\Models\BoardOfDirectors;
+use App\Models\DividendAndShare;
 
 
 class InvestorController extends Controller
@@ -131,6 +132,10 @@ class InvestorController extends Controller
         $data['meta_title'] = "SRF - Investor Relations | Dividend and Shares";
         $data['meta_desc'] = "";
         $data['meta_image'] = "";
+        $data['years'] = DividendAndShare::select('financial_year')
+                ->distinct()
+                ->orderBy('financial_year', 'DESC')
+                ->pluck('financial_year');
         return view('pages.stock-information', compact('data'));
     }
 

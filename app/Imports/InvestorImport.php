@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\Investor;
+use App\Models\DividendAndShare;
 use Maatwebsite\Excel\Row;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -15,7 +15,7 @@ class InvestorImport implements OnEachRow, WithHeadingRow, WithChunkReading, Wit
     {
         $r = $row->toArray();
 
-        Investor::create([
+        DividendAndShare::create([
             'investor_first_name' => $r['investor_first_name'],
             'investor_middle_name' => $r['investor_middle_name'],
             'investor_last_name' => $r['investor_last_name'],

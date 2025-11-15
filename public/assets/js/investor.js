@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // --- Configuration ---
     const quarterCategories = ['financial', 'investor', 'annual-general','earning'];
-    const staticCategories = ['credit-ratings', 'overview', 'bod','dividend-shares'];
+    const staticCategories = ['credit-ratings', 'overview', 'bod','dividend-shares','listing','regulation46','nomination','registrar','shareholder-services','survey-forms'];
     const noYearCategories = ['policy', 'kyc-forms', 'other', 'tds-instructions','dematerialisation'];
 
     const activeCategoryDefault = window.investorConfig.activeTab;
@@ -56,7 +56,7 @@ $(document).ready(function () {
     // --- Functions ---
 
     function handleStaticSections(category) {
-        $('#credit-ratings, #dematerialisation, #overview, #bod ,#dividend-shares').hide();
+        $('#credit-ratings, #dematerialisation, #overview, #bod ,#dividend-shares','#listing','#regulation46','#nomination','#registrar','#shareholder-services','#survey-forms').hide();
 
         if (staticCategories.includes(category)) {
             $('#resultContainer').hide();
@@ -68,6 +68,12 @@ $(document).ready(function () {
             if (category === 'overview') $('#overview').show();
             if (category === 'bod') $('#bod').show();
             if (category === 'dividend-shares') $('#dividend-shares').show();
+            if (category === 'listing') $('#listing').show();
+            if (category === 'regulation46') $('#regulation46').show();
+            if (category === 'nomination') $('#nomination').show();
+            if (category === 'registrar') $('#registrar').show();
+            if (category === 'shareholder-services') $('#shareholder-services').show();
+            if (category === 'survey-forms') $('#survey-forms').show();
         } else if (noYearCategories.includes(category)) {
             $('#selYear').closest('.col-md-3').hide();
             $('#quarterBox').hide();
@@ -322,7 +328,7 @@ $(document).ready(function () {
             'Transcript (PDF)'
         ];
 
-        // group items by category (but allow multiple entries per category)
+        // Group by category
         const byCategory = {};
         data.forEach(item => {
             if (!byCategory[item.category]) {
@@ -330,6 +336,9 @@ $(document).ready(function () {
             }
             byCategory[item.category].push(item);
         });
+
+        // Determine the max count (how many rows we need)
+        const maxRowCount = Math.max(...Object.values(byCategory).map(arr => arr.length), 0);
 
         let html = `
         <div class="table-responsive earning-call-table">
@@ -343,47 +352,48 @@ $(document).ready(function () {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-    `;
+        `;
 
-        columns.forEach(col => {
-            const items = byCategory[col] || [];
+        for (let row = 0; row < maxRowCount; row++) {
+            html += `<tr>`;
+            columns.forEach(col => {
+                const items = byCategory[col] || [];
 
-            let iconFile = 'pdf-icon.svg';
-            if (col === 'Transcript (Audio)') {
-                iconFile = 'audio-recording-icon.svg';
-            }
-            const iconUrl = `${base_url}/assets/images/invest/${iconFile}`;
+                let iconFile = 'pdf-icon.svg';
+                if (col === 'Transcript (Audio)') {
+                    iconFile = 'audio-recording-icon.svg';
+                }
+                const iconUrl = `${base_url}/assets/images/invest/${iconFile}`;
 
-            // If no items → show "-"
-            if (items.length === 0) {
-                html += `<td><span class="empty-cell">-</span></td>`;
-            } else {
-                // show ALL files under this category
-                html += `<td>`;
-                items.forEach(item => {
+                const item = items[row];  // pick row-based entry
+
+                if (!item) {
+                    html += `<td><span class="empty-cell">-</span></td>`;
+                } else {
                     const fileUrl = `${base_url}/storage/files/${item.file}`;
                     html += `
-                    <div class="earn-link-row">
-                        <a href="${fileUrl}" target="_blank" class="earn-link">
-                            <span class="text">${item.title}</span>
-                            <img src="${iconUrl}" class="type-icon" alt="">
-                        </a>
-                    </div>
-                `;
-                });
-                html += `</td>`;
-            }
-        });
+                        <td>
+                            <div class="earn-link-row">
+                                <a href="${fileUrl}" target="_blank" class="earn-link">
+                                    <span class="text">${item.title}</span>
+                                    <img src="${iconUrl}" class="type-icon" alt="">
+                                </a>
+                            </div>
+                        </td>
+                    `;
+                }
+            });
+            html += `</tr>`;
+        }
 
         html += `
-                    </tr>
                 </tbody>
             </table>
         </div>
-    `;
+        `;
 
         $('#resultContainer').html(html);
     }
+
 
 });
