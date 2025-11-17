@@ -11204,7 +11204,7 @@ margin-top: 0px;
 .unit-label {
   position: absolute;
   right: 0;
-  top: -60px;
+  top: -65px;
   font-size: 12px;
   color: #666;
 }
@@ -11213,7 +11213,7 @@ margin-top: 0px;
   align-items: flex-end;
   justify-content: space-between;
   height:auto;
-  margin-top: 65px;
+  margin-top:0px;
 }
 .bar-block {
   text-align: center;
@@ -11249,12 +11249,61 @@ margin-top: 0px;
       padding: 30px 0;
       font-size: 30px;
 }
-
-
 .progress-bar:hover
 {
   cursor: pointer;
 }
+.performance-bar {    
+  transform: rotatex(90deg);
+  transform-origin: left bottom;
+  animation: performance-bar linear 1s forwards;
+}
+@keyframes performance-bar {    
+  0% { 
+   transform: rotatex(90deg);
+}
+100% {
+   transform: rotatex(0deg);
+}   
+}
+
+.two{
+    animation-delay: .30s;
+}
+.three{
+    animation-delay: 1s;
+}
+.four{
+    animation-delay: 1.30s;
+}
+.five{
+    animation-delay: 2s;
+}
+
+.bar-h1b { height: 185px; }
+.bar-h2b { height: 250px; }
+.bar-h3b { height: 300px; }
+.bar-h4b { height: 280px; }
+.bar-h5b { height: 290px; }
+
+.bar-h1c { height: 185px; }
+.bar-h2c { height: 250px; }
+.bar-h3c { height: 280px; }
+.bar-h4c { height: 240px; }
+.bar-h5c { height: 290px; }
+
+.bar-h1d { height: 185px; }
+.bar-h2d { height: 290px; }
+.bar-h3d { height: 240px; }
+.bar-h4d { height: 250px; }
+.bar-h5d { height: 280px; }
+
+.bar-h1e { height: 200px; }
+.bar-h2e { height: 185px; }
+.bar-h3e { height: 220px; }
+.bar-h4e { height: 280px; }
+.bar-h5e { height: 260px; }
+
 /* Earning call */
 .earning-call-table .table{
   width: 100%;
@@ -11464,4 +11513,10 @@ margin-top: 0px;
 .resultsThree>div:nth-child(3),
 .whoWeAre .haldDiv>div:first-child {
   width: 40%;
+}
+.auth h3{
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 600;
+  padding-bottom: 20px;
 }

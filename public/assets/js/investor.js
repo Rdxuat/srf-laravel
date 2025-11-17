@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // --- Configuration ---
     const quarterCategories = ['financial', 'investor', 'annual-general','earning'];
-    const staticCategories = ['credit-ratings', 'overview', 'bod','dividend-shares','listing','regulation46','nomination','registrar','shareholder-services','survey-forms'];
+    const staticCategories = ['credit-ratings', 'overview', 'bod','dividend-shares','listing','regulation46','nomination','registrar','shareholder-services','survey-forms','share-transfer-system'];
     const noYearCategories = ['policy', 'kyc-forms', 'other', 'tds-instructions','dematerialisation'];
 
     const activeCategoryDefault = window.investorConfig.activeTab;
@@ -56,7 +56,7 @@ $(document).ready(function () {
     // --- Functions ---
 
     function handleStaticSections(category) {
-        $('#credit-ratings, #dematerialisation, #overview, #bod ,#dividend-shares','#listing','#regulation46','#nomination','#registrar','#shareholder-services','#survey-forms').hide();
+        $('#credit-ratings, #dematerialisation, #overview, #bod ,#dividend-shares','#listing','#regulation46','#nomination','#registrar','#shareholder-services','#survey-forms','#share-transfer-system').hide();
 
         if (staticCategories.includes(category)) {
             $('#resultContainer').hide();
@@ -74,6 +74,7 @@ $(document).ready(function () {
             if (category === 'registrar') $('#registrar').show();
             if (category === 'shareholder-services') $('#shareholder-services').show();
             if (category === 'survey-forms') $('#survey-forms').show();
+            if (category === 'share-transfer-system') $('#share-transfer-system').show();
         } else if (noYearCategories.includes(category)) {
             $('#selYear').closest('.col-md-3').hide();
             $('#quarterBox').hide();
