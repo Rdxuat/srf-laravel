@@ -154,11 +154,11 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                    <td><span>details of its business;</span></td>
+                                                    <td><span>Details of its business;</span></td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/businesses">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -200,7 +200,7 @@
                                                     <tr>
                                                     <td><span>Brief profile of board of directors including
                                                         directorship and full-time positions in body
-                                                        corporates;]</span>
+                                                        corporates;</span>
                                                     </td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
@@ -222,7 +222,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>terms and conditions of appointment of independent
+                                                    <td><span>Terms and conditions of appointment of independent
                                                         directors;</span>
                                                     </td>
                                                     <td>
@@ -245,7 +245,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>composition of various committees of board of
+                                                    <td><span>Composition of various committees of board of
                                                         directors;</span>
                                                     </td>
                                                     <td>
@@ -268,7 +268,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>code of conduct of board of directors and senior
+                                                    <td><span>Code of conduct of board of directors and senior
                                                         management personnel;</span>
                                                     </td>
                                                     <td>
@@ -291,7 +291,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>details of establishment of vigil mechanism/
+                                                    <td><span>Details of establishment of vigil mechanism/
                                                         Whistle Blower policy;</span>
                                                     </td>
                                                     <td>
@@ -315,7 +315,7 @@
                                                     </tr>
                                                     <tr>
                                                     <td>
-                                                        <span>criteria of making payments to non-executive
+                                                        <span>Criteria of making payments to non-executive
                                                         directors, if the same has not been disclosed in
                                                         annual report;</span>
                                                     </td>
@@ -339,13 +339,13 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>policy on dealing with related party
+                                                    <td><span>Policy on dealing with related party
                                                         transactions;</span>
                                                     </td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information?q=shareholding-service">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -363,7 +363,7 @@
                                                     </tr>
                                                     <tr>
                                                     <td>
-                                                        <span>policy for determining ‘material’
+                                                        <span>Policy for determining ‘material’
                                                         subsidiaries;</span>
                                                         <ol type="i">
                                                             <li>details of familiarization programmes imparted
@@ -374,7 +374,7 @@
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information?q=shareholding-service">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -391,13 +391,13 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>the email address for grievance redressal and
+                                                    <td><span>The email address for grievance redressal and
                                                         other relevant details;</span>
                                                     </td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information?option=stock-exchange-filings">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -414,14 +414,14 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>contact information of the designated officials of
+                                                    <td><span>Contact information of the designated officials of
                                                         the listed entity who are responsible for assisting
                                                         and handling investor grievances;</span>
                                                     </td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -439,7 +439,7 @@
                                                     </tr>
                                                     <tr>
                                                     <td>
-                                                        <span>financial information including:</span>
+                                                        <span>Financial information including:</span>
                                                         <ol type="i">
                                                             <li>notice of meeting of the board of directors
                                                                 where financial results shall be discussed;
@@ -458,11 +458,11 @@
                                                     <td><span>Not Applicable</span></td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>shareholding pattern;</span></td>
+                                                    <td><span>Shareholding pattern;</span></td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/investors?p=investor-kit">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -479,7 +479,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>details of agreements entered into with the media
+                                                    <td><span>Details of agreements entered into with the media
                                                         companies and/or their associates, etc;</span>
                                                     </td>
                                                     <td><span>Not Applicable</span></td>
@@ -491,7 +491,7 @@
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information?option=stock-exchange-filings#f3">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -516,7 +516,7 @@
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information?option=credit-rating">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -542,7 +542,7 @@
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/financials?q=annual-subsidiaries">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -559,14 +559,14 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>new name and the old name of the listed entity for
+                                                    <td><span>New name and the old name of the listed entity for
                                                         a continuous period of one year, from the date of
                                                         the last name change;</span>
                                                     </td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information?option=secretarial-compliance-report">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -583,7 +583,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>items in sub-regulation (1) of regulation
+                                                    <td><span>Items in sub-regulation (1) of regulation
                                                         47.</span>
                                                     </td>
                                                     <td>
@@ -606,7 +606,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>all credit ratings obtained by the entity for all
+                                                    <td><span>All credit ratings obtained by the entity for all
                                                         its outstanding instruments, updated immediately as
                                                         and when there is any revision in any of the
                                                         ratings.</span>
@@ -614,7 +614,7 @@
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information?q=clause-305-of-lodr">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -631,14 +631,14 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>separate audited financial statements of each
+                                                    <td><span>Separate audited financial statements of each
                                                         subsidiary of the listed entity in respect of a
                                                         relevant financial year, </span>
                                                     </td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information?option=stock-exchange-filings#f3">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -655,14 +655,14 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>secretarial compliance report as per
+                                                    <td><span>Secretarial compliance report as per
                                                         sub-regulation (2) of regulation 24A of these
                                                         regulations;</span>
                                                     </td>
                                                     <td><span>Not Applicable</span></td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>disclosure of the policy for determination of
+                                                    <td><span>Disclosure of the policy for determination of
                                                         materiality of events or information required under
                                                         clause (ii), sub-regulation (4) of regulation 30 of
                                                         these regulations;</span>
@@ -687,7 +687,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>disclosure of contact details of key managerial
+                                                    <td><span>Disclosure of contact details of key managerial
                                                         personnel who are authorized for the purpose of
                                                         determining materiality of an event or information
                                                         and for the purpose of making disclosures to stock
@@ -697,7 +697,7 @@
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/shareholders-information?q=annual-return">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -714,7 +714,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>disclosures under sub-regulation (8) of regulation
+                                                    <td><span>Disclosures under sub-regulation (8) of regulation
                                                         30 of these regulations;</span>
                                                     </td>
                                                     <td>
@@ -737,14 +737,14 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>statements of deviation(s) or variation(s) as
+                                                    <td><span>Statements of deviation(s) or variation(s) as
                                                         specified in regulation 32 of these
                                                         regulations;</span>
                                                     </td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/leadership-team#boardofdirectors">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -761,14 +761,14 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>dividend distribution policy by listed entities
+                                                    <td><span>Dividend distribution policy by listed entities
                                                         based on market capitalization as specified in
                                                         sub-regulation (1) of regulation 43A;</span>
                                                     </td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/leadership-team#boardofdirectors">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -785,14 +785,14 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                    <td><span>annual return as provided under section 92 of the
+                                                    <td><span>Annual return as provided under section 92 of the
                                                         Companies Act, 2013 and the rules made
                                                         thereunder</span>
                                                     </td>
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/leadership-team#boardofdirectors">
+                                                                href="#">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -813,7 +813,7 @@
                                                     <td>
                                                         <span class="imgIcon wid-50px">
                                                             <a
-                                                                href="https://www.trivenigroup.com/leadership-team#boardofdirectors">
+                                                                href="">
                                                                 <img
                                                                 width="35" height="47"
                                                                 src="/storage/images/web-ver-icon-2.webp"
@@ -889,11 +889,11 @@
                                                 <div id="faq3" class="faq-collapse collapse"
                                                     data-bs-parent="#faqAccordion">
                                                     <div class="faq-body">
-                                                        The individual shareholders can avail of the nomination
+                                                        {{-- The individual shareholders can avail of the nomination
                                                         facility by submitting the prescribed Form 2B to the
                                                         Company’s RTA duly completed in all respects. Form 2B may be
                                                         downloaded from the Company’s website, www.trivenigroup.com
-                                                        under the Section “Investor”.
+                                                        under the Section “Investor”. --}}
                                                     </div>
                                                 </div>
                                             </div>
