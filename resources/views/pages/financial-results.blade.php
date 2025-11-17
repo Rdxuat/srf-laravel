@@ -42,7 +42,7 @@
                             <div class="stakeTabBody">
                                 <div class="invest-bg newBg">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group select-box">
                                                 <select id="selCategory" class="form-control select-pill selCategory">
                                                     <option value="financial" data-url="{{ route('financial-result') }}" {{ $data['active_tab'] == 'financial' ? 'selected' : '' }}>Financial
@@ -67,13 +67,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="form-group select-box">
                                                 <select id="selYear" class="form-control select-pill"></select>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-3" id="quarterBox">
+                                        <div class="col-md-1" id="quarterBox">
                                             <div class="form-group select-box">
                                                 <select id="selQuarter" class="form-control select-pill"></select>
                                             </div>

@@ -60,7 +60,7 @@ $(document).ready(function () {
 
         if (staticCategories.includes(category)) {
             $('#resultContainer').hide();
-            $('#selYear').closest('.col-md-3').hide();
+            $('#selYear').closest('.col-md-2').hide();
             $('#quarterBox').hide();
 
             if (category === 'credit-ratings') $('#credit-ratings').show();
@@ -76,11 +76,11 @@ $(document).ready(function () {
             if (category === 'survey-forms') $('#survey-forms').show();
             if (category === 'share-transfer-system') $('#share-transfer-system').show();
         } else if (noYearCategories.includes(category)) {
-            $('#selYear').closest('.col-md-3').hide();
+            $('#selYear').closest('.col-md-2').hide();
             $('#quarterBox').hide();
             $('#resultContainer').show();
         } else {
-            $('#selYear').closest('.col-md-3').show();
+            $('#selYear').closest('.col-md-2').show();
             $('#quarterBox').show();
             $('#resultContainer').show();
         }
