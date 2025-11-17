@@ -1000,112 +1000,112 @@
                                     </div>
                                     <div class="row" id="registrar" style="display:none">
                                         <div class="col-md-12">
-<div class="iepf-txt-inner">
-<b>KFIN TECHNOLOGIES LIMITED</b><br>
-<strong>Address:</strong> Selenium, Tower B,<br>
-Plot 31&amp; 32, Financial District,
-<br>
-Nanakramguda, Serilingampally Mandal,
-<br>
-Hyderabad, Telangana - 500 032<br>
-Telugana State, India <br>
+                                        <div class="iepf-txt-inner">
+                                        <b>KFIN TECHNOLOGIES LIMITED</b><br>
+                                        <strong>Address:</strong> Selenium, Tower B,<br>
+                                        Plot 31&amp; 32, Financial District,
+                                        <br>
+                                        Nanakramguda, Serilingampally Mandal,
+                                        <br>
+                                        Hyderabad, Telangana - 500 032<br>
+                                        Telugana State, India <br>
 
-<strong>Tel. No.:</strong> <a href="tel:040-6716 1585">040-6716
-    1585</a><br>
+                                        <strong>Tel. No.:</strong> <a href="tel:040-6716 1585">040-6716
+                                            1585</a><br>
 
-<strong>Fax. No.:</strong> 040-6716 1680<br>
+                                        <strong>Fax. No.:</strong> 040-6716 1680<br>
 
-<strong>Toll Free No.:</strong> 1800-345-4001<br>
-<strong>Investor Grievance Email:</strong><a
-    href="mailto:einward.ris@kfintech.com">
-    einward.ris@kfintech.com</a><br>
-<strong>Website:</strong> <a href="https://www.kfintech.com/"
-    target="_blank">www.kfintech.com</a><br>
-
-
-
-</p>
-</div>
-<div class="iepf-txt-inner">
-<p><b>Rajat Lakhanpal</b><br>
-    Sr. Vice President (Corporate Compliance) & Company
-    Secretary<br>
-    Address: SRF Limited<br>
-    Block-C, Sector – 45, Gurugram,
-    <br>
-    Haryana – 122003
-    <br>
-    <strong> Email id:</strong><a href="mailto:cs@srf.com">
-        cs@srf.com</a><br>
-
-    <strong>Tel. No.:</strong> <a href="tel:0124 – 4354782">0124 –
-        4354782</a><br>
-
-    <strong>Fax. No.:</strong> 0124-4354500<br>
+                                        <strong>Toll Free No.:</strong> 1800-345-4001<br>
+                                        <strong>Investor Grievance Email:</strong><a
+                                            href="mailto:einward.ris@kfintech.com">
+                                            einward.ris@kfintech.com</a><br>
+                                        <strong>Website:</strong> <a href="https://www.kfintech.com/"
+                                            target="_blank">www.kfintech.com</a><br>
 
 
-</p>
-</div>
-</div>
-<div class="auth">
-<div class="col-md-12">
-<h3>KMPs authorized for the purpose of determining Materiality:</h3>
-</div>
-<div class="col-md-4">
-<div class="iepf-txt-inner">
-    <p><b>Rahul Jain</b><br>
-        President & Chief Financial Officer<br>
-        Address: SRF Limited<br>
-        Block-C, Sector – 45, Gurugram,
-        <br>
-        Haryana – 122003
-        <br>
 
-        <strong>Tel. No.:</strong> <a href="tel:0124 – 4354726">0124
-            – 4354726</a><br>
+                                        </p>
+                                        </div>
+                                        <div class="iepf-txt-inner">
+                                        <p><b>Rajat Lakhanpal</b><br>
+                                            Sr. Vice President (Corporate Compliance) & Company
+                                            Secretary<br>
+                                            Address: SRF Limited<br>
+                                            Block-C, Sector – 45, Gurugram,
+                                            <br>
+                                            Haryana – 122003
+                                            <br>
+                                            <strong> Email id:</strong><a href="mailto:cs@srf.com">
+                                                cs@srf.com</a><br>
 
+                                            <strong>Tel. No.:</strong> <a href="tel:0124 – 4354782">0124 –
+                                                4354782</a><br>
 
-    </p>
-</div>
-</div>
-<div class="col-md-4">
-<div class="iepf-txt-inner">
-    <p><b>Rajat Lakhanpal</b><br>
-        Sr. Vice President (Corporate Compliance) & Company<br>
-        Secretary
-        <br>
-        Address: SRF Limited
-        <br>
-        Block – C, Sector – 45, Gurugram,
-        <br>
-        Haryana – 122003 <br>
-        <strong>Tel. No.:</strong> <a
-            href="tel:0124-4354589">0124-4354589</a><br>
-        <strong>Fax No.:</strong> <a
-            href="tel:0124-4354589">0124-4354500</a><br>
+                                            <strong>Fax. No.:</strong> 0124-4354500<br>
 
 
-    </p>
-</div>
-</div>
-<div class="col-md-4">
-<div class="iepf-txt-inner">
-    <p><b>Ashish Bharat Ram</b><br>
-        Chairman & Managing Director<br>
-        Address: SRF Limited<br>
-        Block-C, Sector – 45, Gurugram,
-        <br>
-        Haryana – 122003
-        <br>
+                                        </p>
+                                        </div>
+                                        </div>
+                                        <div class="auth">
+                                        <div class="col-md-12">
+                                        <h3>KMPs authorized for the purpose of determining Materiality:</h3>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="iepf-txt-inner">
+                                            <p><b>Rahul Jain</b><br>
+                                                President & Chief Financial Officer<br>
+                                                Address: SRF Limited<br>
+                                                Block-C, Sector – 45, Gurugram,
+                                                <br>
+                                                Haryana – 122003
+                                                <br>
 
-        <strong>Tel. No.:</strong> <a
-            href="tel:0124-4354591">0124-4354591</a><br>
+                                                <strong>Tel. No.:</strong> <a href="tel:0124 – 4354726">0124
+                                                    – 4354726</a><br>
 
 
-    </p>
-</div>
-</div>
-</div>
+                                            </p>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="iepf-txt-inner">
+                                            <p><b>Rajat Lakhanpal</b><br>
+                                                Sr. Vice President (Corporate Compliance) & Company<br>
+                                                Secretary
+                                                <br>
+                                                Address: SRF Limited
+                                                <br>
+                                                Block – C, Sector – 45, Gurugram,
+                                                <br>
+                                                Haryana – 122003 <br>
+                                                <strong>Tel. No.:</strong> <a
+                                                    href="tel:0124-4354589">0124-4354589</a><br>
+                                                <strong>Fax No.:</strong> <a
+                                                    href="tel:0124-4354589">0124-4354500</a><br>
+
+
+                                            </p>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="iepf-txt-inner">
+                                            <p><b>Ashish Bharat Ram</b><br>
+                                                Chairman & Managing Director<br>
+                                                Address: SRF Limited<br>
+                                                Block-C, Sector – 45, Gurugram,
+                                                <br>
+                                                Haryana – 122003
+                                                <br>
+
+                                                <strong>Tel. No.:</strong> <a
+                                                    href="tel:0124-4354591">0124-4354591</a><br>
+
+
+                                            </p>
+                                        </div>
+                                        </div>
+                                        </div>
                                     </div>
                                     <div class="row investor-content" id="share-transfer-system" style="display:none">
                                         <div class="faq-accordion" id="faqAccordion">
