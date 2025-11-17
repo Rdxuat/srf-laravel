@@ -140,7 +140,7 @@
                                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#bod{{ $director->id }}">
                                                                     <div class="bod-box">
                                                                         <div class="light-bluebg">
-                                                                            <div class="bod-img"><img class="img-responsive" src="{{ asset('storage/uploads/bod/' . $director->image) }}" alt="{{ $director->name }}"></div>
+                                                                            <div class="bod-img"><img class="img-responsive" src="{{ asset('storage/files/bod/' . $director->image) }}" alt="{{ $director->name }}"></div>
                                                                         </div>
                                                                         <div class="bod-text">
                                                                             <h4>{{ $director->name }} <span>{{ $director->designation }}</span></h4>
@@ -251,7 +251,7 @@
                                     </div>
                                     <div class="col-md-5">
                                         <div class="pop-img">
-                                            <img class="img-responsive" src="{{ asset('storage/uploads/bod/' . $director->modal_image) }}" alt="{{ $director->name }}">
+                                            <img class="img-responsive" src="{{ asset('storage/files/bod/' . $director->modal_image) }}" alt="{{ $director->name }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
