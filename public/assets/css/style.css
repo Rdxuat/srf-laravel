@@ -10996,7 +10996,7 @@ background-color: #24B4DF;
     content: "";
     width: 20px;
     height: 20px;
-    background-image: url("../images/col-out-icon.webp");
+    background-image: url("/assets/images/col-out-icon.webp");
     background-size: contain;
     margin-right: 10px;
 }
@@ -11006,7 +11006,7 @@ background-color: #24B4DF;
     content: "";
     width: 20px;
     height: 20px;
-    background-image: url("../images/col-in-icon.webp");
+    background-image: url("/assets/images/col-in-icon.webp");
     background-size: contain;
     margin-right: 10px;
 }
