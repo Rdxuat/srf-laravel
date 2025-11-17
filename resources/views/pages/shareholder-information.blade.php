@@ -142,10 +142,10 @@
 
                                         </div>
                                     </div>
-                                    <div class="row investor-content" id="regulation46" style="display:none">
+                                    <div class="investor-content" id="regulation46" style="display:none">
                                         <!--  -->
                                         <div class="table-responsive">
-                                            <table style="margin-top: 20px;">
+                                            <table>
                                                 <thead>
                                                     <tr style="background: antiquewhite;">
                                                     <th scope="col">Name</th>
@@ -835,7 +835,7 @@
                                         </div>
                                         <!--  -->
                                     </div>
-                                    <div class="row investor-content" id="nomination" style="display:none">
+                                    <div class="investor-content" id="nomination" style="display:none">
                                         <!--  -->
                                         <div class="faq-accordion" id="faqAccordion">
 
@@ -1107,7 +1107,7 @@
                                         </div>
                                         </div>
                                     </div>
-                                    <div class="row investor-content" id="share-transfer-system" style="display:none">
+                                    <div class="investor-content" id="share-transfer-system" style="display:none">
                                         <div class="faq-accordion" id="faqAccordion">
 
                                             <div class="faq-item">
@@ -1292,37 +1292,35 @@
                                         </div>
 
                                     </div>
-                                    <div class="row investor-content" id="shareholder-services" style="display:none">
-                                        <div class="col-md-12">
-                                            <div class="iepf-txt-inner max">
-                                                <b>SRF</b>
-                                                <p>Investors can get their share/dividend related grievances
-                                                    redressed at the following address:-</p>
-                                                <p><b>For Shareholders and Compliance matters</b></p>
-                                                <p><br>
-                                                    <strong>Rajat Lakhanpal</strong>
-                                                    <br>
-                                                    Sr. Vice President (Corporate Compliance) &amp; Company
-                                                    Secretary
-                                                    <br>
-                                                    Address: SRF Limited
-                                                    <br>
-                                                    Block-C, Sector – 45, Gurugram,
-                                                    <br>
-                                                    Haryana – 122003
-                                                    <br>
-                                                    Email ID: <a href="mailto:cs@srf.com">cs@srf.com</a>
-                                                    <br>
-                                                    Phone No.: <a href="tel:0124 – 4354782">0124 – 4354782</a>
-                                                    <br>
-                                                    Fax. No.: 0124-4354500
-                                                    <br>
+                                    <div class="investor-content" id="shareholder-services" style="display:none">
+                                        <div class="iepf-txt-inner max">
+                                            <b>SRF</b>
+                                            <p>Investors can get their share/dividend related grievances
+                                                redressed at the following address:-</p>
+                                            <p><b>For Shareholders and Compliance matters</b></p>
+                                            <p><br>
+                                                <strong>Rajat Lakhanpal</strong>
+                                                <br>
+                                                Sr. Vice President (Corporate Compliance) &amp; Company
+                                                Secretary
+                                                <br>
+                                                Address: SRF Limited
+                                                <br>
+                                                Block-C, Sector – 45, Gurugram,
+                                                <br>
+                                                Haryana – 122003
+                                                <br>
+                                                Email ID: <a href="mailto:cs@srf.com">cs@srf.com</a>
+                                                <br>
+                                                Phone No.: <a href="tel:0124 – 4354782">0124 – 4354782</a>
+                                                <br>
+                                                Fax. No.: 0124-4354500
+                                                <br>
 
-                                                </p>
+                                            </p>
 
-                                            </div>
                                         </div>
-                                        <div class="container contact-form">
+                                        <div class="contact-form">
                                             <form>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -1423,7 +1421,7 @@
 
                                     </div>
                                     <div class="row investor-content" id="survey-forms" style="display:none">
-                                        <div class="container shareform">
+                                        <div class="container shareform kind">
                                             <form>
 
                                                 <!-- Row 1 -->
@@ -1494,14 +1492,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                            </form>
-                                        </div>
-                                        <div class="container kind">
-                                            <h2>Kindly Rate our service in following areas</h2>
-
-                                            <form>
-                                                <!-- Transfer/Demat of Shares -->
                                                 <div class="row survey-question">
                                                     <div class="col-md-6">
                                                         <label class="radio-inline">1.1 Transfer/Demat of
@@ -1695,7 +1685,6 @@
 
                                             </form>
                                         </div>
-
                                     </div>
                                     <div id="resultContainer" class="mt-4">
                                     </div>

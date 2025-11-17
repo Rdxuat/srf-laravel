@@ -83,14 +83,14 @@
                                                             @endif
                                                         </select>
 
-                                                        <span id="yearError" style="color:red; display:none; position:absolute;bottom:-34px">Above Field is
+                                                        <span id="yearError" style="display:none;" class="dividendSpans">Above Field is
                                                             Required</span>
                                                     </div>
 
                                                     <div class="form-group" style="position:relative;">
                                                         <label>Enter your DP ID / Client ID / Folio Number :</label>
                                                         <input type="text" class="form-control" name="dpid_or_folio" id="dpid_or_folio" value="" required="">
-                                                        <span id="dpidError" style="color:red; display:none; position:absolute;bottom:-34px">Above Field is
+                                                        <span id="dpidError" style="display:none;" class="dividendSpans">Above Field is
                                                             Required</span>
                                                     </div>
 
@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="row phirZ" id="listing" style="display:none">
                                         <div class="col-md-12">
-                                            <div class="listing-table invest-bg">
+                                            <div class="listing-table">
                                                 <table class="table table-bordered">
                                                     <thead>
                                                         <tr>

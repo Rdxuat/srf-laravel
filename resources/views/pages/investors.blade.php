@@ -10,9 +10,9 @@
                                 <a class="nav-link active" id="in-tab-1" data-bs-toggle="tab" data-bs-target="#in-tab-a"
                                     type="button" role="tab" aria-controls="in-tab-a" aria-selected="true">
                                     Financial Reports & Results
-                                </a>
+                        </a>
                             </li>
-                            <li class="nav-item" role="presentation">
+          <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="in-tab-2" data-bs-toggle="tab" data-bs-target="#in-tab-b"
                                     type="button" role="tab" aria-controls="in-tab-b" aria-selected="false">
                                     Stock Information

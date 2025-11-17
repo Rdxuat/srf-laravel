@@ -221,7 +221,25 @@ $(document).ready(function () {
                         <div class="web-pdf">${pdfLink} ${webLink}</div>
                     </div>
                 </div>`;
-            } else {
+            } 
+            // else if(activeCategory === 'regulation30') {
+            //     const filePath = `${base_url}/storage/files/${item.file}`;
+            //     let iconPath = `${base_url}/assets/images/invest/pdf-icon.svg`; 
+            //     htmlSegment = `
+            //     <div class="col-md-6 investorsAll" id="${id}">
+            //         <a href="${filePath}" target="_blank">
+            //             <div class="earning">
+            //                 <div class="leftData">
+            //                     <p>${item.title}</p>
+            //                     <div class="pdfIcon">
+            //                         <img src="${iconPath}" class="img-responsive" alt="">
+            //                     </div>
+            //                 </div>
+            //             </div>
+            //         </a>
+            //     </div>`;
+            // }
+            else {
                 const filePath = `${base_url}/storage/files/${item.file}`;
 
                 // 🖼 Choose icon based on category
@@ -342,7 +360,7 @@ $(document).ready(function () {
         const maxRowCount = Math.max(...Object.values(byCategory).map(arr => arr.length), 0);
 
         let html = `
-        <div class="table-responsive earning-call-table">
+        <div class="table-responsive earning-call-table investorMeet">
             <table class="table">
                 <thead>
                     <tr>
