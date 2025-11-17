@@ -11,7 +11,7 @@
         <div class="site-width">
             <nav class="navbar navbar-expand-lg  p-0">
                 <div class="navbar-header  h-100 h4 mb-0 align-self-center logo-bar text-left">  
-                    <a href="https://www.trivenigroup.com/" target="_blank" class="horizontal-logo text-left d-none d-sm-block">
+                    <a href="https://www.srf.com/" target="_blank" class="horizontal-logo text-left d-none d-sm-block">
                         <img src="{{asset('library/dist/images/logo2.png')}}">
                     </a>                   
                 </div>

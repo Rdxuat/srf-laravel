@@ -1710,60 +1710,60 @@
     </script>
     <script>
         document.addEventListener("click", function(e) {
-        const btn = e.target.closest("#faqAccordion .faq-button");
-        if (!btn) return;
+            const btn = e.target.closest("#faqAccordion .faq-button");
+            if (!btn) return;
 
-        const target = document.querySelector(btn.getAttribute("data-bs-target"));
-        if (!target) return;
+            const target = document.querySelector(btn.getAttribute("data-bs-target"));
+            if (!target) return;
 
-        const parent = target.getAttribute("data-bs-parent");
-        const isOpen = target.classList.contains("show");
+            const parent = target.getAttribute("data-bs-parent");
+            const isOpen = target.classList.contains("show");
 
-        if (parent) {
-        document.querySelectorAll(parent + " .faq-collapse.show")
-        .forEach((el) => {
-        if (el !== target) toggle(el, false);
-        });
-        }
+            if (parent) {
+                document.querySelectorAll(parent + " .faq-collapse.show")
+                    .forEach((el) => {
+                        if (el !== target) toggle(el, false);
+                    });
+            }
 
-        toggle(target, !isOpen, btn);
+            toggle(target, !isOpen, btn);
         });
 
         function toggle(el, open, btn) {
-        let start, end;
+            let start, end;
 
-        if (open) {
-        el.classList.add("collapse", "show");
-        const fullHeight = el.scrollHeight;
-        el.classList.remove("show");
+            if (open) {
+                el.classList.add("collapse", "show");
+                const fullHeight = el.scrollHeight;
+                el.classList.remove("show");
 
-        start = 0;
-        end = fullHeight;
-        } else {
-        start = el.scrollHeight;
-        end = 0;
-        }
+                start = 0;
+                end = fullHeight;
+            } else {
+                start = el.scrollHeight;
+                end = 0;
+            }
 
-        el.style.height = start + "px";
-        el.classList.add("collapsing");
-        el.classList.remove("collapse", "show");
+            el.style.height = start + "px";
+            el.classList.add("collapsing");
+            el.classList.remove("collapse", "show");
 
-        requestAnimationFrame(() => {
-        el.style.height = end + "px";
-        });
+            requestAnimationFrame(() => {
+                el.style.height = end + "px";
+            });
 
-        el.addEventListener("transitionend", function handler() {
-        el.classList.remove("collapsing");
-        el.classList.add("collapse");
-        if (open) el.classList.add("show");
-        el.style.height = "";
-        el.removeEventListener("transitionend", handler);
-        });
+            el.addEventListener("transitionend", function handler() {
+                el.classList.remove("collapsing");
+                el.classList.add("collapse");
+                if (open) el.classList.add("show");
+                el.style.height = "";
+                el.removeEventListener("transitionend", handler);
+            });
 
-        if (btn) {
-        btn.classList.toggle("collapsed", !open);
-        btn.setAttribute("aria-expanded", open);
-        }
+            if (btn) {
+                btn.classList.toggle("collapsed", !open);
+                btn.setAttribute("aria-expanded", open);
+            }
         }
     </script>
     <script src="{{ asset('assets/js/investor.js') }}" type="text/javascript"></script>

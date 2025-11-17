@@ -146,16 +146,16 @@
                                                                             <h4>{{ $director->name }} <span>{{ $director->designation }}</span></h4>
                                                                         </div>
                                                                         @php
-        $dotColors = [
-            1 => 'blue',
-            2 => 'green',
-            3 => 'yellow',
-            4 => 'Ltblue',
-            5 => 'Litblue',
-        ];
-        $committees = $director->committe
-            ? array_map('trim', explode(',', $director->committe))
-            : [];
+                                                                        $dotColors = [
+                                                                            1 => 'blue',
+                                                                            2 => 'green',
+                                                                            3 => 'yellow',
+                                                                            4 => 'Ltblue',
+                                                                            5 => 'Litblue',
+                                                                        ];
+                                                                        $committees = $director->committe
+                                                                            ? array_map('trim', explode(',', $director->committe))
+                                                                            : [];
                                                                         @endphp
                                                                         @if(!empty($committees))
                                                                             <div class="dot-wrapper">

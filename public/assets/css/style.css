@@ -5577,7 +5577,7 @@ html.modal-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid #5555555c;
   padding-bottom: 21px;
   min-height: 110px;
 }
@@ -12613,4 +12613,7 @@ table.chemTable {
 }
 #shareholder-services .contact-form{
   padding: 0;
+}
+.iepf-txt-inner a{
+  color: #42d6e7;
 }
