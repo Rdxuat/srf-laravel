@@ -94,7 +94,6 @@ $(document).ready(function () {
             data: {
                 category: activeCategory,
                 year: selectedYear,
-                // only send quarter for categories that actually use it
                 quarter: quarterCategories.includes(activeCategory) ? selectedQuarter : null
             },
             success: function (data) {
@@ -105,8 +104,6 @@ $(document).ready(function () {
             }
         });
     }
-
-    // 🧠 Load years, quarters & data together
     function loadAllData() {
         $('#resultContainer').html('<div class="text-center">Loading data...</div>');
 
@@ -118,27 +115,11 @@ $(document).ready(function () {
                     $('#resultContainer').html('<p>No data found.</p>');
                     return;
                 }
-
-                // 🔹 Extract all available years
                 const years = [...new Set(allData.map(d => d.year))].filter(Boolean).sort((a, b) => b - a);
                 const latestYear = years[0];
                 selectedYear = selectedYear || latestYear;
-
-                // Populate year dropdown instantly
                 const yearOptions = years.map(y => `<option value="${y}">${y}</option>`).join('');
                 $('#selYear').html(yearOptions).val(selectedYear);
-
-                // 🔹 Extract quarters for that year
-                // const quarters = [...new Set(allData.filter(d => d.year == selectedYear).map(d => d.quarter))].filter(Boolean).reverse();
-                // if (quarters.length) {
-                //     selectedQuarter = selectedQuarter || quarters[0];
-                //     const quarterOptions = quarters.map(q => `<option value="${q}">${q.toUpperCase()}</option>`).join('');
-                //     $('#selQuarter').html(quarterOptions).val(selectedQuarter);
-                //     $('#quarterBox').show();
-                // } else {
-                //     $('#quarterBox').hide();
-                //     selectedQuarter = null;
-                // }
                 let quarters = [...new Set(
                     allData.filter(d => d.year == selectedYear).map(d => d.quarter)
                 )]
@@ -221,32 +202,11 @@ $(document).ready(function () {
                         <div class="web-pdf">${pdfLink} ${webLink}</div>
                     </div>
                 </div>`;
-            } 
-            // else if(activeCategory === 'regulation30') {
-            //     const filePath = `${base_url}/storage/files/${item.file}`;
-            //     let iconPath = `${base_url}/assets/images/invest/pdf-icon.svg`; 
-            //     htmlSegment = `
-            //     <div class="col-md-6 investorsAll" id="${id}">
-            //         <a href="${filePath}" target="_blank">
-            //             <div class="earning">
-            //                 <div class="leftData">
-            //                     <p>${item.title}</p>
-            //                     <div class="pdfIcon">
-            //                         <img src="${iconPath}" class="img-responsive" alt="">
-            //                     </div>
-            //                 </div>
-            //             </div>
-            //         </a>
-            //     </div>`;
-            // }
-            else {
+            }else {
                 const filePath = `${base_url}/storage/files/${item.file}`;
-
-                // 🖼 Choose icon based on category
-                let iconPath = `${base_url}/assets/images/invest/pdf-icon.svg`; // default icon
-
+                let iconPath = `${base_url}/assets/images/invest/pdf-icon.svg`;
                 if (activeCategory === 'annual-general') {
-                    iconPath = `${base_url}/assets/images/invest/audio-recording-icon.svg`; // your new icon
+                    iconPath = `${base_url}/assets/images/invest/audio-recording-icon.svg`; 
                 }
 
                 htmlSegment = `
@@ -276,8 +236,6 @@ $(document).ready(function () {
             'Transcript (Audio)',
             'Transcript (PDF)'
         ];
-
-        // category → db record mapping
         const byCategory = {};
         data.forEach(item => {
             if (item.category) byCategory[item.category] = item;
@@ -300,8 +258,7 @@ $(document).ready(function () {
         columns.forEach(col => {
             const item = byCategory[col];
 
-            // ICON SELECTOR
-            let iconFile = 'pdf-icon.svg'; // default
+            let iconFile = 'pdf-icon.svg'; 
             if (col === 'Transcript (Audio)') {
                 iconFile = 'audio-recording-icon.svg';
             }
@@ -346,8 +303,6 @@ $(document).ready(function () {
             'Transcript (Audio)',
             'Transcript (PDF)'
         ];
-
-        // Group by category
         const byCategory = {};
         data.forEach(item => {
             if (!byCategory[item.category]) {
@@ -355,8 +310,6 @@ $(document).ready(function () {
             }
             byCategory[item.category].push(item);
         });
-
-        // Determine the max count (how many rows we need)
         const maxRowCount = Math.max(...Object.values(byCategory).map(arr => arr.length), 0);
 
         let html = `

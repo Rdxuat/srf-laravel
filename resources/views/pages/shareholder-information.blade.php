@@ -889,11 +889,11 @@
                                                 <div id="faq3" class="faq-collapse collapse"
                                                     data-bs-parent="#faqAccordion">
                                                     <div class="faq-body">
-                                                        {{-- The individual shareholders can avail of the nomination
+                                                        The individual shareholders can avail of the nomination
                                                         facility by submitting the prescribed Form 2B to the
                                                         Company’s RTA duly completed in all respects. Form 2B may be
-                                                        downloaded from the Company’s website, www.trivenigroup.com
-                                                        under the Section “Investor”. --}}
+                                                        downloaded from the Company’s website, srf.com
+                                                        under the Section “Investor”.
                                                     </div>
                                                 </div>
                                             </div>
