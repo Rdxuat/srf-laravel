@@ -14,8 +14,6 @@ Route::get('/', function () {
 
 Route::get('/investors/upload', [InvestorUploadController::class, 'index']);
 Route::post('/investors/upload', [InvestorUploadController::class, 'upload'])->name('investors.upload');
-Route::post('/search-unclaimed-dividend', [App\Http\Controllers\InvestorUploadController::class, 'search'])->name('search.unclaimed');
-
 
 Route::prefix('investor-relations')->group(function () {
     Route::get('/financial-results', [InvestorController::class, 'financialResultIndex'])->name('financial-result');
@@ -60,6 +58,7 @@ Route::prefix('investor-relations')->group(function () {
 
 
     Route::get('/get-investor-data', [InvestorController::class, 'getInvestorData'])->name('get-investor-data');
+    Route::post('/search-unclaimed-dividend', [InvestorUploadController::class, 'search'])->name('search.unclaimed');
 
 });
 Route::get('/aos', function () {
