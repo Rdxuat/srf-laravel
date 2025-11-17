@@ -5566,7 +5566,7 @@ html.modal-open {
 }
 
 .investor-tab.modTab .inTabs .nav-link {
-  padding: 7px 28px 7px 28px;
+  padding: 10px 20px;
 }
 
 .invest-bg.newBg {
@@ -11905,7 +11905,7 @@ table.chemTable {
 /* Main wrapper */
 #faqAccordion.faq-accordion .faq-item {
   border: none;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   border-radius: 8px;
   border-bottom: 1px solid;
   border-radius: 0;
@@ -12397,7 +12397,7 @@ table.chemTable {
 
 .tranferForm {
   background: no-repeat padding-box #fff;
-  box-shadow: 0 3px 6px #00000029;
+  box-shadow: 0 1px 6px #00000029
 }
 
 .tranferForm h4 {
@@ -12433,13 +12433,6 @@ table.chemTable {
   padding-bottom: 5px;
   font-weight: 600;
 }
-
-.tranferForm .form-group .form-control {
-  border-radius: 0;
-  box-shadow: none;
-  border: 1px solid #221f1f;
-}
-
 .tranferForm .form-group .form-control {
   display: block;
   width: 100%;
@@ -12465,6 +12458,7 @@ table.chemTable {
   font-size: 14px;
   line-height: 16px;
   display: inline-block;
+  border-radius: 20px;
 }
 
 .submitResults {
