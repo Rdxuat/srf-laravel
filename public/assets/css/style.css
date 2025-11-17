@@ -5566,7 +5566,7 @@ html.modal-open {
 }
 
 .investor-tab.modTab .inTabs .nav-link {
-  padding: 7px 20px 7px 28px;
+  padding: 7px 28px 7px 28px;
 }
 
 .invest-bg.newBg {
@@ -12616,4 +12616,18 @@ table.chemTable {
 }
 .iepf-txt-inner a{
   color: #42d6e7;
+}
+.investor-content ol{
+  padding: 15px;
+}
+.investor-content ol li{
+  padding: 5px 0px;
+}
+.iepf-txt-inner h4{
+  font-size: 16px;
+  line-height: 21px;
+  color: #4D4D4F;
+}
+.iepf-txt-inner p span{
+  display: block;
 }
