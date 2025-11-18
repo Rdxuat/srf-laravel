@@ -1,8 +1,13 @@
 $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr("content")
+        }
+    });
     // --- Configuration ---
-    const quarterCategories = ['financial', 'investor', 'annual-general','earning'];
-    const staticCategories = ['credit-ratings', 'overview', 'bod','dividend-shares','listing','regulation46','nomination','registrar','shareholder-services','survey-forms','share-transfer-system'];
-    const noYearCategories = ['policy', 'kyc-forms', 'other', 'tds-instructions','dematerialisation'];
+    const quarterCategories = ['financial', 'investor', 'annual-general', 'earning'];
+    const staticCategories = ['credit-ratings', 'overview', 'bod', 'dividend-shares', 'listing', 'regulation46', 'nomination', 'registrar', 'shareholder-services', 'survey-forms', 'share-transfer-system'];
+    const noYearCategories = ['policy', 'kyc-forms', 'other', 'tds-instructions', 'dematerialisation'];
 
     const activeCategoryDefault = window.investorConfig.activeTab;
     const getInvestorDataUrl = window.investorConfig.getInvestorDataUrl;
@@ -56,7 +61,7 @@ $(document).ready(function () {
     // --- Functions ---
 
     function handleStaticSections(category) {
-        $('#credit-ratings, #dematerialisation, #overview, #bod ,#dividend-shares','#listing','#regulation46','#nomination','#registrar','#shareholder-services','#survey-forms','#share-transfer-system').hide();
+        $('#credit-ratings, #dematerialisation, #overview, #bod ,#dividend-shares', '#listing', '#regulation46', '#nomination', '#registrar', '#shareholder-services', '#survey-forms', '#share-transfer-system').hide();
 
         if (staticCategories.includes(category)) {
             $('#resultContainer').hide();
@@ -124,18 +129,18 @@ $(document).ready(function () {
                     allData.filter(d => d.year == selectedYear).map(d => d.quarter)
                 )]
                     .filter(Boolean)
-                    .sort()        
-                    .reverse();   
+                    .sort()
+                    .reverse();
 
                 if (quarters.length) {
-                    selectedQuarter = quarters[0]; 
+                    selectedQuarter = quarters[0];
 
                     const quarterOptions = quarters
                         .map(q => `<option value="${q}">${q.toUpperCase()}</option>`)
                         .join('');
                     $('#selQuarter').html(quarterOptions);
                     $('#selQuarter').val(selectedQuarter);
-                    $('#selQuarter').trigger('change'); 
+                    $('#selQuarter').trigger('change');
 
                     $('#quarterBox').show();
                 } else {
@@ -202,11 +207,11 @@ $(document).ready(function () {
                         <div class="web-pdf">${pdfLink} ${webLink}</div>
                     </div>
                 </div>`;
-            }else {
+            } else {
                 const filePath = `${base_url}/storage/files/${item.file}`;
                 let iconPath = `${base_url}/assets/images/invest/pdf-icon.svg`;
                 if (activeCategory === 'annual-general') {
-                    iconPath = `${base_url}/assets/images/invest/audio-recording-icon.svg`; 
+                    iconPath = `${base_url}/assets/images/invest/audio-recording-icon.svg`;
                 }
 
                 htmlSegment = `
@@ -258,7 +263,7 @@ $(document).ready(function () {
         columns.forEach(col => {
             const item = byCategory[col];
 
-            let iconFile = 'pdf-icon.svg'; 
+            let iconFile = 'pdf-icon.svg';
             if (col === 'Transcript (Audio)') {
                 iconFile = 'audio-recording-icon.svg';
             }
@@ -367,5 +372,100 @@ $(document).ready(function () {
         $('#resultContainer').html(html);
     }
 
+    $('#submitUnclaimedForm').click(function () {
 
+        let year = $('#year').val();
+        let folio = $('#dpid_or_folio').val();
+
+        $("#yearError").hide();
+        $("#dpidError").hide();
+
+        let hasError = false;
+
+        if (!year) {
+            $("#yearError").css("display", "block");
+            hasError = true;
+        }
+
+        if (!folio) {
+            $("#dpidError").css("display", "block");
+            hasError = true;
+        }
+
+        if (hasError) return;
+        $.ajax({
+            url: searchUnclaimedUrl,
+            type: "POST",
+            data: {
+                year: year,
+                dpid_or_folio: folio
+            },
+            success: function (response) {
+                if (!response.status) {
+                    $("#unclaimedDividend").html('<p style="color:red">No records found.</p>');
+                    return;
+                }
+
+                let d = response.data;
+                Object.keys(d).forEach(key => {
+                    if (d[key] === null) d[key] = "";
+                });
+
+                let investorName = [d.investor_first_name, d.investor_middle_name, d.investor_last_name]
+                    .filter(n => n && n.trim() !== "")
+                    .join(" ");
+
+                let husbandName = [d.husband_first_name, d.husband_middle_name, d.husband_last_name]
+                    .filter(n => n && n.trim() !== "")
+                    .join(" ");
+
+                let html = `
+                        <h3>${d.financial_year}</h3>
+                        <div class="resultsThree">
+                            <div>
+                                <p>Name:<span> ${investorName}</span></p>
+                                <p>Father/Husband Name: <span>${husbandName}</span></p>
+                                <p>Address: <span>${d.address}</span></p>
+                            </div>
+                            <div>
+                                <p>District: <span> ${d.district}</span></p>
+                                <p>State: <span>${d.state}</span></p>
+                                <p>Country: <span>${d.country}</span></p>
+                                <p>Pin Code: <span>${d.pin_code}</span></p>
+                            </div>
+                            <div class="orangResult">
+                                <div class="topOrg">
+                                    <div>
+                                        <p>Investment Type: <span>${d.investment_type}</span></p>
+                                    </div>
+                                    <div>
+                                        <p>Amount Transferred: <span>${d.ammount_transferred}</span></p>
+                                    </div>
+                                </div>
+                                <div class="botOrg">
+                                    <p>Proposed Date of transfer to IEPF: <span>${d.proposed_date}</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="folioNo">
+                            <div>
+                                <p>DPid-Clid / Folio: <span>${d.dp_id_client_id || d.folio_number}</span></p>
+                                <p>PAN No: <span>${d.pan}</span></p>
+                                <p>Aadhar: <span>${d.aadhar_number}</span></p>
+                            </div>
+                            <div>
+                                <p>Nominee: <span>${d.nominee_name}</span></p>
+                                <p>Joint Holder: <span>${d.joint_holder_name}</span></p>
+                            </div>
+                            <div>
+                                <p>Remarks: <span>${d.remarks}</span></p>
+                            </div>
+                        </div>
+                    `;
+
+                $("#unclaimedDividend").html(html);
+            }
+        });
+    });
 });

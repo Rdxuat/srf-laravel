@@ -8,6 +8,7 @@
 
   <title>{{ $data['meta_title'] ?? 'Srf' }}</title>
   <meta property="og:title" content="{{ $data['meta_title'] ?? 'Srf' }}" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   @if ($data['meta_desc'])
     <meta name="description" content="{{ $data['meta_desc'] ?? 'Srf' }}">
     <meta property="og:description" content="{{ $data['meta_desc'] ?? 'Srf' }}" />
