@@ -20,5 +20,11 @@ class BoardOfDirectors extends Model
         'intro',
         'description',
         'committe',
+        'committe_type',
+    ];
+
+     protected $casts = [
+        'committe'      => 'array',
+        'committe_type' => 'array',
     ];
 }

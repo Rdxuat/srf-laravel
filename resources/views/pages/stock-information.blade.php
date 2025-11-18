@@ -74,7 +74,7 @@
                                                 <form id="unclaimedForm" method="post">
                                                     <div class="form-group">
                                                         <label>Select Year :</label>
-                                                        <select class="form-control" name="year" id="year" required>
+                                                        <select class="form-control select-pill dividendYearSel" name="year" id="year" required>
                                                             <option value="">Select Year</option>
                                                             @if(isset($data['years']) && count($data['years']) > 0)
                                                                 @foreach($data['years'] as $year)

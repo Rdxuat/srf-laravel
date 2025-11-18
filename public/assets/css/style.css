@@ -6812,7 +6812,7 @@ section.awards-wrap.locOur {
 
 .myBod .bod-box {
   border: 1px solid #0095DA;
-  min-height: 398px;
+  min-height: 401px;
 }
 
 .myBod .bod-text h4 {
@@ -12624,4 +12624,11 @@ table.chemTable {
 }
 .iepf-txt-inner p span{
   display: block;
+}
+.dividendYearSel{
+  background-image: url("/assets/images/noun-arrow.svg")!important;
+  background-size: 12px!important;
+}
+.committee-box .box{
+  flex-shrink: 0;
 }

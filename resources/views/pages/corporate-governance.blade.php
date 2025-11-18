@@ -125,72 +125,101 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row office-content" id="bod" style="display:none;">
-                                        <div class="myBod">
-                                            <div class="col-md-12">
-                                                <div class="bodSec">
-                                                    <h2>Board of Directors</h2>
-                                                </div>
+        <div class="row office-content" id="bod" style="display:none;">
+            <div class="myBod">
+                <div class="col-md-12">
+                    <div class="bodSec">
+                        <h2>Board of Directors</h2>
+                    </div>
+                </div>
+                <div class="childSec">
+                    <div class="new">
+                        @if(isset($data['directors']) && count($data['directors']) > 0)
+                            @foreach ($data['directors'] as $director)
+                                    <div class="col-md-4">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#bod{{ $director->id }}">
+                                        <div class="bod-box">
+                                            <div class="light-bluebg">
+                                                <div class="bod-img"><img class="img-responsive" src="{{ asset('storage/files/bod/' . $director->image) }}" alt="{{ $director->name }}"></div>
                                             </div>
-                                            <div class="childSec">
-                                                <div class="new">
-                                                    @if(isset($data['directors']) && count($data['directors']) > 0)
-                                                        @foreach ($data['directors'] as $director)
-                                                                <div class="col-md-4">
-                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#bod{{ $director->id }}">
-                                                                    <div class="bod-box">
-                                                                        <div class="light-bluebg">
-                                                                            <div class="bod-img"><img class="img-responsive" src="{{ asset('storage/files/bod/' . $director->image) }}" alt="{{ $director->name }}"></div>
-                                                                        </div>
-                                                                        <div class="bod-text">
-                                                                            <h4>{{ $director->name }} <span>{{ $director->designation }}</span></h4>
-                                                                        </div>
-                                                                        @php
-                                                                        $dotColors = [
-                                                                            1 => 'blue',
-                                                                            2 => 'green',
-                                                                            3 => 'yellow',
-                                                                            4 => 'Ltblue',
-                                                                            5 => 'Litblue',
-                                                                        ];
-                                                                        $committees = $director->committe
-                                                                            ? array_map('trim', explode(',', $director->committe))
-                                                                            : [];
-                                                                        @endphp
-                                                                        @if(!empty($committees))
-                                                                            <div class="dot-wrapper">
-                                                                                @foreach($committees as $c)
-                                                                                    @if(isset($dotColors[$c]))
-                                                                                        <span class="dot {{ $dotColors[$c] }}"></span>
-                                                                                    @endif
-                                                                                @endforeach
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                                <div class="committee-box">
-                                                    <div class="committee-title">Committees</div>
-                                                    <div class="committee-list">
-                                                        <div class="committee-item"><span class="dot audit"></span>Audit
-                                                            Committee</div>
-                                                        <div class="committee-item"><span class="dot stakeholder"></span>Stakeholder
-                                                            Relationship Committee</div>
-                                                        <div class="committee-item"><span class="dot nomination"></span>Nomination and
-                                                            Remuneration Committee</div>
-                                                        <div class="committee-item"><span class="dot csr"></span>CSR
-                                                            Committee</div>
-                                                        <div class="committee-item"><span class="dot risk"></span>Risk
-                                                            Management Committee
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="bod-text">
+                                                <h4>{{ $director->name }} <span>{{ $director->designation }}</span></h4>
+                                            </div>
+                                            <div class="smallLetter">
+                                                @if(!empty($director->committe) && is_array($director->committe))
+                                                    @foreach($director->committe as $index => $letter)
+                                                        @php
+                                                            $color = $director->committe_type[$index] ?? 'grey';
+                                                        @endphp
+                                                        <h5 class="{{ $color }}">{{ $letter }}</h5>
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="committee-box">
+                        <div class="committee-title">Committees</div>
+                        <div class="row mb20">
+                    <div class="col-md-3">
+                        <div class="risk">
+                            <div class="box blue"></div>
+                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Risk Management Committee</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="risk">
+                            <div class="box green"></div>
+                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Nomination &amp; Remuneration Committee</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="risk">
+                            <div class="box red"></div>
+                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Stakeholders Relationship Committee</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="cair">
+                            <div class="circ">
+                                <h5>C</h5>
+                                <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Chairperson</p>
+                            </div>
+                            <div class="circ">
+                                <h5>M</h5>
+                                <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb20">
+                    <div class="col-md-3">
+                        <div class="risk">
+                            <div class="box orange"></div>
+                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Audit Committee</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="risk">
+                            <div class="box grey"></div>
+                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Corporate Social Responsibility Committee</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="risk">
+                            <div class="box yellow"></div>
+                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Committee of Directors - Financial Resources</p>
+                        </div>
+                    </div>
+
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
                                     <div id="resultContainer" class="mt-4">
                                     </div>
                                 </div>
