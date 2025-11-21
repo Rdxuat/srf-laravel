@@ -243,18 +243,6 @@
         };
     </script>
     <script src="{{ asset('assets/js/investor.js') }}" type="text/javascript"></script>
-    <script>
-    document.addEventListener('show.bs.modal', (event) => {
-        document.documentElement.classList.add('modal-open');
-        document.body.classList.add('modal-open');
-    });
-    document.addEventListener('hidden.bs.modal', (event) => {
-        if (document.querySelectorAll('.modal.show').length === 0) {
-            document.documentElement.classList.remove('modal-open');
-            document.body.classList.remove('modal-open');
-        }
-    });
-    </script>
 @endpush
 @push('modals')
     @if(isset($data['directors']) && count($data['directors']) > 0)
@@ -301,4 +289,12 @@
             </div>
         @endforeach
     @endif
+    <div class="modal fade" id="protectedPdfModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-body" id="protectedPdfContainer" style="height:80vh;">
+                </div>
+            </div>
+        </div>
+    </div>
 @endpush

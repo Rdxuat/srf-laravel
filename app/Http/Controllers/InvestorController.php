@@ -392,7 +392,7 @@ class InvestorController extends Controller
         }
 
         $model = $modelMap[$category];
-        $noYearCategories = ['policy', 'other','kyc-forms','tds-instructions','dematerialisation'];
+        $noYearCategories = ['policy','kyc-forms','other','tds-instructions','dematerialisation'];
         $quarterCategories = ['financial', 'investor', 'annual-general','earning'];
         $query = $model::where('status', 1);
         if (!in_array($category, $noYearCategories)) {

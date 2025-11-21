@@ -141,7 +141,6 @@ $(document).ready(function () {
                     $('#selQuarter').html(quarterOptions);
                     $('#selQuarter').val(selectedQuarter);
                     $('#selQuarter').trigger('change');
-
                     $('#quarterBox').show();
                 } else {
                     $('#quarterBox').hide();
@@ -162,7 +161,7 @@ $(document).ready(function () {
     }
     function renderResults(data) {
         if (!data || !data.length) {
-            if (activeCategory === 'earning' || activeCategory === 'investor-meet') {
+            if (activeCategory === 'earning') {
                 renderEarningsTable([]);
                 return;
             }
@@ -188,6 +187,19 @@ $(document).ready(function () {
         data.forEach(item => {
             const id = `${activeCategory}-${item.id}`;
             let htmlSegment = '';
+            const filePath = `${base_url}/storage/files/${item.file}`;
+            const protectedIframe = `
+                <div class="open-protected" data-file="${filePath}">
+                    <div class="earning">
+                        <div class="leftData">
+                            <p>${item.title}</p>
+                            <div class="pdfIcon">
+                                <img src="${base_url}/assets/images/invest/pdf-icon.svg" class="img-responsive" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
             if (activeCategory === 'annual') {
                 const pdfLink = item.file
                     ? `<a href="${base_url}/storage/files/${item.file}" target="_blank">Download PDF</a>`
@@ -208,24 +220,28 @@ $(document).ready(function () {
                     </div>
                 </div>`;
             } else {
-                const filePath = `${base_url}/storage/files/${item.file}`;
                 let iconPath = `${base_url}/assets/images/invest/pdf-icon.svg`;
                 if (activeCategory === 'annual-general') {
                     iconPath = `${base_url}/assets/images/invest/audio-recording-icon.svg`;
                 }
+                const pdfContent = (item.is_protected == 1)
+                    ? protectedIframe
+                    : `
+                <a href="${filePath}" target="_blank">
+                    <div class="earning">
+                        <div class="leftData">
+                            <p>${item.title}</p>
+                            <div class="pdfIcon">
+                                <img src="${iconPath}" class="img-responsive" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `;
 
                 htmlSegment = `
                 <div class="col-md-4 investorsAll" id="${id}">
-                    <a href="${filePath}" target="_blank">
-                        <div class="earning">
-                            <div class="leftData">
-                                <p>${item.title}</p>
-                                <div class="pdfIcon">
-                                    <img src="${iconPath}" class="img-responsive" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    ${pdfContent}
                 </div>`;
             }
 
@@ -342,7 +358,7 @@ $(document).ready(function () {
                 }
                 const iconUrl = `${base_url}/assets/images/invest/${iconFile}`;
 
-                const item = items[row];  // pick row-based entry
+                const item = items[row];  
 
                 if (!item) {
                     html += `<td><span class="empty-cell">-</span></td>`;
@@ -371,6 +387,32 @@ $(document).ready(function () {
 
         $('#resultContainer').html(html);
     }
+
+    $(document).on("click", ".open-protected", function () {
+        let file = $(this).data("file");
+        let iframe = `
+        <iframe 
+            src="${file}#toolbar=0&navpanes=0&scrollbar=0"
+            style="width:100%; height:100%; border:none;">
+        </iframe>
+    `;
+
+        $("#protectedPdfContainer").html(iframe);
+        $("#protectedPdfModal").modal("show");
+    });
+
+    $(document).on('show.bs.modal', function () {
+        $('html').addClass('modal-open');
+        $('body').addClass('modal-open');
+    });
+
+    $(document).on('hidden.bs.modal', function () {
+        if ($('.modal.show').length === 0) {
+            $('html').removeClass('modal-open');
+            $('body').removeClass('modal-open');
+        }
+    });
+
 
     $('#submitUnclaimedForm').click(function () {
 
@@ -468,4 +510,5 @@ $(document).ready(function () {
             }
         });
     });
+
 });

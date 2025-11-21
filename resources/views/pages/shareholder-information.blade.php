@@ -1715,3 +1715,13 @@
 
     <script src="{{ asset('assets/js/investor.js') }}" type="text/javascript"></script>
 @endpush
+@push('modals')
+    <div class="modal fade" id="protectedPdfModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-body" id="protectedPdfContainer" style="height:80vh;">
+                </div>
+            </div>
+        </div>
+    </div>
+@endpush
