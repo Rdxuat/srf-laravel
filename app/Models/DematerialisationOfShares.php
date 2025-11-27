@@ -17,5 +17,6 @@ class DematerialisationOfShares extends Model
         'title',
         'file',
         'status',
+        'is_protected',
     ];
 }

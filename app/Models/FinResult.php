@@ -21,5 +21,6 @@ class FinResult extends Model
         'link_type',
         'file',
         'status',
+        'is_protected',
     ];
 }

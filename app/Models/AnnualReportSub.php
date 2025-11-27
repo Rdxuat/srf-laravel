@@ -18,6 +18,7 @@ class AnnualReportSub extends Model
         'title',
         'file',
         'status',
+        'is_protected',
     ];
 
     protected $casts = [

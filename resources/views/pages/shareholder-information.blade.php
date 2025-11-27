@@ -971,7 +971,8 @@
                                                 <p><strong>Address:</strong> Selenium, Tower B, <span>Plot 31&amp; 32,
                                                         Financial District,</span> <span>Nanakramguda, Serilingampally
                                                         Mandal,</span> <span>Hyderabad, Telangana - 500 032</span>
-                                                    <span>Telugana State, India</span></p>
+                                                    <span>Telugana State, India</span>
+                                                </p>
                                                 <p><strong>Tel. No.:</strong> <a href="tel:040-6716 1585">040-6716
                                                         1585</a></p>
                                                 <p><strong>Fax. No.:</strong> 040-6716 1680</p>
@@ -1439,7 +1440,7 @@
                                                                     name="transfer" value="excellent">
                                                                 Excellent</label>
                                                             <label class="radio-inline"><input type="radio"
-                                                                    name="transfer" value="good" >
+                                                                    name="transfer" value="good">
                                                                 Good</label>
                                                             <label class="radio-inline"><input type="radio"
                                                                     name="transfer" value="needs-improvement"> Needs
@@ -1459,7 +1460,7 @@
                                                                     name="queries" value="excellent">
                                                                 Excellent</label>
                                                             <label class="radio-inline"><input type="radio"
-                                                                    name="queries" value="good" >
+                                                                    name="queries" value="good">
                                                                 Good</label>
                                                             <label class="radio-inline"><input type="radio"
                                                                     name="queries" value="needs-improvement"> Needs
@@ -1482,7 +1483,7 @@
                                                             <label class="radio-inline"><input type="radio"
                                                                     name="interaction" value="good"> Good</label>
                                                             <label class="radio-inline"><input type="radio"
-                                                                    name="interaction" value="needs-improvement" >
+                                                                    name="interaction" value="needs-improvement">
                                                                 Needs Improvement</label>
                                                         </div>
                                                     </div>

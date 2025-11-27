@@ -10,12 +10,14 @@ class KycForm extends Model
 
     protected $primaryKey = 'id';
 
-    public $timestamps = true; // manages created_at and updated_at automatically
+    public $timestamps = true; 
 
     protected $fillable = [
         'user_id',
         'title',
         'file',
+        'link_type',
         'status',
+        'is_protected',
     ];
 }

@@ -18,5 +18,6 @@ class CopGovReport extends Model
         'title',
         'file',
         'status',
+        'is_protected',
     ];
 }

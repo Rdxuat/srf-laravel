@@ -18,5 +18,6 @@ class ShareholdingPattern extends Model
         'title',
         'file',
         'status',
+        'is_protected',
     ];
 }

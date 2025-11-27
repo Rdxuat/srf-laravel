@@ -17,5 +17,6 @@ class OtherDisclosure extends Model
         'title',
         'file',
         'status',
+        'is_protected',
     ];
 }

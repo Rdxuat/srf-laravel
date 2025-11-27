@@ -18,6 +18,7 @@ class AnnualReturn extends Model
         'file',
         'added_at',
         'status',
+        'is_protected',
     ];
 
     protected $casts = [

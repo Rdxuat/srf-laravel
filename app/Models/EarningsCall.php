@@ -20,6 +20,7 @@ class EarningsCall extends Model
         'title',
         'file',
         'status',
+        'is_protected',
     ];
 
 }

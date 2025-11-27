@@ -4,7 +4,6 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr("content")
         }
     });
-    // --- Configuration ---
     const quarterCategories = ['financial', 'investor', 'annual-general', 'earning'];
     const staticCategories = ['credit-ratings', 'overview', 'bod', 'dividend-shares', 'listing', 'regulation46', 'nomination', 'registrar', 'shareholder-services', 'survey-forms', 'share-transfer-system'];
     const noYearCategories = ['policy', 'kyc-forms', 'other', 'tds-instructions', 'dematerialisation'];
@@ -16,18 +15,16 @@ $(document).ready(function () {
     let selectedYear = null;
     let selectedQuarter = null;
 
-    // --- Init ---
     handleStaticSections(activeCategory);
 
     if (!staticCategories.includes(activeCategory)) {
         if (noYearCategories.includes(activeCategory)) {
-            loadResults(); // direct
+            loadResults(); 
         } else {
-            loadAllData(); // load all at once (years + quarters + results)
+            loadAllData(); 
         }
     }
 
-    // --- Events ---
     $('.selCategory').on('change', function () {
         const newCategory = $(this).val();
         const url = $(this).find(':selected').data('url');
@@ -58,7 +55,6 @@ $(document).ready(function () {
         loadResults();
     });
 
-    // --- Functions ---
 
     function handleStaticSections(category) {
         $('#credit-ratings, #dematerialisation, #overview, #bod ,#dividend-shares', '#listing', '#regulation46', '#nomination', '#registrar', '#shareholder-services', '#survey-forms', '#share-transfer-system').hide();
@@ -141,6 +137,7 @@ $(document).ready(function () {
                     $('#selQuarter').html(quarterOptions);
                     $('#selQuarter').val(selectedQuarter);
                     $('#selQuarter').trigger('change');
+
                     $('#quarterBox').show();
                 } else {
                     $('#quarterBox').hide();
@@ -161,7 +158,7 @@ $(document).ready(function () {
     }
     function renderResults(data) {
         if (!data || !data.length) {
-            if (activeCategory === 'earning') {
+            if (activeCategory === 'earning' || activeCategory === 'investor-meet') {
                 renderEarningsTable([]);
                 return;
             }
@@ -189,60 +186,70 @@ $(document).ready(function () {
             let htmlSegment = '';
             const filePath = `${base_url}/storage/files/${item.file}`;
             const protectedIframe = `
-                <div class="open-protected" data-file="${filePath}">
-                    <div class="earning">
-                        <div class="leftData">
-                            <p>${item.title}</p>
-                            <div class="pdfIcon">
-                                <img src="${base_url}/assets/images/invest/pdf-icon.svg" class="img-responsive" alt="">
-                            </div>
-                        </div>
+        <div class="open-protected" data-file="${filePath}">
+            <div class="earning">
+                <div class="leftData">
+                    <p>${item.title}</p>
+                    <div class="pdfIcon">
+                        <img src="${base_url}/assets/images/invest/pdf-icon.svg" class="img-responsive" alt="">
                     </div>
                 </div>
-            `;
+            </div>
+        </div>
+    `;
             if (activeCategory === 'annual') {
+
                 const pdfLink = item.file
                     ? `<a href="${base_url}/storage/files/${item.file}" target="_blank">Download PDF</a>`
                     : '';
+
                 const imgTag = item.image
                     ? `<img src="${base_url}/storage/files/${item.image}" alt="${item.title}" class="img-fluid">`
                     : '';
+
                 const webLink = item.web_link
                     ? `<a href="${item.web_link}" target="_blank">Visit Website</a>`
                     : '';
 
                 htmlSegment = `
-                <div class="col-md-4" id="${id}">
-                    <div class="annual-web">
+                    <div class="col-md-4" id="${id}">
+                        <div class="annual-web">
                             ${imgTag}
-                        <h6>${item.title}</h6>
-                        <div class="web-pdf">${pdfLink} ${webLink}</div>
+                            <h6>${item.title}</h6>
+                            <div class="web-pdf">${pdfLink} ${webLink}</div>
+                        </div>
                     </div>
-                </div>`;
+                `;
+
             } else {
                 let iconPath = `${base_url}/assets/images/invest/pdf-icon.svg`;
                 if (activeCategory === 'annual-general') {
                     iconPath = `${base_url}/assets/images/invest/audio-recording-icon.svg`;
                 }
+                let directLink = filePath;
+                if (item.link_type == 1) {
+                    iconPath = `${base_url}/assets/images/invest/web-ver-icon-2.webp`;
+                    directLink = item.file;
+                }
                 const pdfContent = (item.is_protected == 1)
                     ? protectedIframe
                     : `
-                <a href="${filePath}" target="_blank">
-                    <div class="earning">
-                        <div class="leftData">
-                            <p>${item.title}</p>
-                            <div class="pdfIcon">
-                                <img src="${iconPath}" class="img-responsive" alt="">
+                    <a href="${directLink}" target="_blank">
+                        <div class="earning">
+                            <div class="leftData">
+                                <p>${item.title}</p>
+                                <div class="pdfIcon">
+                                    <img src="${iconPath}" class="img-responsive" alt="">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            `;
-
+                    </a>
+                `;
                 htmlSegment = `
-                <div class="col-md-4 investorsAll" id="${id}">
-                    ${pdfContent}
-                </div>`;
+                    <div class="col-md-4 investorsAll" id="${id}">
+                        ${pdfContent}
+                    </div>
+                `;
             }
 
             html += htmlSegment;
@@ -275,7 +282,8 @@ $(document).ready(function () {
                 </thead>
                 <tbody>
                     <tr>
-    `;
+        `;
+
         columns.forEach(col => {
             const item = byCategory[col];
 
@@ -283,21 +291,30 @@ $(document).ready(function () {
             if (col === 'Transcript (Audio)') {
                 iconFile = 'audio-recording-icon.svg';
             }
-
             const iconUrl = `${base_url}/assets/images/invest/${iconFile}`;
 
             if (item && item.file) {
-                const href = `${base_url}/storage/files/${item.file}`;
+                const fileUrl = `${base_url}/storage/files/${item.file}`;
                 const text = item.title || col;
 
-                html += `
-                <td>
-                    <a href="${href}" target="_blank" class="earn-link">
+                let cellInnerHtml = '';
+                if (item.is_protected == 1) {
+                    cellInnerHtml = `
+                    <div class="earn-link open-protected" data-file="${fileUrl}">
+                        <span class="text">${text}</span>
+                        <img src="${iconUrl}" class="type-icon" alt="">
+                    </div>
+                `;
+                } else {
+                    cellInnerHtml = `
+                    <a href="${fileUrl}" target="_blank" class="earn-link">
                         <span class="text">${text}</span>
                         <img src="${iconUrl}" class="type-icon" alt="">
                     </a>
-                </td>
-            `;
+                `;
+                }
+
+                html += `<td>${cellInnerHtml}</td>`;
             } else {
                 html += `
                 <td>
@@ -312,10 +329,11 @@ $(document).ready(function () {
                 </tbody>
             </table>
         </div>
-        `;
+    `;
 
         $('#resultContainer').html(html);
     }
+
 
     function renderInvestorMeetTable(data) {
         const columns = [
@@ -331,21 +349,22 @@ $(document).ready(function () {
             }
             byCategory[item.category].push(item);
         });
+
         const maxRowCount = Math.max(...Object.values(byCategory).map(arr => arr.length), 0);
 
         let html = `
-        <div class="table-responsive earning-call-table investorMeet">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Notification</th>
-                        <th>Presentation</th>
-                        <th>Transcript (Audio)</th>
-                        <th>Transcript (PDF)</th>
-                    </tr>
-                </thead>
+            <div class="table-responsive earning-call-table investorMeet">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Notification</th>
+                            <th>Presentation</th>
+                            <th>Transcript (Audio)</th>
+                            <th>Transcript (PDF)</th>
+                        </tr>
+                    </thead>
                 <tbody>
-        `;
+             `;
 
         for (let row = 0; row < maxRowCount; row++) {
             html += `<tr>`;
@@ -358,22 +377,36 @@ $(document).ready(function () {
                 }
                 const iconUrl = `${base_url}/assets/images/invest/${iconFile}`;
 
-                const item = items[row];  
+                const item = items[row];
 
-                if (!item) {
+                if (!item || !item.file) {
                     html += `<td><span class="empty-cell">-</span></td>`;
                 } else {
                     const fileUrl = `${base_url}/storage/files/${item.file}`;
-                    html += `
-                        <td>
-                            <div class="earn-link-row">
-                                <a href="${fileUrl}" target="_blank" class="earn-link">
-                                    <span class="text">${item.title}</span>
-                                    <img src="${iconUrl}" class="type-icon" alt="">
-                                </a>
+                    const text = item.title || col;
+
+                    let cellInnerHtml = '';
+                    if (item.is_protected == 1) {
+                        cellInnerHtml = `
+                        <div class="earn-link-row">
+                            <div class="earn-link open-protected" data-file="${fileUrl}">
+                                <span class="text">${text}</span>
+                                <img src="${iconUrl}" class="type-icon" alt="">
                             </div>
-                        </td>
+                        </div>
                     `;
+                    } else {
+                        cellInnerHtml = `
+                        <div class="earn-link-row">
+                            <a href="${fileUrl}" target="_blank" class="earn-link">
+                                <span class="text">${text}</span>
+                                <img src="${iconUrl}" class="type-icon" alt="">
+                            </a>
+                        </div>
+                    `;
+                    }
+
+                    html += `<td>${cellInnerHtml}</td>`;
                 }
             });
             html += `</tr>`;
@@ -383,10 +416,11 @@ $(document).ready(function () {
                 </tbody>
             </table>
         </div>
-        `;
+    `;
 
         $('#resultContainer').html(html);
     }
+
 
     $(document).on("click", ".open-protected", function () {
         let file = $(this).data("file");
@@ -412,7 +446,6 @@ $(document).ready(function () {
             $('body').removeClass('modal-open');
         }
     });
-
 
     $('#submitUnclaimedForm').click(function () {
 
@@ -510,5 +543,4 @@ $(document).ready(function () {
             }
         });
     });
-
 });

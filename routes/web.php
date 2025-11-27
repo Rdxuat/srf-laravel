@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PressReleaseController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\InvestorAjaxController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\Admin\AuthController;
@@ -12,49 +14,53 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::get('/press-releases', [PressReleaseController::class, 'index'])->name('press-releases');
+Route::get('/in-the-news', [NewsController::class, 'index'])->name('in-the-news');
+Route::get('/news/{slug}', [NewsController::class, 'news'])->name('news');
+
 Route::get('/investors/upload', [InvestorUploadController::class, 'index']);
 Route::post('/investors/upload', [InvestorUploadController::class, 'upload'])->name('investors.upload');
 
 Route::prefix('investor-relations')->group(function () {
-    Route::get('/financial-results', [InvestorController::class, 'financialResultIndex'])->name('financial-result');
-    Route::get('/annual-reports', [InvestorController::class, 'annualReportIndex'])->name('annual-report');
-    Route::get('/annual-reports-subsidiaries', [InvestorController::class, 'annualReportSubsIndex'])->name('annual-report-subs');
-    Route::get('/investor-presentation', [InvestorController::class, 'investorPresentationIndex'])->name('investor-presentation');
-    Route::get('/annual-return', [InvestorController::class, 'annualReturnIndex'])->name('annual-return');
-    Route::get('/annual-general-meeting', [InvestorController::class, 'agmTranscriptIndex'])->name('annual-general');
-    Route::get('/earnings-call', [InvestorController::class, 'earningCallIndex'])->name('earning-call');
+    Route::get('/financial-results', [InvestorController::class, 'render'])->name('financial-result');
+    Route::get('/annual-reports', [InvestorController::class, 'render'])->name('annual-report');
+    Route::get('/annual-reports-subsidiaries', [InvestorController::class, 'render'])->name('annual-report-subs');
+    Route::get('/investor-presentation', [InvestorController::class, 'render'])->name('investor-presentation');
+    Route::get('/annual-return', [InvestorController::class, 'render'])->name('annual-return');
+    Route::get('/annual-general-meeting', [InvestorController::class, 'render'])->name('annual-general');
+    Route::get('/earnings-call', [InvestorController::class, 'render'])->name('earning-call');
 
-    Route::get('/stock-quote', [InvestorController::class, 'stockQuoteIndex'])->name('stock-quote');
-    Route::get('/stock-chart', [InvestorController::class, 'stockChartIndex'])->name('stock-chart');
-    Route::get('/historical-price', [InvestorController::class, 'historicalPriceIndex'])->name('historical-price');
-    Route::get('/investment-calculator', [InvestorController::class, 'investmentCalculatorIndex'])->name('investment-calculator');
-    Route::get('/dividend-and-shares', [InvestorController::class, 'dividendSharesIndex'])->name('dividend-shares');
-    Route::get('/listing', [InvestorController::class, 'listingIndex'])->name('listing');
+    Route::get('/stock-quote', [InvestorController::class, 'render'])->name('stock-quote');
+    Route::get('/stock-chart', [InvestorController::class, 'render'])->name('stock-chart');
+    Route::get('/historical-price', [InvestorController::class, 'render'])->name('historical-price');
+    Route::get('/investment-calculator', [InvestorController::class, 'render'])->name('investment-calculator');
+    Route::get('/dividend-and-shares', [InvestorController::class, 'render'])->name('dividend-shares');
+    Route::get('/listing', [InvestorController::class, 'render'])->name('listing');
 
-    Route::get('/credit-ratings', [InvestorController::class, 'creditRatingsIndex'])->name('credit-ratings');
-    Route::get('/dematerialisation-of-shares', [InvestorController::class, 'dematerialisationIndex'])->name('dematerialisation');
-    Route::get('/disclosure-under-regulation-30', [InvestorController::class, 'regulation30Index'])->name('regulation30');
-    Route::get('/disclosure-under-regulation-46', [InvestorController::class, 'regulation46Index'])->name('regulation46');
-    Route::get('/investor-meet', [InvestorController::class, 'investorMeetIndex'])->name('investor-meet');
-    Route::get('/kyc-forms', [InvestorController::class, 'kycFormsIndex'])->name('kyc-forms');
-    Route::get('/nomination-facility', [InvestorController::class, 'nominationIndex'])->name('nomination');
-    Route::get('/notices', [InvestorController::class, 'noticesIndex'])->name('notices');
-    Route::get('/online-dispute-resolution', [InvestorController::class, 'odrIndex'])->name('odr');
-    Route::get('/registrar-and-share-transfer-agent', [InvestorController::class, 'registrarIndex'])->name('registrar');
-    Route::get('/scheme-of-arrangements', [InvestorController::class, 'schemeIndex'])->name('scheme');
-    Route::get('/secretarial-compliance-report', [InvestorController::class, 'complianceReportIndex'])->name('compliance-report');
-    Route::get('/shareholding-pattern', [InvestorController::class, 'shareholdingIndex'])->name('shareholding');
-    Route::get('/shareholder-services', [InvestorController::class, 'shareholderServicesIndex'])->name('shareholder-services');
-    Route::get('/shareholding-survey-forms', [InvestorController::class, 'surveyFormsIndex'])->name('survey-forms');
-    Route::get('/share-transfer-system', [InvestorController::class, 'shareTransferSystemIndex'])->name('share-transfer-system');
-    Route::get('/stock-exchange-filings', [InvestorController::class, 'stockFilingsIndex'])->name('stock-filings');
-    Route::get('/tds-instructions-on-dividend-distribution', [InvestorController::class, 'tdsInstructionsIndex'])->name('tds-instructions');
+    Route::get('/credit-ratings', [InvestorController::class, 'render'])->name('credit-ratings');
+    Route::get('/dematerialisation-of-shares', [InvestorController::class, 'render'])->name('dematerialisation');
+    Route::get('/disclosure-under-regulation-30', [InvestorController::class, 'render'])->name('regulation30');
+    Route::get('/disclosure-under-regulation-46', [InvestorController::class, 'render'])->name('regulation46');
+    Route::get('/investor-meet', [InvestorController::class, 'render'])->name('investor-meet');
+    Route::get('/kyc-forms', [InvestorController::class, 'render'])->name('kyc-forms');
+    Route::get('/nomination-facility', [InvestorController::class, 'render'])->name('nomination');
+    Route::get('/notices', [InvestorController::class, 'render'])->name('notices');
+    Route::get('/online-dispute-resolution', [InvestorController::class, 'render'])->name('odr');
+    Route::get('/registrar-and-share-transfer-agent', [InvestorController::class, 'render'])->name('registrar');
+    Route::get('/scheme-of-arrangements', [InvestorController::class, 'render'])->name('scheme');
+    Route::get('/secretarial-compliance-report', [InvestorController::class, 'render'])->name('compliance-report');
+    Route::get('/shareholding-pattern', [InvestorController::class, 'render'])->name('shareholding');
+    Route::get('/shareholder-services', [InvestorController::class, 'render'])->name('shareholder-services');
+    Route::get('/shareholding-survey-forms', [InvestorController::class, 'render'])->name('survey-forms');
+    Route::get('/share-transfer-system', [InvestorController::class, 'render'])->name('share-transfer-system');
+    Route::get('/stock-exchange-filings', [InvestorController::class, 'render'])->name('stock-filings');
+    Route::get('/tds-instructions-on-dividend-distribution', [InvestorController::class, 'render'])->name('tds-instructions');
 
-    Route::get('/corporate-governance', [InvestorController::class, 'corporateGovernanceIndex'])->name('corporate-governance');
-    Route::get('/board-of-directors-and-committees', [InvestorController::class, 'bodIndex'])->name('bod');
-    Route::get('/policy', [InvestorController::class, 'policyIndex'])->name('policy');
-    Route::get('/corporate-governance-report', [InvestorController::class, 'corporateGovReportIndex'])->name('corporate-gov-report');
-    Route::get('/other-disclosures', [InvestorController::class, 'otherDisclosuereIndex'])->name('other-disclosure');
+    Route::get('/corporate-governance', [InvestorController::class, 'render'])->name('corporate-governance');
+    Route::get('/board-of-directors-and-committees', [InvestorController::class, 'render'])->name('bod');
+    Route::get('/policy', [InvestorController::class, 'render'])->name('policy');
+    Route::get('/corporate-governance-report', [InvestorController::class, 'render'])->name('corporate-gov-report');
+    Route::get('/other-disclosures', [InvestorController::class, 'render'])->name('other-disclosure');
 
 
     Route::get('/get-investor-data', [InvestorController::class, 'getInvestorData'])->name('get-investor-data');

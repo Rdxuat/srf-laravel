@@ -18,6 +18,7 @@ class AgmTranscript extends Model
         'file',
         'link',
         'status',
+        'is_protected',
     ];
 
 }

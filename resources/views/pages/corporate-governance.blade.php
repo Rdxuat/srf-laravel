@@ -45,14 +45,21 @@
                                         <div class="col-md-4">
                                             <div class="form-group select-box">
                                                 <select id="selCategory" class="form-control select-pill selCategory">
-                                                    <option value="overview" data-url="{{ route('corporate-governance') }}" {{ $data['active_tab'] == 'overview' ? 'selected' : '' }}>
+                                                    <option value="overview" data-url="{{ route('corporate-governance') }}"
+                                                        {{ $data['active_tab'] == 'overview' ? 'selected' : '' }}>
                                                         Overview</option>
-                                                    <option value="bod" data-url="{{ route('bod') }}" {{ $data['active_tab'] == 'bod' ? 'selected' : '' }}>Board of
+                                                    <option value="bod" data-url="{{ route('bod') }}"
+                                                        {{ $data['active_tab'] == 'bod' ? 'selected' : '' }}>Board of
                                                         Directors and Committees</option>
-                                                    <option value="policy" data-url="{{ route('policy') }}" {{ $data['active_tab'] == 'policy' ? 'selected' : '' }}>
+                                                    <option value="policy" data-url="{{ route('policy') }}"
+                                                        {{ $data['active_tab'] == 'policy' ? 'selected' : '' }}>
                                                         Policies</option>
-                                                    <option value="corporate" data-url="{{ route('corporate-gov-report') }}" {{ $data['active_tab'] == 'corporate' ? 'selected' : '' }}>Corporate Governance Reports</option>
-                                                    <option value="other" data-url="{{ route('other-disclosure') }}" {{ $data['active_tab'] == 'other' ? 'selected' : '' }}>Other
+                                                    <option value="corporate"
+                                                        data-url="{{ route('corporate-gov-report') }}"
+                                                        {{ $data['active_tab'] == 'corporate' ? 'selected' : '' }}>
+                                                        Corporate Governance Reports</option>
+                                                    <option value="other" data-url="{{ route('other-disclosure') }}"
+                                                        {{ $data['active_tab'] == 'other' ? 'selected' : '' }}>Other
                                                         Disclosures</option>
                                                 </select>
                                             </div>
@@ -89,34 +96,35 @@
                                                 <div class="mainAudit">
                                                     <div class="subAudit">
                                                         <div class="iconImg">
-                                                            <img src="{{ asset('assets/images/invest/audit-committee-icon.svg')}}" class="img-responsive"
-                                                                alt="">
+                                                            <img src="{{ asset('assets/images/invest/audit-committee-icon.svg') }}"
+                                                                class="img-responsive" alt="">
                                                         </div>
                                                         <p>Audit Committee</p>
                                                     </div>
                                                     <div class="subAudit">
                                                         <div class="iconImg">
-                                                            <img src="{{ asset('assets/images/invest/stakeholders-relationship-icon.svg')}}"
+                                                            <img src="{{ asset('assets/images/invest/stakeholders-relationship-icon.svg') }}"
                                                                 class="img-responsive" alt="">
                                                         </div>
                                                         <p>Stakeholders Relationship Committee</p>
                                                     </div>
                                                     <div class="subAudit">
                                                         <div class="iconImg">
-                                                            <img src="{{ asset('assets/images/invest/nomination-icon.svg')}}" class="img-responsive" alt="">
+                                                            <img src="{{ asset('assets/images/invest/nomination-icon.svg') }}"
+                                                                class="img-responsive" alt="">
                                                         </div>
                                                         <p>Nomination and Remuneration Committee</p>
                                                     </div>
                                                     <div class="subAudit">
                                                         <div class="iconImg">
-                                                            <img src="{{ asset('assets/images/invest/corporate-social-responsibility-icon.svg')}}"
+                                                            <img src="{{ asset('assets/images/invest/corporate-social-responsibility-icon.svg') }}"
                                                                 class="img-responsive" alt="">
                                                         </div>
                                                         <p>Corporate Social Responsibility Committee</p>
                                                     </div>
                                                     <div class="subAudit">
                                                         <div class="iconImg">
-                                                            <img src="{{ asset('assets/images/invest/risk-management-committee-icon.svg')}}"
+                                                            <img src="{{ asset('assets/images/invest/risk-management-committee-icon.svg') }}"
                                                                 class="img-responsive" alt="">
                                                         </div>
                                                         <p>Risk Management Committee</p>
@@ -125,101 +133,127 @@
                                             </div>
                                         </div>
                                     </div>
-        <div class="row office-content" id="bod" style="display:none;">
-            <div class="myBod">
-                <div class="col-md-12">
-                    <div class="bodSec">
-                        <h2>Board of Directors</h2>
-                    </div>
-                </div>
-                <div class="childSec">
-                    <div class="new">
-                        @if(isset($data['directors']) && count($data['directors']) > 0)
-                            @foreach ($data['directors'] as $director)
-                                    <div class="col-md-4">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#bod{{ $director->id }}">
-                                        <div class="bod-box">
-                                            <div class="light-bluebg">
-                                                <div class="bod-img"><img class="img-responsive" src="{{ asset('storage/files/bod/' . $director->image) }}" alt="{{ $director->name }}"></div>
+                                    <div class="row office-content" id="bod" style="display:none;">
+                                        <div class="myBod">
+                                            <div class="col-md-12">
+                                                <div class="bodSec">
+                                                    <h2>Board of Directors</h2>
+                                                </div>
                                             </div>
-                                            <div class="bod-text">
-                                                <h4>{{ $director->name }} <span>{{ $director->designation }}</span></h4>
-                                            </div>
-                                            <div class="smallLetter">
-                                                @if(!empty($director->committe) && is_array($director->committe))
-                                                    @foreach($director->committe as $index => $letter)
-                                                        @php
-                                                            $color = $director->committe_type[$index] ?? 'grey';
-                                                        @endphp
-                                                        <h5 class="{{ $color }}">{{ $letter }}</h5>
-                                                    @endforeach
-                                                @endif
+                                            <div class="childSec">
+                                                <div class="new">
+                                                    @if (isset($data['directors']) && count($data['directors']) > 0)
+                                                        @foreach ($data['directors'] as $director)
+                                                            <div class="col-md-4">
+                                                                <a href="#" data-bs-toggle="modal"
+                                                                    data-bs-target="#bod{{ $director->id }}">
+                                                                    <div class="bod-box">
+                                                                        <div class="light-bluebg">
+                                                                            <div class="bod-img"><img
+                                                                                    class="img-responsive"
+                                                                                    src="{{ asset('storage/files/bod/' . $director->image) }}"
+                                                                                    alt="{{ $director->name }}"></div>
+                                                                        </div>
+                                                                        <div class="bod-text">
+                                                                            <h4>{{ $director->name }}
+                                                                                <span>{{ $director->designation }}</span>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="smallLetter">
+                                                                            @if (!empty($director->committe) && is_array($director->committe))
+                                                                                @foreach ($director->committe as $index => $letter)
+                                                                                    @php
+                                                                                        $color =
+                                                                                            $director->committe_type[
+                                                                                                $index
+                                                                                            ] ?? 'grey';
+                                                                                    @endphp
+                                                                                    <h5 class="{{ $color }}">
+                                                                                        {{ $letter }}</h5>
+                                                                                @endforeach
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+                                                <div class="committee-box">
+                                                    <div class="committee-title">Committees</div>
+                                                    <div class="row mb20">
+                                                        <div class="col-md-3">
+                                                            <div class="risk">
+                                                                <div class="box blue"></div>
+                                                                <p class="wow fadeInUp"
+                                                                    style="visibility: visible; animation-name: fadeInUp;">
+                                                                    Risk Management Committee</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="risk">
+                                                                <div class="box green"></div>
+                                                                <p class="wow fadeInUp"
+                                                                    style="visibility: visible; animation-name: fadeInUp;">
+                                                                    Nomination &amp; Remuneration Committee</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="risk">
+                                                                <div class="box red"></div>
+                                                                <p class="wow fadeInUp"
+                                                                    style="visibility: visible; animation-name: fadeInUp;">
+                                                                    Stakeholders Relationship Committee</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="cair">
+                                                                <div class="circ">
+                                                                    <h5>C</h5>
+                                                                    <p class="wow fadeInUp"
+                                                                        style="visibility: visible; animation-name: fadeInUp;">
+                                                                        Chairperson</p>
+                                                                </div>
+                                                                <div class="circ">
+                                                                    <h5>M</h5>
+                                                                    <p class="wow fadeInUp"
+                                                                        style="visibility: visible; animation-name: fadeInUp;">
+                                                                        Member</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb20">
+                                                        <div class="col-md-3">
+                                                            <div class="risk">
+                                                                <div class="box orange"></div>
+                                                                <p class="wow fadeInUp"
+                                                                    style="visibility: visible; animation-name: fadeInUp;">
+                                                                    Audit Committee</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="risk">
+                                                                <div class="box grey"></div>
+                                                                <p class="wow fadeInUp"
+                                                                    style="visibility: visible; animation-name: fadeInUp;">
+                                                                    Corporate Social Responsibility Committee</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="risk">
+                                                                <div class="box yellow"></div>
+                                                                <p class="wow fadeInUp"
+                                                                    style="visibility: visible; animation-name: fadeInUp;">
+                                                                    Committee of Directors - Financial Resources</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                        @endif
-                    </div>
-                    <div class="committee-box">
-                        <div class="committee-title">Committees</div>
-                        <div class="row mb20">
-                    <div class="col-md-3">
-                        <div class="risk">
-                            <div class="box blue"></div>
-                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Risk Management Committee</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="risk">
-                            <div class="box green"></div>
-                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Nomination &amp; Remuneration Committee</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="risk">
-                            <div class="box red"></div>
-                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Stakeholders Relationship Committee</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="cair">
-                            <div class="circ">
-                                <h5>C</h5>
-                                <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Chairperson</p>
-                            </div>
-                            <div class="circ">
-                                <h5>M</h5>
-                                <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Member</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb20">
-                    <div class="col-md-3">
-                        <div class="risk">
-                            <div class="box orange"></div>
-                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Audit Committee</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="risk">
-                            <div class="box grey"></div>
-                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Corporate Social Responsibility Committee</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="risk">
-                            <div class="box yellow"></div>
-                            <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Committee of Directors - Financial Resources</p>
-                        </div>
-                    </div>
-
-                </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                    </div>
                                     <div id="resultContainer" class="mt-4">
                                     </div>
                                 </div>
@@ -245,7 +279,7 @@
     <script src="{{ asset('assets/js/investor.js') }}" type="text/javascript"></script>
 @endpush
 @push('modals')
-    @if(isset($data['directors']) && count($data['directors']) > 0)
+    @if (isset($data['directors']) && count($data['directors']) > 0)
         @foreach ($data['directors'] as $director)
             <div class="modal fade" id="bod{{ $director->id }}" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen">
@@ -260,7 +294,8 @@
                                 <div class="row">
                                     <div class="col-md-1">
                                         <div class="scl-icons">
-                                            <a href="#"><img src="{{ asset('assets/images/bod/linkedin.svg') }}"></a>
+                                            <a href="#"><img
+                                                    src="{{ asset('assets/images/bod/linkedin.svg') }}"></a>
                                             <a href="#"><img src="{{ asset('assets/images/bod/tw.svg') }}"></a>
                                             <a href="#"><img src="{{ asset('assets/images/bod/shares.svg') }}"></a>
                                             <a href="#"><img src="{{ asset('assets/images/bod/link.svg') }}"></a>
@@ -268,13 +303,15 @@
                                     </div>
                                     <div class="col-md-5">
                                         <div class="pop-img">
-                                            <img class="img-responsive" src="{{ asset('storage/files/bod/' . $director->modal_image) }}" alt="{{ $director->name }}">
+                                            <img class="img-responsive"
+                                                src="{{ asset('storage/files/bod/' . $director->modal_image) }}"
+                                                alt="{{ $director->name }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <h4>{{ $director->name }}</h4>
                                         <h6>{{ $director->designation }}</h6>
-                                        @if(!empty($director->intro))
+                                        @if (!empty($director->intro))
                                             <h5>{{ $director->intro }}</h5>
                                         @endif
                                     </div>
@@ -287,14 +324,14 @@
                     </div>
                 </div>
             </div>
-        @endforeach
-    @endif
-    <div class="modal fade" id="protectedPdfModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-body" id="protectedPdfContainer" style="height:80vh;">
+            <div class="modal fade" id="protectedPdfModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-body" id="protectedPdfContainer" style="height:80vh;">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        @endforeach
+    @endif
 @endpush

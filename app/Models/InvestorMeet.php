@@ -20,6 +20,7 @@ class InvestorMeet extends Model
         'title',
         'file',
         'status',
+        'is_protected',
     ];
 
 }
