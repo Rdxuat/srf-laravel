@@ -1,4 +1,5 @@
-<?php namespace App\Http\Controllers; 
+<?php 
+namespace App\Http\Controllers; 
 use App\Models\PressRelease;
 use Illuminate\Http\Request;
 class PressReleaseController extends Controller 
@@ -9,7 +10,7 @@ class PressReleaseController extends Controller
         $data['meta_desc'] = 'Press Release Desc'; 
         $data['meta_image'] = '';  
         $month = $request->month; $year = $request->year;  
-        $query = PressRelease::query(); 
+        $query = PressRelease::query()->where('status', 1);
         if (!empty($month)) { 
             $query->whereMonth('date', $month); 
         } 
@@ -18,10 +19,12 @@ class PressReleaseController extends Controller
         } 
         $data['pressReleases'] = $query->orderBy('date', 'desc')->get(); 
         $data['years'] = PressRelease::selectRaw('YEAR(date) as year')
+                        ->where('status', 1)
                         ->distinct()
                         ->orderBy('year','desc')
                         ->get(); 
         $data['months'] = PressRelease::selectRaw('MONTH(date) as month')
+                        ->where('status', 1)
                         ->distinct()
                         ->orderBy('month','asc')
                         ->get(); 
