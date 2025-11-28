@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\PressReleaseController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\InvestorAjaxController;
+use App\Http\Controllers\NewsroomController;
 use App\Http\Controllers\InvestorController;
+use App\Http\Controllers\InvestorAjaxController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LogController;
@@ -14,9 +13,10 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('/press-releases', [PressReleaseController::class, 'index'])->name('press-releases');
-Route::get('/in-the-news', [NewsController::class, 'index'])->name('in-the-news');
-Route::get('/news/{slug}', [NewsController::class, 'news'])->name('news');
+Route::get('/newsroom', [NewsroomController::class, 'index'])->name('newsroom');
+Route::get('/press-releases', [NewsroomController::class, 'pressIndex'])->name('press-releases');
+Route::get('/in-the-news', [NewsroomController::class, 'newsIndex'])->name('in-the-news');
+Route::get('/news/{slug}', [NewsroomController::class, 'news'])->name('news');
 
 Route::get('/investors/upload', [InvestorUploadController::class, 'index']);
 Route::post('/investors/upload', [InvestorUploadController::class, 'upload'])->name('investors.upload');
