@@ -21,13 +21,30 @@
                     <h2 class="inner-mhead wow fadeInUp">In the News</h2>
                     <h5 class="wow fadeInUp">Latest from the world of SRF</h5>
                     <div class="award-select press-select">
-                        <p>Sort by</p>
-                        <select id="monthselect">
-                            <option value="2025">Month</option>
-                        </select>
-                        <select id="Yearselect">
-                            <option value="2025">Year</option>
-                        </select>
+                        <form method="GET" class="award-select press-select">
+                            <p>Sort by</p>
+
+                            {{-- Month filter --}}
+                            <select name="month" onchange="this.form.submit()">
+                                <option value="">Month</option>
+                                @foreach ($data['months'] as $m)
+                                    <option value="{{ $m->month }}"
+                                        {{ request('month') == $m->month ? 'selected' : '' }}>
+                                        {{ date('F', mktime(0, 0, 0, $m->month, 1)) }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            {{-- Year filter --}}
+                            <select name="year" onchange="this.form.submit()">
+                                <option value="">Year</option>
+                                @foreach ($data['years'] as $y)
+                                    <option value="{{ $y->year }}" {{ request('year') == $y->year ? 'selected' : '' }}>
+                                        {{ $y->year }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </form>
                     </div>
                 </div>
                 @if (count($data['blocks']) > 0)
@@ -36,7 +53,7 @@
                             @if ($block['type'] === 'image')
                                 @php
                                     $item = $block['items'][0];
-                                    $reverse = $block['reverse'] ?? false; 
+                                    $reverse = $block['reverse'] ?? false;
                                     $wrapperClass = $reverse ? 'news-wrap news-wrap4' : 'news-wrap';
                                 @endphp
 
@@ -54,7 +71,8 @@
                                                     </h6>
                                                     <div class="news-arrow-icon">
                                                         <a href="{{ route('news', $item->slug) }}">
-                                                            <img src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
+                                                            <img
+                                                                src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
                                                         </a>
                                                     </div>
                                                 </div>
