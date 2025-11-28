@@ -30,16 +30,17 @@
                         </select>
                     </div>
                 </div>
-                @if(count($data['blocks']) > 0)
+                @if (count($data['blocks']) > 0)
                     @foreach ($data['blocks'] as $block)
                         <div class="col-md-10 col-md-offset-1">
                             @if ($block['type'] === 'image')
                                 @php
                                     $item = $block['items'][0];
-                                    $reverse = $block['reverse'] ?? false;
+                                    $reverse = $block['reverse'] ?? false; 
+                                    $wrapperClass = $reverse ? 'news-wrap news-wrap4' : 'news-wrap';
                                 @endphp
 
-                                <div class="newsClass">
+                                <div class="{{ $wrapperClass }}">
                                     @if (!$reverse)
                                         <div class="col-md-5">
                                             <div class="news-text">
@@ -48,8 +49,7 @@
                                                 <p class="wow fadeInUp">{{ $item->desc }}</p>
                                                 <div class="news-footer wow fadeInUp">
                                                     <h6>
-                                                        {{ optional($item->date)->format('M d, Y') }}
-                                                        |
+                                                        {{ optional($item->date)->format('M d, Y') }} |
                                                         <img src="{{ asset('assets/images/newsroom/share-icon.svg') }}">
                                                     </h6>
                                                     <div class="news-arrow-icon">
@@ -60,19 +60,23 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-md-7">
                                             <div class="news-img wow zoomIn">
-                                                <img class="img-responsive" src="{{ asset('storage/files/' . $item->image) }}"
+                                                <img class="img-responsive"
+                                                    src="{{ asset('storage/files/' . $item->image) }}"
                                                     alt="{{ $item->title }}">
                                             </div>
                                         </div>
                                     @else
                                         <div class="col-md-7">
                                             <div class="news-img wow zoomIn">
-                                                <img class="img-responsive" src="{{ asset('storage/files/' . $item->image) }}"
+                                                <img class="img-responsive"
+                                                    src="{{ asset('storage/files/' . $item->image) }}"
                                                     alt="{{ $item->title }}">
                                             </div>
                                         </div>
+
                                         <div class="col-md-5">
                                             <div class="news-text">
                                                 <h6 class="wow fadeInUp">News</h6>
@@ -80,13 +84,13 @@
                                                 <p class="wow fadeInUp">{{ $item->desc }}</p>
                                                 <div class="news-footer wow fadeInUp">
                                                     <h6>
-                                                        {{ optional($item->date)->format('M d, Y') }}
-                                                        |
+                                                        {{ optional($item->date)->format('M d, Y') }} |
                                                         <img src="{{ asset('assets/images/newsroom/share-icon.svg') }}">
                                                     </h6>
                                                     <div class="news-arrow-icon">
                                                         <a href="{{ route('news', $item->slug) }}">
-                                                            <img src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
+                                                            <img
+                                                                src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -94,14 +98,14 @@
                                         </div>
                                     @endif
                                 </div>
-                            @elseif($block['type'] === 'text-pair')
+                            @elseif ($block['type'] === 'text-pair')
                                 @php
                                     $first = $block['items'][0];
                                     $second = $block['items'][1];
-                                    $reverse = $block['reverse'] ?? false; 
+                                    $reverse = $block['reverse'] ?? false;
                                 @endphp
 
-                                <div class="newsClass">
+                                <div class="news-wrap1">
                                     @if (!$reverse)
                                         <div class="col-md-7">
                                             <div class="news-text">
@@ -110,13 +114,13 @@
                                                 <p class="wow fadeInUp">{{ $first->desc }}</p>
                                                 <div class="news-footer wow fadeInUp">
                                                     <h6>
-                                                        {{ optional($first->date)->format('M d, Y') }}
-                                                        |
+                                                        {{ optional($first->date)->format('M d, Y') }} |
                                                         <img src="{{ asset('assets/images/newsroom/share-icon.svg') }}">
                                                     </h6>
                                                     <div class="news-arrow-icon">
                                                         <a href="{{ route('news', $first->slug) }}">
-                                                            <img src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
+                                                            <img
+                                                                src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -130,20 +134,19 @@
                                                 <p class="wow fadeInUp">{{ $second->desc }}</p>
                                                 <div class="news-footer wow fadeInUp">
                                                     <h6>
-                                                        {{ optional($second->date)->format('M d, Y') }}
-                                                        |
+                                                        {{ optional($second->date)->format('M d, Y') }} |
                                                         <img src="{{ asset('assets/images/newsroom/share-icon.svg') }}">
                                                     </h6>
                                                     <div class="news-arrow-icon">
                                                         <a href="{{ route('news', $second->slug) }}">
-                                                            <img src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
+                                                            <img
+                                                                src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @else
-                                        {{-- 5 / 7 --}}
                                         <div class="col-md-5">
                                             <div class="news-text">
                                                 <h6 class="wow fadeInUp">News</h6>
@@ -151,13 +154,13 @@
                                                 <p class="wow fadeInUp">{{ $first->desc }}</p>
                                                 <div class="news-footer wow fadeInUp">
                                                     <h6>
-                                                        {{ optional($first->date)->format('M d, Y') }}
-                                                        |
+                                                        {{ optional($first->date)->format('M d, Y') }} |
                                                         <img src="{{ asset('assets/images/newsroom/share-icon.svg') }}">
                                                     </h6>
                                                     <div class="news-arrow-icon">
                                                         <a href="{{ route('news', $first->slug) }}">
-                                                            <img src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
+                                                            <img
+                                                                src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -171,13 +174,13 @@
                                                 <p class="wow fadeInUp">{{ $second->desc }}</p>
                                                 <div class="news-footer wow fadeInUp">
                                                     <h6>
-                                                        {{ optional($second->date)->format('M d, Y') }}
-                                                        |
+                                                        {{ optional($second->date)->format('M d, Y') }} |
                                                         <img src="{{ asset('assets/images/newsroom/share-icon.svg') }}">
                                                     </h6>
                                                     <div class="news-arrow-icon">
                                                         <a href="{{ route('news', $second->slug) }}">
-                                                            <img src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
+                                                            <img
+                                                                src="{{ asset('assets/images/newsroom/news-arrow.svg') }}">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -185,12 +188,10 @@
                                         </div>
                                     @endif
                                 </div>
-                            @elseif($block['type'] === 'single')
-                                @php
-                                    $item = $block['items'][0];
-                                @endphp
+                            @elseif ($block['type'] === 'single')
+                                @php $item = $block['items'][0]; @endphp
 
-                                <div class="newsClass">
+                                <div class="news-wrap">
                                     <div class="col-md-12">
                                         <div class="news-text">
                                             <h6 class="wow fadeInUp">News</h6>
@@ -198,8 +199,7 @@
                                             <p class="wow fadeInUp">{{ $item->desc }}</p>
                                             <div class="news-footer wow fadeInUp">
                                                 <h6>
-                                                    {{ optional($item->date)->format('M d, Y') }}
-                                                    |
+                                                    {{ optional($item->date)->format('M d, Y') }} |
                                                     <img src="{{ asset('assets/images/newsroom/share-icon.svg') }}">
                                                 </h6>
                                                 <div class="news-arrow-icon">
@@ -214,12 +214,13 @@
                             @endif
 
                         </div>
-                    @endforeach                
+                    @endforeach
                 @else
                     <div class="col-md-10 text-center py-5">
                         <h3>No News Available</h3>
                     </div>
                 @endif
+
 
             </div>
         </div>
